@@ -31,7 +31,38 @@ commodity becomes **out-of-stock**). Minimally, the system shall include basic f
 that is not mentioned above, to be a function of your system.**
 
 
+Suggestions:
+Propose feature to be added
+A) Predict stock using different methods (3 months average, 6 month average, user specify length)
+B) Reserve stock for specific stores or from other store
+C) Addition to (5) out of stock alert, add feature to suggestion A to remind add stock
+D) In addition to C), add contact details to the supplier
+E) In addition to D), add predicted delivery time/promised delivery time
+F) Filter for 1) can be in/out of stock, value per item/total value, last sale, longest in inventory time
+G) Need a way to change date/time?
+H) Indicate as DOA, damaged, returned units
+I) Tax
 
+
+Commodity Information should include:
+1.Wholesale Price
+2.Retail Price
+3.Number of stock in different store
+4.Sales record (Whole history, 3 months, 6 months, 1 year)
+5.Last restock, last slaes
+6.Stock distribution at different store/inventory
+7.Past delivery record (time from order to in inventory)
+8.Tax amount
+9.Manufacturer
+10.Product code
+
+Operations:
+Set date/time
+Add Commodity type
+Check stock condition
+Stock commodity
+Change stock status
+Logistics operations (delivery and return)
 
 
 
