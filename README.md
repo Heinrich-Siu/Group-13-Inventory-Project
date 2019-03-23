@@ -15,7 +15,13 @@ storage of inventory. In order to optimize the management process, an inventory 
 implemented. In this idea, we aim to build a commodity inventory system that allows staff to **manage
 and record commodity inventory** in **different retail shops** for monitoring inventory status, providing
 necessary **data for procurements** and delivering **alerts** when exceptional events happened (e.g. some
-commodity becomes **out-of-stock**). Minimally, the system shall include basic features: 
+commodity becomes **out-of-stock**). 
+
+**Assumptions:**
+We assume that the storage size is not infinitely large which could result in insufficient memory.
+
+
+**features and function:**
 
 **1) search commodity according to different filters (e.g. in-stock/out-of-stock);**
 
@@ -29,6 +35,8 @@ commodity becomes **out-of-stock**). Minimally, the system shall include basic f
 
 **6) deliver alerts when the commodity is “out-of-stock”. Imagine putting the system into reality and please suggests a function
 that is not mentioned above, to be a function of your system.**
+
+
 
 
 
