@@ -33,6 +33,7 @@ that is not mentioned above, to be a function of your system.**
 
 Suggestions:
 Propose feature to be added
+
 A) Predict stock using different methods (3 months average, 6 month average, user specify length)
 B) Reserve stock for specific stores or from other store
 C) Addition to (5) out of stock alert, add feature to suggestion A to remind add stock
@@ -45,6 +46,7 @@ I) Tax
 
 
 Commodity Information should include:
+
 1.Wholesale Price
 2.Retail Price
 3.Number of stock in different store
@@ -57,12 +59,12 @@ Commodity Information should include:
 10.Product code
 
 Operations:
-Set date/time
-Add Commodity type
-Check stock condition
-Stock commodity
-Change stock status
-Logistics operations (delivery and return)
+1.Set date/time
+2.Add Commodity type
+3.Check stock condition
+4.Stock commodity
+5.Change stock status
+6.Logistics operations (delivery and return)
 
 
 
