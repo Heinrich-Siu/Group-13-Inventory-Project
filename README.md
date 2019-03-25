@@ -1,11 +1,27 @@
 # 1340-test-repo
 # Commodity inventory system
 
-problem statement (including setting & assumptions)
+To control and manage ordering and storage of inventory, an inventory management system is very important. It can optimize the management process. In this project, our aims is to build a commodity inventory system for staff to perform management in the inventory, such as manage and record commodity inventory in multiple shops, providing necessary data for procurements and delivering alerts when exceptional events happened.
 
+**Assumption**
+1. Maximum storage size is 500 and measure in quantity.
+2.
 
-problem setting
+**Function and feature**
+1) search commodity according to different filters (e.g. in-stock/out-of-stock);
 
+2) insert new commodity with basic information (name, manufacturer, amount, price, availability of shop(s)) after each procurement,
+
+3) delete obsolete commodity;
+
+4) update commodity information;
+
+5) automatic change of inventory status according to the amount of commodity that is currently available (e.g. when the amount reaches zero, the inventory status would become “out-of-stock”);
+
+6) deliver alerts when the commodity is “out-of-stock”. Imagine putting the system into reality and please suggests a function
+that is not mentioned above, to be a function of your system.
+
+**-----------------------------------------------------------------------------------**
 A readme.md detailing the problem statement (i.e., what problem to solve), problem setting
 (e.g., reasonable assumptions), functionalities and features, input/output specifications,
 compilation and execution instructions. Simply put, this serves like a manual to your program
