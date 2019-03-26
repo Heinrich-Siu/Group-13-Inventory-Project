@@ -1,4 +1,4 @@
-# 1340-test-repo
+# Group-13-Inventory-Project
 # Commodity inventory system
 
 **Problem statement:**
