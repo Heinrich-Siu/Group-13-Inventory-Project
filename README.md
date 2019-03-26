@@ -8,17 +8,19 @@ To control and manage ordering and storage of inventory, an inventory management
 2.
 
 **Function and feature**
-1) search commodity according to different filters (e.g. in-stock/out-of-stock);
+1) Load commodity inventory record of different shop from files; 
 
-2) insert new commodity with basic information (name, manufacturer, amount, price, availability of shop(s)) after each procurement,
+2) search commodity according to different filters (e.g. in-stock/out-of-stock);
 
-3) delete obsolete commodity;
+3) insert new commodity with basic information (name, manufacturer, amount, price, availability of shop(s)) after each procurement,
 
-4) update commodity information;
+4) delete obsolete commodity;
 
-5) automatic change of inventory status according to the amount of commodity that is currently available (e.g. when the amount reaches zero, the inventory status would become “out-of-stock”);
+5) update commodity information;
 
-6) deliver alerts when the commodity is “out-of-stock”. Imagine putting the system into reality and please suggests a function
+6) automatic change of inventory status according to the amount of commodity that is currently available (e.g. when the amount reaches zero, the inventory status would become “out-of-stock”);
+
+7) deliver alerts when the commodity is “out-of-stock”. Imagine putting the system into reality and please suggests a function
 that is not mentioned above, to be a function of your system.
 
 **-----------------------------------------------------------------------------------**
