@@ -59,39 +59,40 @@ that is not mentioned above, to be a function of your system.**
 
 
 Suggestions:
-Propose feature to be added
+Propose feature to be added<br/>
 
-A) Predict stock using different methods (3 months average, 6 month average, user specify length)
-B) Reserve stock for specific stores or from other store
-C) Addition to (5) out of stock alert, add feature to suggestion A to remind add stock
-D) In addition to C), add contact details to the supplier
-E) In addition to D), add predicted delivery time/promised delivery time
-F) Filter for 1) can be in/out of stock, value per item/total value, last sale, longest in inventory time
-G) Need a way to change date/time?
-H) Indicate as DOA, damaged, returned units
-I) Tax
+A) Predict stock using different methods (3 months average, 6 month average, user specify length)<br/>
+B) Reserve stock for specific stores or from other store<br/>
+C) Addition to (5) out of stock alert, add feature to suggestion A to remind add stock<br/>
+D) In addition to C), add contact details to the supplier<br/>
+E) In addition to D), add predicted delivery time/promised delivery time<br/>
+F) Filter for 1) can be in/out of stock, value per item/total value, last sale, longest in inventory time<br/>
+G) Need a way to change date/time?<br/>
+H) Indicate as DOA, damaged, returned units<br/>
+I) Tax<br/>
 
 
 Commodity Information should include:
 
-1.Wholesale Price
-2.Retail Price
-3.Number of stock in different store
-4.Sales record (Whole history, 3 months, 6 months, 1 year)
-5.Last restock, last slaes
-6.Stock distribution at different store/inventory
-7.Past delivery record (time from order to in inventory)
-8.Tax amount
-9.Manufacturer
-10.Product code
+1.Wholesale Price<br/>
+2.Retail Price<br/>
+3.Number of stock in different store<br/>
+4.Sales record (Whole history, 3 months, 6 months, 1 year)<br/>
+5.Last restock, last slaes<br/>
+6.Stock distribution at different store/inventory<br/>
+7.Past delivery record (time from order to in inventory)<br/>
+8.Tax amount<br/>
+9.Manufacturer<br/>
+10.Product code<br/>
 
-Operations:
-1.Set date/time
-2.Add Commodity type
-3.Check stock condition
-4.Stock commodity
-5.Change stock status
-6.Logistics operations (delivery and return)
+Operations:<br/>
+
+1.Set date/time<br/>
+2.Add Commodity type<br/>
+3.Check stock condition<br/>
+4.Stock commodity<br/>
+5.Change stock status<br/>
+6.Logistics operations (delivery and return)<br/>
 
 
 
