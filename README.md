@@ -1,11 +1,14 @@
 # 1340-test-repo
 # Commodity inventory system
 
-To control and manage ordering and storage of inventory, an inventory management system is very important. It can optimize the management process. In this project, our aims is to build a commodity inventory system for staff to perform management in the inventory, such as manage and record commodity inventory in multiple shops, providing necessary data for procurements and delivering alerts when exceptional events happened.
+**Problem statement:**
+To control and manage ordering and storage of inventory, an inventory management system is very important. It can optimize the management process. A retail chain shore company request a commodity inventory system to manage their commodity. In this project, our aims is to build a commodity inventory system for staff to perform management in the inventory, such as manage and record commodity inventory in multiple shops, providing necessary data for procurements and delivering alerts when exceptional events happened.
+
+**Problem setting**
+The company need a inventory system to manage the inventory in different retail shop. This system should be able to store and alter the inventory record, also other additional function. The target user is the warehouse team. They will use the system to manage the inventory.
 
 **Assumption**
 1. Maximum storage size is 500 and measure in quantity.
-2.
 
 **Function and feature**
 1) Load commodity inventory record of different shop from files; 
