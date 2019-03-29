@@ -29,7 +29,7 @@ The company need a inventory system to manage the inventory in different retail 
 
 9) In addition to 8), add contact details to the supplier<br/>
 
-Commodity Information should include:
+**Commodity Information should include:
 
 1. Wholesale Price<br/>
 2. Retail Price<br/>
@@ -42,7 +42,7 @@ Commodity Information should include:
 9. Manufacturer<br/>
 10. Product code<br/>
 
-Operations:<br/>
+**Operations:<br/>
 
 1. Set date/time<br/>
 2. Add Commodity type<br/>
