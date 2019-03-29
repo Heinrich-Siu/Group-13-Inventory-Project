@@ -1,6 +1,7 @@
 trying to upload file through git
 
 Useful command:
+git clone address
 git status
 git add filename
 git push
