@@ -1,7 +1,22 @@
 #include <iostream>
 #include <string>
+#include <inventorysys.h>
 
 using namespace std;
+
+void printUI()
+{
+    string ui = "1. \n"
+                "2. \n"
+                "3. \n"
+                "4. \n"
+                "5. \n"
+                "6. \n"
+                "7. \n"
+                "8. \n"
+                "9. Exit";
+          cout << ui << endl;
+}
 
 int main()
 {
@@ -9,9 +24,9 @@ int main()
     int userInput;
     cout << "Please input a command: "
     cin >> userInput;
-    
+
     while(userInput != (Exit))
-    {   
+    {
         if(userInput >= 0 || userInput <=9)
         {
             switch(userInput)
@@ -47,9 +62,9 @@ int main()
           {
           cout << "Your input is invalid" << endl;
           }
-          
+
           cin >> userInput;
-            
+
 
         }
     }
