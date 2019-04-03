@@ -20,18 +20,19 @@ void printUI()
           cout << ui << endl;
 }
 
-void readCSVinventoryRec(commodity apple, string data, int rowNum)
+void readCSVinventoryRec(commodity &commod, string data, int columnNum)
 {
-    switch(rowNum)
+    switch(columnNum) //columnNum determine the information type
     {
         case 0: //index
-
+            cout << "now is 0" << endl;
+            commod.index = stoi(data);
             break;
         case 1: //
-
+            commod.name = data;
             break;
         case 2: //
-
+            commod.price = stod(data);
             break;
         case 3: //
 
@@ -66,25 +67,28 @@ void readCSVinventoryRec(commodity apple, string data, int rowNum)
 int main()
 {
     commodity apple;
-    apple.index = 1;
-    apple.name = "Japan Apple";
+    //apple.index = 1;
+    //apple.name = "Japan Apple";
     //cout << apple.index << endl;
     //cout << apple.name << endl;
     //printUI();
 
-    string line = "11,22,33,44,55,66,77";
+    string line = "11,22,33,44,55,66,77"; //simulating the commodity information in the file per line
     int lineArrIndicator = 0;
 
     //getline(myfile,type);
-    istringstream ss(line);
+    istringstream ss(line);  //line as input stream
     string temp;
-    while(getline(ss,temp,','))
+    int columnNum = 0;
+    while(getline(ss,temp,','))  //reading commodity information per item in line
     {
-         cout<<temp<<endl;
-
+         //cout<<temp<<endl;
+        readCSVinventoryRec(apple, temp, columnNum);
+        columnNum++;
 
     }
 
+    cout << apple.index << " " << apple.name << " " << apple.price << endl;
 
 
     /*string currentWord = "";
