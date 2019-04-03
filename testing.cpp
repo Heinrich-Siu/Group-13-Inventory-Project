@@ -20,6 +20,49 @@ void printUI()
           cout << ui << endl;
 }
 
+void readCSVinventoryRec(commodity apple, string data, int rowNum)
+{
+    switch(rowNum)
+    {
+        case 0: //index
+
+            break;
+        case 1: //
+
+            break;
+        case 2: //
+
+            break;
+        case 3: //
+
+            break;
+        case 4: //
+
+            break;
+        case 5: //
+
+            break;
+        case 6: //
+
+            break;
+        case 7: //
+
+            break;
+        case 8:
+
+            break;
+        case 9:
+
+            break;
+        case 10:
+
+            break;
+        case 11:
+
+            break;
+    }
+}
+
 int main()
 {
     commodity apple;
@@ -38,7 +81,11 @@ int main()
     while(getline(ss,temp,','))
     {
          cout<<temp<<endl;
+
+
     }
+
+
 
     /*string currentWord = "";
     for(int j=0; j<line.length(); j++)  //loop through all character
