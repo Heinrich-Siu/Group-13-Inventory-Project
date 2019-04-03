@@ -19,3 +19,6 @@ git commit -m "describe changes"
 
 ~: To get the lastest modification of the project (remember to save)
 git pull
+
+~: To change to a branch
+git checkout branchname
