@@ -20,6 +20,7 @@ void printMainUI()
           cout << ui << endl;
 }
 
+/*
 void lineToDataArr(commodity *&shopPtr, int numberOfCommodity, string line)
 {
   string currentWord = "";
@@ -44,7 +45,7 @@ void lineToDataArr(commodity *&shopPtr, int numberOfCommodity, string line)
 
   }
     //shopPtr[numberOfCommodity]
-}
+}*/
 
 void loadAllRecord(commodity *&shopPtr, int &numberOfCommodity)
 {
