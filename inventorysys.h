@@ -3,22 +3,25 @@
 
 #include <string.h>
 
+struct tm
+{
+
+};
+
 
 struct commodity
 {
     int index;
+    int productCode;
     std::string name;
     double price;
     double stockNum;
-    double salesRec[3] = {0}; // 0: 3 months; 1: 6 months; 2: 1 year; 3: Whole history
-    std::string lastRestock = "N/A";
-    std::string lastSales = "N/A";
-    int pastDeliveryRecord; //time from order to in inventory
+    int stockSize;  //in unit size, for calculating used inventory space
+    salesRecord salesRec[3] = {0}; //Struct salesRecord //Whole history with time(day) and quantity //lastSales(string) through function
+    tm restockRec[]; //delivety time and quantity //tm struct //lastRestock(string) through function //pastDeliveryRecord(string) through function
     double taxAmount;
     std::string manufacturer;
-    int productCode;
 };
 
-void printUI();
 
 #endif
