@@ -20,10 +20,7 @@ void printUI()
           cout << ui << endl;
 }
 
-salesRecord *readSalesRecord(line)
-{
 
-}
 
 tm *readRestockRecord(line)
 {
@@ -54,10 +51,10 @@ void readCSVinventoryRec(commodity &commod, string data, int columnNum)
             commod.stockSize = stoi(data);
             break;
         case 6: //salesRecord *salesRec
-            commod.salesRec = readSalesRecord(data);
+            commod.salesRec = readRecord(data);
             break;
         case 7: //tm *restockRec
-            commod.restockRec = readRestockRecord(data);
+            commod.restockRec = readRecord(data);
             break;
         case 8: //double taxAmount
             commod.taxAmount = stod(data);

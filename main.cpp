@@ -47,6 +47,127 @@ void lineToDataArr(commodity *&shopPtr, int numberOfCommodity, string line)
     //shopPtr[numberOfCommodity]
 }*/
 
+
+/*input:  thisRecord: pointer to salesRecord in commodity Struct
+          line: the whole string containing information of sales record
+          numOfRec: number of record, store back to commodity Struct
+
+Remark: **Declare first**
+        salesRecord *thisRecord;
+        int numOfRec;
+*/
+void readSalesRecord(salesRecord *&thisRecord, string line, int &numOfRec)
+{
+  istringstream wholeLine(line);  //line as input stream
+  string temp_wholeLine, temp_yearAndDate;
+  int count = -1;
+  while(getline(wholeLine,temp_wholeLine,';'))  //reading commodity information per item in line
+  {
+
+      //cout<<temp_wholeLine<<endl;
+      if(count == -1)
+      {
+          numOfRec = stoi(temp_wholeLine);
+          thisRecord = new salesRecord[numOfRec];
+          count++;
+          //cout<<numOfRec<<endl;
+      }
+      else
+      {
+          istringstream yearAndDate(temp_wholeLine);
+          int times = 0;
+          while(getline(yearAndDate,temp_yearAndDate,'-'))
+          {
+              //cout<<temp_yearAndDate<<endl;
+              switch(times)
+              {
+                  case 0:
+                      thisRecord[count].date.tm_year = stoi(temp_yearAndDate);
+                      break;
+                  case 1:
+                      thisRecord[count].date.tm_mon = stoi(temp_yearAndDate);
+                      break;
+                  case 2:
+                      thisRecord[count].date.tm_mday = stoi(temp_yearAndDate);
+                      break;
+                  case 3:
+                      thisRecord[count].quantity = stoi(temp_yearAndDate);
+                      break;
+              }
+              times++;
+          }
+          count++;
+      }
+
+  }
+  //For Debugging
+  //cout << numOfRec << endl;
+  /*for(int i=0; i<numOfRec; i++)
+  {
+      //cout << thisRecord[i].date.tm_year << "-" << thisRecord[i].date.tm_mon << "-" << thisRecord[i].date.tm_mday << ":" << thisRecord[i].quantity << endl;
+  }*/
+}
+
+/*input:  thisRecord: pointer to restock record in commodity Struct
+          line: the whole string containing information of sales record
+          numOfRec: number of record, store back to commodity Struct
+
+Remark: **Declare first**
+        salesRecord *thisRecord;
+        int numOfRec;
+*/
+void readRestockRecord(restockRecord *&thisRecord, string line, int &numOfRec)
+{
+  istringstream wholeLine(line);  //line as input stream
+  string temp_wholeLine, temp_yearAndDate;
+  int count = -1;
+  while(getline(wholeLine,temp_wholeLine,';'))  //reading commodity information per item in line
+  {
+
+      //cout<<temp_wholeLine<<endl;
+      if(count == -1)
+      {
+          numOfRec = stoi(temp_wholeLine);
+          thisRecord = new salesRecord[numOfRec];
+          count++;
+          //cout<<numOfRec<<endl;
+      }
+      else
+      {
+          istringstream yearAndDate(temp_wholeLine);
+          int times = 0;
+          while(getline(yearAndDate,temp_yearAndDate,'-'))
+          {
+              //cout<<temp_yearAndDate<<endl;
+              switch(times)
+              {
+                  case 0:
+                      thisRecord[count].date.tm_year = stoi(temp_yearAndDate);
+                      break;
+                  case 1:
+                      thisRecord[count].date.tm_mon = stoi(temp_yearAndDate);
+                      break;
+                  case 2:
+                      thisRecord[count].date.tm_mday = stoi(temp_yearAndDate);
+                      break;
+                  case 3:
+                      thisRecord[count].quantity = stoi(temp_yearAndDate);
+                      break;
+              }
+              times++;
+          }
+          count++;
+      }
+
+  }
+  //For Debugging
+  //cout << numOfRec << endl;
+  /*for(int i=0; i<numOfRec; i++)
+  {
+      //cout << thisRecord[i].date.tm_year << "-" << thisRecord[i].date.tm_mon << "-" << thisRecord[i].date.tm_mday << ":" << thisRecord[i].quantity << endl;
+  }*/
+}
+
 void loadAllRecord(commodity *&shopPtr, int &numberOfCommodity)
 {
     shopPtr = new commodity[];
