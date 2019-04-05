@@ -20,46 +20,50 @@ void printUI()
           cout << ui << endl;
 }
 
+salesRecord *readSalesRecord(line)
+{
+
+}
+
+tm *readRestockRecord(line)
+{
+
+}
+
 void readCSVinventoryRec(commodity &commod, string data, int columnNum)
 {
     switch(columnNum) //columnNum determine the information type
     {
-        case 0: //index
+        case 0: //int index
             cout << "now is 0" << endl;
             commod.index = stoi(data);
             break;
-        case 1: //
+        case 1: //int productCode
+            commod.productCode = stoi(data);
+            break;
+        case 2: //string name
             commod.name = data;
             break;
-        case 2: //
+        case 3: //double price
             commod.price = stod(data);
             break;
-        case 3: //
-
+        case 4: //double stockNum
+            commod.stockNum = stod(data);
             break;
-        case 4: //
-
+        case 5: //int stockSize
+            commod.stockSize = stoi(data);
             break;
-        case 5: //
-
+        case 6: //salesRecord *salesRec
+            commod.salesRec = readSalesRecord(data);
             break;
-        case 6: //
-
+        case 7: //tm *restockRec
+            commod.restockRec = readRestockRecord(data);
             break;
-        case 7: //
-
+        case 8: //double taxAmount
+            commod.taxAmount = stod(data);
             break;
-        case 8:
-
-            break;
-        case 9:
-
-            break;
-        case 10:
-
-            break;
-        case 11:
-
+        case 9: //string manufacturer
+            commod.manufacturer = data;
             break;
     }
 }
