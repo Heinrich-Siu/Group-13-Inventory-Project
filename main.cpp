@@ -250,7 +250,6 @@ int main()
     commodity *shopPtr = 0;
     int numberOfCommodity = 0;
     loadAllRecord(shopPtr, numberOfCommodity);
-    shopPtr[0].salesRec[0].date.tm_mday
     printMainUI();
     int userInput;
     cout << "Please input a command: ";
