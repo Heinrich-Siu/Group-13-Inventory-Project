@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <fstream>
-#include <inventorysys.h>
+#include "inventorysys.h"
 
 using namespace std;
 
@@ -100,7 +101,7 @@ void readRestockRecord(restockRecord *&thisRecord, string line, int &numOfRec)
       if(count == -1)
       {
           numOfRec = stoi(temp_wholeLine);  //read the number of record
-          thisRecord = new salesRecord[numOfRec]; //initiate Dynamic array for the record using the numOfRec
+          thisRecord = new restockRecord[numOfRec]; //initiate Dynamic array for the record using the numOfRec
           count++;
           //cout<<numOfRec<<endl;
       }
@@ -114,13 +115,13 @@ void readRestockRecord(restockRecord *&thisRecord, string line, int &numOfRec)
               switch(times)
               {
                   case 0:
-                      thisRecord[count].date.tm_year = stoi(temp_yearAndDate);  //first column is year
+                      thisRecord[count].deliveryTime.tm_year = stoi(temp_yearAndDate);  //first column is year
                       break;
                   case 1:
-                      thisRecord[count].date.tm_mon = stoi(temp_yearAndDate); //Second column is month
+                      thisRecord[count].deliveryTime.tm_mon = stoi(temp_yearAndDate); //Second column is month
                       break;
                   case 2:
-                      thisRecord[count].date.tm_mday = stoi(temp_yearAndDate);  //Third column is day of month
+                      thisRecord[count].deliveryTime.tm_mday = stoi(temp_yearAndDate);  //Third column is day of month
                       break;
                   case 3:
                       thisRecord[count].quantity = stoi(temp_yearAndDate);   //Fourth column is quantity
@@ -164,10 +165,13 @@ void readCSVinventoryRec(commodity &commod, string data, int columnNum)
             commod.stockSize = stoi(data);
             break;
         case 6: //salesRecord *salesRec
-            commod.salesRec = readSalesRecord(data);
+            //commod.salesRec = readSalesRecord(data);
+            commod.numOfSalesRec = 0;
+            readSalesRecord(commod.salesRec, data, commod.numOfSalesRec);
             break;
         case 7: //tm *restockRec
-            commod.restockRec = readRestockRecord(data);
+            commod.numOfRestoreRec = 0;
+            readRestockRecord(commod.restockRec, data, commod.numOfRestoreRec);
             break;
         case 8: //double taxAmount
             commod.taxAmount = stod(data);
@@ -180,7 +184,7 @@ void readCSVinventoryRec(commodity &commod, string data, int columnNum)
 
 void grow_commodityRecord(commodity *&shopPtr, int originSize, int grownSize) //increase the size of Dynamic array of commodity to hold record
 {
-    commodity grownRecordPtr = new commodity[grownSize];
+    commodity *grownRecordPtr = new commodity[grownSize];
 
     for(int i=0; i<originSize; i++)
     {
@@ -203,12 +207,12 @@ void loadAllRecord(commodity *&shopPtr, int &numberOfCommodity)
     shopPtr = new commodity[numberOfCommodity+1]; //initiate the Dynamic array with size 1
     string shopRecFileName = "";  //file name of the record
     cout << "Please input the file name of the record: ";
-    cin >> shopRecFile; //user input file name of the record
+    cin >> shopRecFileName; //user input file name of the record
     cout << "Loading record...." << endl;
-    ifstream shop1 (shopRecFile); //data will be comma-seperated(,)
+    ifstream shop1 (shopRecFileName); //data will be comma-seperated(,)
 
     string line;
-    While(getline(shop1, line)) //get commodity information per line
+    while(getline(shop1, line)) //get commodity information per line
     {
         if(numberOfCommodity>0) //when more than 1 commodity
         {
@@ -223,7 +227,7 @@ void loadAllRecord(commodity *&shopPtr, int &numberOfCommodity)
 
         numberOfCommodity++; //incrase one after one record is stored
     }
-    cout << "All record loaded"
+    cout << "All record loaded" << endl;
 }
 
 void printSubUI() {
@@ -236,44 +240,46 @@ int main()
     commodity *shopPtr;
     int numberOfCommodity = 0;
     loadAllRecord(shopPtr, numberOfCommodity);
-    printUI();
+    printMainUI();
     int userInput;
-    cout << "Please input a command: "
+    cout << "Please input a command: ";
     cin >> userInput;
 
-    while(userInput != (Exit))
+    while(userInput != 10) //while userInput no equal to the quit choice
     {
         if(userInput >= 0 || userInput <=9)
         {
             switch(userInput)
             {
                 case 1:
-                break;
+                    break;
 
                 case 2:
-                break;
+                    break;
 
                 case 3:
-                break;
+                    break;
 
                 case 4:
-                break;
+                    break;
 
                 case 5:
-                break;
+                    break;
 
                 case 6:
-                break;
+                    break;
 
                 case 7:
-                break;
+                    break;
 
                 case 8:
-                break;
+                    break;
 
                 case 9:
-                break;
+
+                    break;
           }
+      }
       else
       {
       cout << "Your input is invalid" << endl;
@@ -282,7 +288,6 @@ int main()
       cin >> userInput;
 
 
-        }
-    }
-    cout << "Program end Sucessfully" << endl;
+  }
+  cout << "Program end Sucessfully" << endl; //inform the user the program end successfully
 }
