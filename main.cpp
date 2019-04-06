@@ -8,7 +8,7 @@ using namespace std;
 
 void printMainUI()
 {
-    string ui = "*********XXX Company Commodity Inventory system*********"
+    string ui = "*********XXX Company Commodity Inventory system*********\n"
                 "1. Show all inventory record\n"
                 "2. Change/Update commodity inventory record\n"
                 "3. Add new commodity\n"
@@ -36,7 +36,6 @@ void readSalesRecord(salesRecord *&thisRecord, string line, int &numOfRec)
   int count = -1; //count number of record, started at -1 because the first column is number of record
   while(getline(wholeLine,temp_wholeLine,';'))  //reading commodity information per item in line
   {
-
       //cout<<temp_wholeLine<<endl;
       if(count == -1) //first set is the number of record
       {
@@ -73,6 +72,7 @@ void readSalesRecord(salesRecord *&thisRecord, string line, int &numOfRec)
       }
 
   }
+
   //For Debugging
   //cout << numOfRec << endl;
   /*for(int i=0; i<numOfRec; i++)
@@ -137,48 +137,59 @@ void readRestockRecord(restockRecord *&thisRecord, string line, int &numOfRec)
   //cout << numOfRec << endl;
   /*for(int i=0; i<numOfRec; i++)
   {
-      //cout << thisRecord[i].date.tm_year << "-" << thisRecord[i].date.tm_mon << "-" << thisRecord[i].date.tm_mday << ":" << thisRecord[i].quantity << endl;
+      cout << thisRecord[i].deliveryTime.tm_year << "-" << thisRecord[i].deliveryTime.tm_mon << "-" << thisRecord[i].deliveryTime.tm_mday << ":" << thisRecord[i].quantity << endl;
   }*/
 }
 
-void readCSVinventoryRec(commodity &commod, string data, int columnNum)
+void readCSVinventoryRec(commodity &commod, string line)
 {
-    switch(columnNum) //columnNum determine the information type
+    //cout << line << endl;
+    istringstream ss(line);  //line as input stream
+    string data;
+    int columnNum = 0;
+    while(getline(ss,data,','))  //reading commodity information per item in line
     {
-        case 0: //int index
-            //cout << "now is 0" << endl;
-            commod.index = stoi(data);
-            break;
-        case 1: //int productCode
-            commod.productCode = stoi(data);
-            break;
-        case 2: //string name
-            commod.name = data;
-            break;
-        case 3: //double price
-            commod.price = stod(data);
-            break;
-        case 4: //double stockNum
-            commod.stockNum = stod(data);
-            break;
-        case 5: //int stockSize
-            commod.stockSize = stoi(data);
-            break;
-        case 6: //salesRecord *salesRec
-            //commod.salesRec = readSalesRecord(data);
-            commod.numOfSalesRec = 0;
-            readSalesRecord(commod.salesRec, data, commod.numOfSalesRec);
-            break;
-        case 7: //tm *restockRec
-            commod.numOfRestoreRec = 0;
-            readRestockRecord(commod.restockRec, data, commod.numOfRestoreRec);
-            break;
-        case 8: //double taxAmount
-            commod.taxAmount = stod(data);
-            break;
-        case 9: //string manufacturer
-            commod.manufacturer = data;
-            break;
+         //cout<<data<<endl;
+         switch(columnNum) //columnNum determine the information type
+         {
+             case 0: //int index
+                 //cout << "now is 0" << endl;
+                 commod.index = stoi(data);
+                 //cout << commod.index << endl;
+                 break;
+             case 1: //int productCode
+                 commod.productCode = stoi(data);
+                 break;
+             case 2: //string name
+                 commod.name = data;
+                 break;
+             case 3: //double price
+                 commod.price = stod(data);
+                 break;
+             case 4: //double stockNum
+                 commod.stockNum = stod(data);
+                 break;
+             case 5: //int stockSize
+                 commod.stockSize = stoi(data);
+                 break;
+             case 6: //salesRecord *salesRec
+                 //commod.salesRec = readSalesRecord(data);
+                 commod.numOfSalesRec = 0;
+                 readSalesRecord(commod.salesRec, data, commod.numOfSalesRec);  //Accessing the record, pls use example: shopPtr[0].salesRec[0].date.tm_mday
+                 break;
+             case 7: //tm *restockRec
+                 commod.numOfRestoreRec = 0;
+                 readRestockRecord(commod.restockRec, data, commod.numOfRestoreRec);
+                 break;
+             case 8: //double taxAmount
+                 commod.taxAmount = stod(data);
+                 break;
+             case 9: //string manufacturer
+                 commod.manufacturer = data;
+                 break;
+         }
+        columnNum++;
+
     }
 }
 
@@ -218,12 +229,10 @@ void loadAllRecord(commodity *&shopPtr, int &numberOfCommodity)
         {
             grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
         }
-        int columnNum = 0;
-        for(int i=0; i<=9; i++)
-        {
-            readCSVinventoryRec(shopPtr[numberOfCommodity], line, columnNum); //read CSV of commodity to dynamic array
-            columnNum++;
-        }
+
+        cout << "Loading CSV" << endl;
+        readCSVinventoryRec(shopPtr[numberOfCommodity], line); //read CSV of commodity to dynamic array
+
 
         numberOfCommodity++; //incrase one after one record is stored
     }
@@ -237,9 +246,11 @@ void printSubUI() {
 
 int main()
 {
-    commodity *shopPtr;
+
+    commodity *shopPtr = 0;
     int numberOfCommodity = 0;
     loadAllRecord(shopPtr, numberOfCommodity);
+    shopPtr[0].salesRec[0].date.tm_mday
     printMainUI();
     int userInput;
     cout << "Please input a command: ";
