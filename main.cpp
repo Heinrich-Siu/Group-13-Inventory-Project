@@ -164,10 +164,10 @@ void readCSVinventoryRec(commodity &commod, string data, int columnNum)
             commod.stockSize = stoi(data);
             break;
         case 6: //salesRecord *salesRec
-            commod.salesRec = readRecord(data);
+            commod.salesRec = readSalesRecord(data);
             break;
         case 7: //tm *restockRec
-            commod.restockRec = readRecord(data);
+            commod.restockRec = readRestockRecord(data);
             break;
         case 8: //double taxAmount
             commod.taxAmount = stod(data);
@@ -214,9 +214,16 @@ void loadAllRecord(commodity *&shopPtr, int &numberOfCommodity)
         {
             grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
         }
-        readCSVinventoryRec(shopPtr[numberOfCommodity], line, ); //read CSV of commodity to dynamic array
-        numberOfCommodity++; //incrase one after one record is stored 
+        int columnNum = 0;
+        for(int i=0; i<=9; i++)
+        {
+            readCSVinventoryRec(shopPtr[numberOfCommodity], line, columnNum); //read CSV of commodity to dynamic array
+            columnNum++;
+        }
+
+        numberOfCommodity++; //incrase one after one record is stored
     }
+    cout << "All record loaded"
 }
 
 void printSubUI() {
