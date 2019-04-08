@@ -214,7 +214,7 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
 {
     
     shopPtr = new commodity[numberOfCommodity]; //initiate the Dynamic array with size 0
-    /*
+
     string shopRecFileName = "";  //file name of the record
     cout << "Please input the file name of the record: ";
     cin >> shopRecFileName; //user input file name of the record
@@ -223,11 +223,11 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
     shop1.open(shopRecFileName); //data will be comma-seperated(,)
     
     string line;
-     */
+    
     cout << "Loading CSV" << endl;
-    while(true){ //get commodity information per line
+    while(getline(shop1, line)){ //get commodity information per line
         grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
-        readCSVinventoryRecord(shopPtr[numberOfCommodity], "0,333,Apple,10,70,5,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,2.5,Fuji"); //read CSV of commodity to dynamic array
+        readCSVinventoryRecord(shopPtr[numberOfCommodity], line); //read CSV of commodity to dynamic array
         numberOfCommodity++; //incrase one after one record is stored
         break;
     }
