@@ -234,6 +234,16 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
     cout << "All record loaded" << endl;
 }
 
+void recordPrinter(commodity * product){
+    //print record index;productCode;name;price;stockNum;stockSize;numOfSalesRec;numOfRestoreRec
+    //show index name price stocknum productcode
+    cout.width(10); cout<<left<<product->index;
+    cout.width(20); cout<<left<<product->name;
+    cout.width(10); cout<<left<<product->price;
+    cout.width(10); cout<<left<<product->stockNum;
+    cout.width(15); cout<<left<<product->productCode;
+    cout<<endl;
+}
 
 void printSubUI() {
     string ui = "";
@@ -254,6 +264,10 @@ int main()
         if(userInput >= 0 || userInput <=9){
             switch(userInput){
                 case 1:
+                    cout<<"Index     "<<"Name                "<<"Price     "<<"Stock     "<<"Product Code   "<<endl;
+                    for (int i=0; i<numberOfCommodity; i++) {
+                        recordPrinter(shopPtr+i);
+                    }
                     break;
                     
                 case 2:
