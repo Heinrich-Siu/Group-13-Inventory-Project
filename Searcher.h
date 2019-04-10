@@ -15,8 +15,8 @@ void ranger(int &max, int &min, int absoulteMax){
     }
     else if (mode==2){
         cout<<"The number is smaller or equal than: ";
-        if (max>absoulteMax) max=absoulteMax;
         cin>>max;
+        if (max>absoulteMax) max=absoulteMax;
         min=0;
     }
     else{
@@ -51,7 +51,9 @@ void searcher(int type, int* &position, int numberOfCommodity){
             else{
             int max, min;
             ranger(max, min, numberOfCommodity-1);
-            //from 0 to min = -1; from max to number = -1
+            //Larger or equal to: from 0 to min = -1;
+            //Smaller or equal to: from max to numberOfCommodity = -1;
+            //Between two numbers: from 0 to min = -1 AND from max to numberOfCommodity = -1;
             for (int j=0; j<min; j++) position[j]=-1;
             for (int k=max+1; (k>max)&&(k<numberOfCommodity); k++) position[k]=-1;
             }
