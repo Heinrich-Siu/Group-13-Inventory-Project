@@ -4,23 +4,25 @@
 #include <string.h>
 #include <time.h>
 
+
+using namespace std;
 /*
-stuct tm
-tm_sec	int	seconds after the minute	0-60*
-tm_min	int	minutes after the hour	0-59
-tm_hour	int	hours since midnight	0-23
-tm_mday	int	day of the month	1-31
-tm_mon	int	months since January	0-11
-tm_year	int	years since 1900
-tm_wday	int	days since Sunday	0-6
-tm_yday	int	days since January 1	0-365
-*/
+ stuct tm
+ tm_sec    int    seconds after the minute    0-60*
+ tm_min    int    minutes after the hour    0-59
+ tm_hour    int    hours since midnight    0-23
+ tm_mday    int    day of the month    1-31
+ tm_mon    int    months since January    0-11
+ tm_year    int    years since 1900
+ tm_wday    int    days since Sunday    0-6
+ tm_yday    int    days since January 1    0-365
+ */
 
 struct salesRecord
 {
     tm date;
     int quantity;
-
+    
 };
 
 struct restockRecord
@@ -40,11 +42,75 @@ struct commodity
     int numOfSalesRec;
     salesRecord *salesRec; //6  //Struct salesRecord //Whole history with time(day) and quantity //lastSales(string) through function
     //format int file:start with num of record(int) first, then date format: "YYYY-(M)M-(M)D" example: 2019-12-5 or 2019-3-24
-    int numOfRestoreRec;
+    int numOfRestockRec;
     restockRecord *restockRec; //7  //delivery time and quantity //tm struct //lastRestock(string) through function //pastDeliveryRecord(string) through function
     double taxAmount; //8
     std::string manufacturer; //9
 };
 
+void optionPrinter(int i){ //print the columns
+    switch (i) {
+            //"1. Index 2.ProductCode 3.Name 4.Price 5.StockNum 6.StockSize 7.NumOfSalesRec 8.numOfRestockRec"
+        case 1:
+            cout.width(10); cout<<left<<"Index";
+            break;
+        case 2:
+            cout.width(15); cout<<left<<"Product Code";
+            break;
+        case 3:
+            cout.width(20); cout<<left<<"Name";
+            break;
+        case 4:
+            cout.width(10); cout<<left<<"Price";
+            break;
+        case 5:
+            cout.width(15); cout<<left<<"Stock Number";
+            break;
+        case 6:
+            cout.width(15); cout<<left<<"Stock Size";
+            break;
+        case 7:
+            cout.width(21); cout<<left<<"Number of Sales Record";
+            break;
+        case 8:
+            cout.width(24); cout<<left<<"Number of Restock Record";
+            break;
+            
+        default:
+            break;
+    }
+}
+void specPrinter(int i, commodity * product){ //print product info according to request
+    switch (i) {
+            //"1. Index 2.ProductCode 3.Name 4.Price 5.StockNum 6.StockSize 7.NumOfSalesRec 8.numOfRestockRec"
+        case 1:
+            cout.width(10); cout<<left<<product->index;
+            break;
+        case 2:
+            cout.width(15); cout<<left<<product->productCode;
+            break;
+        case 3:
+            cout.width(20); cout<<left<<product->name;
+            break;
+        case 4:
+            cout.width(10); cout<<left<<product->price;
+            break;
+        case 5:
+            cout.width(15); cout<<left<<product->stockNum;
+            break;
+        case 6:
+            cout.width(15); cout<<left<<product->stockSize;
+            break;
+        case 7:
+            cout.width(21); cout<<left<<product->numOfSalesRec;
+            break;
+        case 8:
+            cout.width(24); cout<<left<<product->numOfRestockRec;
+            break;
+            
+        default:
+            break;
+    }
+}
 
 #endif
