@@ -3,6 +3,8 @@
 #include <sstream>
 #include <fstream>
 #include "inventorysys.h"
+#include "Modifier.h"
+#include "Searcher.h"
 
 using namespace std;
 
@@ -10,13 +12,13 @@ void printMainUI()
 {
     string ui = "*********XXX Company Commodity Inventory system*********\n"
     "1. Show all inventory record\n"
-    "2. Change/Update commodity inventory record\n"
+    "2. Search an Commodity\n"
     "3. Add new commodity\n"
     "4. Check Inventory Space\n"
-    "5. \n"
+    "5. Change/Update commodity inventory record"
     "6. \n"
     "7. \n"
-    "8. \n"
+    "8. Save Record to File\n"
     "9. Exit";
     cout << ui << endl;
 }
@@ -213,6 +215,7 @@ void grow_commodityRecord(commodity *&shopPtr, int originSize, int grownSize)
 void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
 {
     shopPtr = new commodity[numberOfCommodity]; //initiate the Dynamic array with size 0
+    
     string shopRecFileName = "";  //file name of the record
     cout << "Please input the file name of the record: ";
     cin >> shopRecFileName; //user input file name of the record
@@ -229,23 +232,28 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
         numberOfCommodity++; //incrase one after one record is stored
         break;
     }
-     /* for debugging
+    
+      /*for debugging
     grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
     readCSVinventoryRecord(shopPtr[numberOfCommodity], "0,333,Apple,10,70,5,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,2.5,Fuji"); //read CSV of commodity to dynamic array
     numberOfCommodity++;
     grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
-    readCSVinventoryRecord(shopPtr[numberOfCommodity], "1,333,Appled,11,71,6,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,2.5,Fujis"); //read CSV of commodity to dynamic array
+    readCSVinventoryRecord(shopPtr[numberOfCommodity], "1,334,Oranges,11,71,6,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,6,HK"); //read CSV of commodity to dynamic array
     numberOfCommodity++; //incrase one after one record is stored
-     */
+    grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
+    readCSVinventoryRecord(shopPtr[numberOfCommodity], "2,335,Ban,11,72,3,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,4,HKS"); //read CSV of commodity to dynamic array
+    numberOfCommodity++; //incrase one after one record is stored
+    grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
+    readCSVinventoryRecord(shopPtr[numberOfCommodity], "3,336,Fire,11,72,3,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,3,HKS"); //read CSV of commodity to dynamic array
+    numberOfCommodity++; //incrase one after one record is stored
+    grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
+    readCSVinventoryRecord(shopPtr[numberOfCommodity], "4,337,Planes,11,72,3,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,2,HKS"); //read CSV of commodity to dynamic array
+    numberOfCommodity++; //incrase one after one record is stored
+    */
     cout << "All record loaded" << endl;
 }
 
-void recordPrinter(commodity * product, int * fields){
-    //a specific commodity is pass to this function by product
-    //print the aspects of product in sequence
-    for (int i=0; (fields[i])!=-1; i++) specPrinter(fields[i], product);
-    cout<<endl;
-}
+
 
 void printSubUI() {
     string ui = "";
@@ -263,26 +271,44 @@ int main()
     cin >> userInput;
     
     while(userInput != 10){ //while userInput no equal to the quit choice
-        if(userInput >= 0 || userInput <=9){
+        if(userInput >= 0 && userInput <=9){
             switch(userInput){
-                case 1:{
-                    cout<<"Choose what to show in sequence and enter -1 when done\n"<<"Here are the options: \n";
-                    cout<<"1. Index 2.ProductCode 3.Name 4.Price 5.StockNum 6.StockSize 7.NumOfSalesRec 8.numOfRestockRec\n";
-                    int* fields = new int[8];
-                    int a=0;
-                    for (int k=0; a!=-1; k++) {
-                        cin>>a;
-                        fields[k] = a;
-                    }
-                    for (int i=0; (fields[i])!=-1; i++) optionPrinter(fields[i]); //print the columns
-                    cout<<endl;
-                    for (int i=0; i<numberOfCommodity; i++) { //print the data one by one
-                        recordPrinter(shopPtr+i,fields);
-                    }
-                    delete [] fields;
-                }
+                case 1:
+                    inventoryShower(shopPtr,numberOfCommodity);
                     break;
-                case 2:
+                    
+                case 2:{ //"2. Search an Commodity\n"
+                    //position is used to check if is excluded
+                    int* position = new int [numberOfCommodity];
+                    for (int i=0; i<numberOfCommodity; i++) position[i]=i;
+                    int constrainType=0;
+                    while (true) {
+
+                        cout<<"Find by choosing constrain. Enter -1 when finish"<<endl;
+                        cout<<"1. Index 2.Product Code 3.Name 4.Price 5.Stock Number 6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer\n";
+                        cin>>constrainType;
+                        if (constrainType==-1) break;
+                        
+                        //returns position as a dynamic array
+                        searcher(constrainType,position,numberOfCommodity);
+                        
+                        //print all items that is not == -1 using inventory shower
+                        
+                        //make array to store all non excluded items
+                        int itemsNonExcluded = 0;
+                        commodity * tempPtr = new commodity [numberOfCommodity];
+                        for (int i=0; i<numberOfCommodity; i++){
+                            if (position[i]!=-1) {
+                                tempPtr[itemsNonExcluded]=shopPtr[i];
+                                itemsNonExcluded+=1;
+                            }
+                        }
+                        inventoryShower(tempPtr, itemsNonExcluded);
+                        delete [] tempPtr;
+                        cout<<endl;
+                    }
+                    delete [] position;
+                }
                     break;
                     
                 case 3:
@@ -322,6 +348,7 @@ int main()
         else cout << "Your input is invalid" << endl;
         
         if (userInput==9) break;
+        printMainUI();
         cin >> userInput;
     }
     cout << "Program end Sucessfully" << endl; //inform the user the program end successfully
