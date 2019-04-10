@@ -176,8 +176,8 @@ void readCSVinventoryRecord(commodity &commod, string line)
                 readSalesRecord(commod.salesRec, data, commod.numOfSalesRec);  //Accessing the record, pls use example: shopPtr[0].salesRec[0].date.tm_mday
                 break;
             case 7: //tm *restockRec
-                commod.numOfRestoreRec = 0;
-                readRestockRecord(commod.restockRec, data, commod.numOfRestoreRec);
+                commod.numOfRestockRec = 0;
+                readRestockRecord(commod.restockRec, data, commod.numOfRestockRec);
                 break;
             case 8: //double taxAmount
                 commod.taxAmount = stod(data);
@@ -212,9 +212,7 @@ void grow_commodityRecord(commodity *&shopPtr, int originSize, int grownSize)
  */
 void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
 {
-    
     shopPtr = new commodity[numberOfCommodity]; //initiate the Dynamic array with size 0
-
     string shopRecFileName = "";  //file name of the record
     cout << "Please input the file name of the record: ";
     cin >> shopRecFileName; //user input file name of the record
@@ -231,9 +229,23 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
         numberOfCommodity++; //incrase one after one record is stored
         break;
     }
+     /* for debugging
+    grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
+    readCSVinventoryRecord(shopPtr[numberOfCommodity], "0,333,Apple,10,70,5,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,2.5,Fuji"); //read CSV of commodity to dynamic array
+    numberOfCommodity++;
+    grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
+    readCSVinventoryRecord(shopPtr[numberOfCommodity], "1,333,Appled,11,71,6,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,2.5,Fujis"); //read CSV of commodity to dynamic array
+    numberOfCommodity++; //incrase one after one record is stored
+     */
     cout << "All record loaded" << endl;
 }
 
+void recordPrinter(commodity * product, int * fields){
+    //a specific commodity is pass to this function by product
+    //print the aspects of product in sequence
+    for (int i=0; (fields[i])!=-1; i++) specPrinter(fields[i], product);
+    cout<<endl;
+}
 
 void printSubUI() {
     string ui = "";
@@ -242,7 +254,7 @@ void printSubUI() {
 
 int main()
 {
-    commodity *shopPtr = 0; //initialize a cmoomdity to use
+    commodity *shopPtr = 0; //initialize a commodity to use
     int numberOfCommodity = 0;
     loadAllRecord(shopPtr, numberOfCommodity);
     printMainUI();
@@ -253,9 +265,23 @@ int main()
     while(userInput != 10){ //while userInput no equal to the quit choice
         if(userInput >= 0 || userInput <=9){
             switch(userInput){
-                case 1:
+                case 1:{
+                    cout<<"Choose what to show in sequence and enter -1 when done\n"<<"Here are the options: \n";
+                    cout<<"1. Index 2.ProductCode 3.Name 4.Price 5.StockNum 6.StockSize 7.NumOfSalesRec 8.numOfRestockRec\n";
+                    int* fields = new int[8];
+                    int a=0;
+                    for (int k=0; a!=-1; k++) {
+                        cin>>a;
+                        fields[k] = a;
+                    }
+                    for (int i=0; (fields[i])!=-1; i++) optionPrinter(fields[i]); //print the columns
+                    cout<<endl;
+                    for (int i=0; i<numberOfCommodity; i++) { //print the data one by one
+                        recordPrinter(shopPtr+i,fields);
+                    }
+                    delete [] fields;
+                }
                     break;
-                    
                 case 2:
                     break;
                     
