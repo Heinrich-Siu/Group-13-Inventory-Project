@@ -3,7 +3,7 @@
 #include <sstream>
 #include <fstream>
 #include "inventorysys.h"
-#include "Modifier.h"
+//#include "Modifier.h"
 #include "Searcher.h"
 
 using namespace std;
@@ -71,9 +71,9 @@ void readSalesRecord(salesRecord *&thisRecord, string line, int &numOfRec)
             }
             count++;
         }
-        
+
     }
-    
+
     //For Debugging
     //cout << numOfRec << endl;
     /*for(int i=0; i<numOfRec; i++)
@@ -96,7 +96,7 @@ void readRestockRecord(restockRecord *&thisRecord, string line, int &numOfRec)
     int count = -1; //count number of record, started at -1 because the first column is number of record
     while(getline(wholeLine,temp_wholeLine,';'))  //reading commodity information per item in line
     {
-        
+
         //cout<<temp_wholeLine<<endl;
         if(count == -1)
         {
@@ -131,7 +131,7 @@ void readRestockRecord(restockRecord *&thisRecord, string line, int &numOfRec)
             }
             count++;
         }
-        
+
     }
     //For Debugging
     //cout << numOfRec << endl;
@@ -189,7 +189,7 @@ void readCSVinventoryRecord(commodity &commod, string line)
                 break;
         }
         columnNum++;
-        
+
     }
 }
 
@@ -197,12 +197,12 @@ void readCSVinventoryRecord(commodity &commod, string line)
 void grow_commodityRecord(commodity *&shopPtr, int originSize, int grownSize)
 {
     commodity *grownRecordPtr = new commodity[grownSize];
-    
+
     for(int i=0; i<originSize; i++){ //transfer data from the old array to the new one
         grownRecordPtr[i] = shopPtr[i];
     }
     delete [] shopPtr; //free original Dynamic array in shopPtr
-    
+
     shopPtr = grownRecordPtr; //point shopPtr pointer to the new grown Dynamic array
 }
 
@@ -215,16 +215,16 @@ void grow_commodityRecord(commodity *&shopPtr, int originSize, int grownSize)
 void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
 {
     shopPtr = new commodity[numberOfCommodity]; //initiate the Dynamic array with size 0
-    
+
     string shopRecFileName = "";  //file name of the record
     cout << "Please input the file name of the record: ";
     cin >> shopRecFileName; //user input file name of the record
     cout << "Loading record...." << endl;
     ifstream shop1;
     shop1.open(shopRecFileName); //data will be comma-seperated(,)
-    
+
     string line;
-    
+
     cout << "Loading CSV...." << endl;
     while(getline(shop1, line)){ //get commodity information per line
         grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
@@ -234,7 +234,7 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
     }
     /*
       for debugging
-     
+
     grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
     readCSVinventoryRecord(shopPtr[numberOfCommodity], "0,333,Apple,10,70,5,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,2.5,Fuji"); //read CSV of commodity to dynamic array
     numberOfCommodity++;
@@ -268,36 +268,37 @@ int main()
     cout << "Please input a command: ";
     int userInput;
     cin >> userInput;
-    
+
     while(userInput != 10){ //while userInput no equal to the quit choice
         if(userInput >= 0 && userInput <=9){
             switch(userInput){
-                case 1:
+                case 1: //Show all inventory record
                     inventoryShower(shopPtr,numberOfCommodity);
                     break;
-                    
-                case 2:
+
+                case 2: //Search an Commodity
                     search(shopPtr, numberOfCommodity);
                     break;
-                    
-                case 3:
+
+                case 3: //Add new commodity
+                    //addInventory(shopPtr, numberOfCommodity); //Not finished
                     break;
-                    
+
                 case 4:
                     break;
-                    
+
                 case 5:
                     break;
-                    
+
                 case 6:
                     break;
-                    
+
                 case 7:
                     break;
-                    
+
                 case 8:
                     break;
-                    
+
                 case 9:
                     break;
             }
@@ -315,7 +316,7 @@ int main()
             */
         }
         else cout << "Your input is invalid" << endl;
-        
+
         if (userInput==9) break;
         printMainUI();
         cin >> userInput;
