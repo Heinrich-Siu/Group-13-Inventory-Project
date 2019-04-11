@@ -225,15 +225,16 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
     
     string line;
     
-    cout << "Loading CSV" << endl;
+    cout << "Loading CSV...." << endl;
     while(getline(shop1, line)){ //get commodity information per line
         grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
         readCSVinventoryRecord(shopPtr[numberOfCommodity], line); //read CSV of commodity to dynamic array
         numberOfCommodity++; //incrase one after one record is stored
         break;
     }
-    
-      /*for debugging
+    /*
+      for debugging
+     
     grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
     readCSVinventoryRecord(shopPtr[numberOfCommodity], "0,333,Apple,10,70,5,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,2.5,Fuji"); //read CSV of commodity to dynamic array
     numberOfCommodity++;
@@ -252,8 +253,6 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
     */
     cout << "All record loaded" << endl;
 }
-
-
 
 void printSubUI() {
     string ui = "";
@@ -277,38 +276,8 @@ int main()
                     inventoryShower(shopPtr,numberOfCommodity);
                     break;
                     
-                case 2:{ //"2. Search an Commodity\n"
-                    //position is used to check if is excluded
-                    int* position = new int [numberOfCommodity];
-                    for (int i=0; i<numberOfCommodity; i++) position[i]=i;
-                    int constrainType=0;
-                    while (true) {
-
-                        cout<<"Find by choosing constrain. Enter -1 when finish"<<endl;
-                        cout<<"1. Index 2.Product Code 3.Name 4.Price 5.Stock Number 6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer\n";
-                        cin>>constrainType;
-                        if (constrainType==-1) break;
-                        
-                        //returns position as a dynamic array
-                        searcher(constrainType,position,numberOfCommodity);
-                        
-                        //print all items that is not == -1 using inventory shower
-                        
-                        //make array to store all non excluded items
-                        int itemsNonExcluded = 0;
-                        commodity * tempPtr = new commodity [numberOfCommodity];
-                        for (int i=0; i<numberOfCommodity; i++){
-                            if (position[i]!=-1) {
-                                tempPtr[itemsNonExcluded]=shopPtr[i];
-                                itemsNonExcluded+=1;
-                            }
-                        }
-                        inventoryShower(tempPtr, itemsNonExcluded);
-                        delete [] tempPtr;
-                        cout<<endl;
-                    }
-                    delete [] position;
-                }
+                case 2:
+                    search(shopPtr, numberOfCommodity);
                     break;
                     
                 case 3:
