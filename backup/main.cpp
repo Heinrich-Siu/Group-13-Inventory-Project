@@ -1,5 +1,10 @@
 #include <iostream>
-//#include "inventorysys.h"
+#include <string>
+#include <sstream>
+#include <fstream>
+#include "inventorysys.h"
+//#include "Modifier.h"
+#include "Searcher.h"
 
 using namespace std;
 
@@ -15,6 +20,12 @@ void printMainUI()
     "7. \n"
     "8. Save Record to File\n"
     "9. Exit";
+    cout << ui << endl;
+}
+
+
+void printSubUI() {
+    string ui = "";
     cout << ui << endl;
 }
 
