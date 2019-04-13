@@ -1,6 +1,20 @@
 #include <iostream>
 #include <string>
-#incldue "inventorysys.h"
+#include <limits>
+//#include "inventorysys.h"
+#include "printer.h"
+
+using namespace std;
+
+//function prototype
+void optionPrinter(int i);
+
+void specPrinter(int i, commodity * product);
+
+void recordPrinter(commodity * product, int * fields);
+
+void inventoryShower(commodity * shopPtr, int numberOfCommodity);
+//
 
 void optionPrinter(int i){ //print the columns
     switch (i) {
@@ -65,4 +79,31 @@ void specPrinter(int i, commodity * product){ //print product info according to 
         default:
             break;
     }
+}
+
+void recordPrinter(commodity * product, int * fields){
+    //a specific commodity is pass to this function by product
+    //print the aspects of product in sequence
+    for (int i=0; (fields[i])!=-1; i++) specPrinter(fields[i], product);
+    cout<<endl;
+}
+
+void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all inventory record\n"
+    cout<<"Choose what to show in sequence and enter -1 when done\n"<<"Here are the options: \n";
+    cout<<"1. Index 2.Product Code 3.Name 4.Price 5.Stock Number \n6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount 11.ALL\n";
+    int* fields = new int[11]; //dynamic array that store the aspects need to print
+    int a=0, all=-1;
+    for (int k=0; a!=-1; k++) { //load in different aspects from user
+        cin>>a;
+        if (a==11)all=1; break;
+        fields[k] = a;
+    }
+    if (all){//print all
+        for (int i=0; i<11; i++) fields[i]=i;
+        fields[11]=-1;
+    }
+    for (int i=0; (fields[i])!=-1; i++) optionPrinter(fields[i]); //print the columns
+    cout<<endl;
+    for (int i=0; i<numberOfCommodity; i++) recordPrinter(shopPtr+i,fields); //print the data one by one
+    delete [] fields;
 }

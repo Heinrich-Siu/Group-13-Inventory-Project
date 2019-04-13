@@ -1,11 +1,10 @@
 #ifndef INVENTORYSYS_h
 #define INVENTORYSYS_h
 
-#include <string.h>
+#include <string>
 #include <time.h>
 
 
-using namespace std;
 /*
  stuct tm
  tm_sec    int    seconds after the minute    0-60*

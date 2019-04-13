@@ -1,5 +1,8 @@
 #ifndef READRECORD_h
 #define READRECORD_h
+#include "inventorysys.h"
+#include <string.h>
+using namespace std;
 
 void readSalesRecord(salesRecord *&thisRecord, string line, int &numOfRec);
 

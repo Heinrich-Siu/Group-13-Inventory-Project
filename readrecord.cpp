@@ -2,7 +2,8 @@
 #include <string>
 #include <sstream>
 #include <fstream>
-#include "inventorysys.h"
+//#include "inventorysys.h"
+#include "readrecord.h"
 
 //function prototype
 void readSalesRecord(salesRecord *&thisRecord, string line, int &numOfRec);

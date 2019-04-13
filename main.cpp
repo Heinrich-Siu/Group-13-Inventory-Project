@@ -1,5 +1,8 @@
 #include <iostream>
-//#include "inventorysys.h"
+#include "inventorysys.h"
+#include "readrecord.h"
+#include "searcher.h"
+#include "printer.h"
 
 using namespace std;
 
@@ -32,7 +35,7 @@ int main()
         if(userInput >= 0 && userInput <=9){
             switch(userInput){
                 case 1: //Show all inventory record
-                    inventoryShower(shopPtr,numberOfCommodity);
+                    inventoryShower(shopPtr, numberOfCommodity);
                     break;
 
                 case 2: //Search an Commodity
