@@ -1,5 +1,5 @@
 #include <iostream>
-#include "readrecord.h"
+//#include "readrecord.h"
 #inlcude "controlrecord.h"
 
 using namespace std;
@@ -40,6 +40,61 @@ void addInventory(commodity* shopPtr, int &numberOfCommodity) //Noy finished
     cout << "Please enter the name of the manufacturer";
     cin >> shopPtr[numberOfCommodity-1].manufacturer;
 
+
+
+}
+
+void changeRecord(commodity* shopPtr, int &numberOfCommodity)
+{
+    int targetProductCode;
+    int targetRecordIndex;
+    string knowTheProductCode;
+    cout << "Do you know the product code of the commodity that you want to change/update?(Y/N) "
+    cin >> knowTheProductCode;
+    if(knowTheProductCode == "N") //user need to search for the productCode if they dont know
+    {
+        cout << "~~Please first search the commodity and change/update the record by productCode~~" << endl;
+        search(commodity* shopPtr, int &numberOfCommodity);
+    }
+
+
+    cout << "***************************************************************************************\n"
+            "Please enter the productCode of the commodity that you want to change/update:";
+    cin >> targetProductCode = -1; //initiate with not found
+    cout >> "***************************************************************************************" << endl;
+    for(int i=0, i<numberOfCommodity; i++) //loop through all productCode to find match
+    {
+          if(shopPtr[i].productCode == targetProductCode)
+          {
+              targetRecordIndex = i; // found
+          }
+    }
+
+    if(targetRecordIndex == -1) //check if product code found?
+    {
+        cout << "The product code you entered do not exist" << endl;
+    }
+    else //Product Code exist
+    {
+        recordPrinterByIndex(commodity * shopPtr, int targetRecordIndex);
+        cout << "**************************************************\n"
+                "*~~What record do you want to change/update?     *\n"
+                "*1. Product Code                                 *\n"
+                "*2. Product Name                                 *\n"
+                "*3. Price                                        *\n"
+                "*4. Number of Stocks                             *\n"
+                "*5. Size of stock                                *\n"
+                "*6. Sales record                                 *\n"
+                "*7. Restock record                               *\n"
+                "*8. Tax amount                                   *\n"
+                "*9. Name of manufacturer                         *\n"
+                "**************************************************"
+
+
+        int choice;
+        cin <<
+        while
+    }
 
 
 }

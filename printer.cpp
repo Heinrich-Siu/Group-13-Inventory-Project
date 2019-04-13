@@ -107,3 +107,51 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
     for (int i=0; i<numberOfCommodity; i++) recordPrinter(shopPtr+i,fields); //print the data one by one
     delete [] fields;
 }
+
+
+//input: pointer to salesRecord array, and number of sales record
+void salesRecordPrinter(salesRecord *salesRec, int numOfSalesRec)
+{
+    cout.width(6); cout << "Year";
+    cout.width(4); cout << "Moth";
+    cout.width(4); cout << "Day";
+    cout.width(4); cout << "Quantity";
+    cout << endl;
+    for(int i=0; i<numOfSalesRec; i++)
+    {
+        cout.width(6); cout << salesRec[i].tm_year;
+        cout.width(4); cout << salesRec[i].tm_mon;
+        cout.width(4); cout << salesRec[i].tm_mday;
+        cout.width(4); cout << salesRec[i].quantity;
+        cout << endl;
+    }
+}
+
+//input: pointer to restockRecord array, and number of sales record
+void restockRecordPrinter(restockRecord *restockRec, int numOfRestockRec)
+{
+    cout.width(6); cout << "Year";
+    cout.width(4); cout << "Moth";
+    cout.width(4); cout << "Day";
+    cout.width(4); cout << "Quantity";
+    cout << endl;
+    for(int i=0; i<numOfSalesRec; i++)
+    {
+        cout.width(6); cout << restockRec[i].tm_year;
+        cout.width(4); cout << restockRec[i].tm_mon;
+        cout.width(4); cout << restockRec[i].tm_mday;
+        cout.width(4); cout << restockRec[i].quantity;
+        cout << endl;
+    }
+}
+
+void recordPrinterByIndex(commodity * shopPtr, int index)
+{
+  for (int i=1; i<=9; i++)
+      optionPrinter(i); //print the columns
+
+  cout<<endl;
+
+  for (int i=1; i<=9; i++)
+      recordPrinter(i, shopPtr+index); //print the data one by one
+}

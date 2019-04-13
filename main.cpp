@@ -13,7 +13,7 @@ void printMainUI()
     "2. Search an Commodity\n"
     "3. Add new commodity\n"
     "4. Check Inventory Space\n"
-    "5. Change/Update commodity inventory record"
+    "5. Change/Update commodity inventory record\n"
     "6. \n"
     "7. \n"
     "8. Save Record to File\n"
