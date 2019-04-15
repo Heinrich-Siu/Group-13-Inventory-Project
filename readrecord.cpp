@@ -37,6 +37,11 @@ void readSalesRecord(salesRecord *&thisRecord, string line, int &numOfRec)
         if(count == -1) //first set is the number of record
         {
             numOfRec = stoi(temp_wholeLine);  //read the number of record
+            if(numOfRec == 0) //if there is no record of it
+            {
+                thisRecord = 0; //point the record point to 0;
+                break;
+            }
             thisRecord = new salesRecord[numOfRec]; //initiate Dynamic array for the record using the numOfRec
             count++;
             //cout<<numOfRec<<endl;
@@ -97,6 +102,11 @@ void readRestockRecord(restockRecord *&thisRecord, string line, int &numOfRec)
         if(count == -1)
         {
             numOfRec = stoi(temp_wholeLine);  //read the number of record
+            if(numOfRec == 0) //if there is no record of it
+            {
+                thisRecord = 0; //point the record point to 0;
+                break;
+            }
             thisRecord = new restockRecord[numOfRec]; //initiate Dynamic array for the record using the numOfRec
             count++;
             //cout<<numOfRec<<endl;

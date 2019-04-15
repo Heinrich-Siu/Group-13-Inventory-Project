@@ -194,3 +194,54 @@ void changeManufacturerName(commodity* shopPtr, int index)
     cin >> shopPtr[index].manufacturer;
     cout << "The manufacturer of product is now: " << shopPtr[index].manufacturer << endl;
 }
+
+void restock(commodity* shopPtr, int &numberOfCommodity)
+{
+    string knowTheProductCode;
+    cout << "Do you know the product code of the commodity?(Y/N) ";
+    cin >> knowTheProductCode;
+    if(knowTheProductCode == "N") //user need to search for the productCode if they dont know
+    {
+        cout << "~~Please first search the commodity and change the record by productCode~~" << endl;
+        search(shopPtr, numberOfCommodity);
+    }
+}
+
+void sales(commodity* shopPtr, int &numberOfCommodity)
+{
+    string knowTheProductCode;
+    cout << "Do you know the product code of the commodity that you want to change?(Y/N) ";
+    cin >> knowTheProductCode;
+    if(knowTheProductCode == "N") //user need to search for the productCode if they dont know
+    {
+        cout << "~~Please first search the commodity and change the record by productCode~~" << endl;
+        search(shopPtr, numberOfCommodity);
+    }
+}
+
+void restockOrSales(commodity* shopPtr, int &numberOfCommodity)
+{
+    int choice;
+    cout << "*****************************************\n"
+            "You are updating sales and restock record\n"
+            "*****************************************\n";
+    cout << "choice 1.Adding Sales record\n"
+            "       2.Adding Restock record\n"
+            "       3.Quit\n";
+    cout << "Choice: ";
+    cin >> choice;
+    while(choice != 3)
+    {
+        switch(choice)
+        {
+            case 1:
+                cout << "You are adding record of restock" << endl;
+                restock(shopPtr, numberOfCommodity);
+                break;
+            case 2:
+                cout << "You are adding record of sales" << endl;
+                sales(shopPtr, numberOfCommodity);
+                break;
+        }
+    }
+}

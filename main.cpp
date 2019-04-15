@@ -15,7 +15,7 @@ void printMainUI()
     "3. Add new commodity\n"
     "4. Check Inventory Space\n"
     "5. Change commodity inventory record\n"
-    "6. \n"
+    "6. Stock sales/restock\n"
     "7. \n"
     "8. Save Record to File\n"
     "9. Exit";
