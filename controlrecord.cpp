@@ -1,15 +1,28 @@
 #include <iostream>
-//#include "readrecord.h"
-#inlcude "controlrecord.h"
+#include "readrecord.h"
+#include "searcher.h"
+#include "printer.h"
+#include "controlrecord.h"
 
 using namespace std;
+
+//Function prototype
+void addInventory(commodity* shopPtr, int &numberOfCommodity);
+void changeRecord(commodity* shopPtr, int &numberOfCommodity);
+void changeProductCode(commodity* shopPtr, int index);
+void changeProductName(commodity* shopPtr, int index);
+void changePrice(commodity* shopPtr, int index);
+void changeSizeOfStock(commodity* shopPtr, int index);
+void changeTaxAmount(commodity* shopPtr, int index);
+void changeManufacturerName(commodity* shopPtr, int index);
+
 /*
 Input: shopPtr-pointer point to the inventory Record
        numberOfCommodity-Number of commodity type in the inventory
 */
 void addInventory(commodity* shopPtr, int &numberOfCommodity) //Noy finished
 {
-    grow_commodityRecord(shopPtr, numberOfCommodity, ++numberOfCommodity) //Increase the size of dynamic array of commodity to hold new commodity
+    grow_commodityRecord(shopPtr, numberOfCommodity, ++numberOfCommodity); //Increase the size of dynamic array of commodity to hold new commodity
     cout << "Please enter the commodity name:";
     cin >> shopPtr[numberOfCommodity-1].name;
 
@@ -46,23 +59,24 @@ void addInventory(commodity* shopPtr, int &numberOfCommodity) //Noy finished
 
 void changeRecord(commodity* shopPtr, int &numberOfCommodity)
 {
-    int targetProductCode;
+    int targetProductCode = -1;
     int targetRecordIndex;
     string knowTheProductCode;
-    cout << "Do you know the product code of the commodity that you want to change/update?(Y/N) "
+    cout << "Do you know the product code of the commodity that you want to change?(Y/N) ";
     cin >> knowTheProductCode;
     if(knowTheProductCode == "N") //user need to search for the productCode if they dont know
     {
-        cout << "~~Please first search the commodity and change/update the record by productCode~~" << endl;
-        search(commodity* shopPtr, int &numberOfCommodity);
+        cout << "~~Please first search the commodity and change the record by productCode~~" << endl;
+        search(shopPtr, numberOfCommodity);
     }
 
 
     cout << "***************************************************************************************\n"
-            "Please enter the productCode of the commodity that you want to change/update:";
-    cin >> targetProductCode = -1; //initiate with not found
-    cout >> "***************************************************************************************" << endl;
-    for(int i=0, i<numberOfCommodity; i++) //loop through all productCode to find match
+            "Please enter the productCode of the commodity that you want to change:";
+    cin >> targetProductCode; //initiate with not found
+    cout << "***************************************************************************************" << endl;
+
+    for(int i=0; i < numberOfCommodity; i++) //loop through all productCode to find match
     {
           if(shopPtr[i].productCode == targetProductCode)
           {
@@ -76,25 +90,21 @@ void changeRecord(commodity* shopPtr, int &numberOfCommodity)
     }
     else //Product Code exist
     {
-        recordPrinterByIndex(commodity * shopPtr, int targetRecordIndex);
+        recordPrinterByIndex(shopPtr, targetRecordIndex);
         cout << "**************************************************\n"
-                "*~~~What record do you want to change/update?     *\n"
+                "*~~~What record do you want to change/update?    *\n"
                 "*1. Product Code                                 *\n"
                 "*2. Product Name                                 *\n"
                 "*3. Price                                        *\n"
-                "*4. Number of Stocks                             *\n"
-                "*5. Size of stock                                *\n"
-                "*6. Sales record                                 *\n"
-                "*7. Restock record                               *\n"
-                "*8. Tax amount                                   *\n"
-                "*9. Name of manufacturer                         *\n"
-                "*10.Quit                                         *\n"
-                "**************************************************"
-
+                "*4. Size of stock                                *\n"
+                "*5. Tax amount                                   *\n"
+                "*6. Name of manufacturer                         *\n"
+                "*7. Quit                                         *\n"
+                "**************************************************" << endl;
 
         int choice;
-        cin << choice;
-        while(choice != 10) //continue in change/update mode unless the input is 10
+        cin >> choice;
+        while(choice != 7) //continue in change/update mode unless the input is 10
         {
             switch(choice){
               case 1: //Product Code
@@ -109,22 +119,32 @@ void changeRecord(commodity* shopPtr, int &numberOfCommodity)
                   changePrice(shopPtr, targetRecordIndex);
                   break;
 
-              case 5: //Size of stock
+              case 4: //Size of stock
                   changeSizeOfStock(shopPtr, targetRecordIndex);
                   break;
 
-
-              case 8: //Tax amount
+              case 5: //Tax amount
+                  changeTaxAmount(shopPtr, targetRecordIndex);
                   break;
 
-              case 9: //Name of manufacturer
+              case 6: //Name of manufacturer
                   break;
 
             }
+            cout << "**************************************************\n"
+                    "*~~~What record do you want to change/update?     *\n"
+                    "*1. Product Code                                 *\n"
+                    "*2. Product Name                                 *\n"
+                    "*3. Price                                        *\n"
+                    "*4. Size of stock                                *\n"
+                    "*5. Tax amount                                   *\n"
+                    "*6. Name of manufacturer                         *\n"
+                    "*7. Quit                                         *\n"
+                    "**************************************************" << endl;
+            cin >> choice;
         }
     }
 }
-
 
 void changeProductCode(commodity* shopPtr, int index)
 {
@@ -157,4 +177,20 @@ void changeSizeOfStock(commodity* shopPtr, int index)
     cout << "Change from " << shopPtr[index].stockSize << " to: ";
     cin >> shopPtr[index].stockSize;
     cout << "The size of product is now: " << shopPtr[index].stockSize << endl;
+}
+
+void changeTaxAmount(commodity* shopPtr, int index)
+{
+    double input;
+    cout << "Change from " << shopPtr[index].taxAmount << " to: ";
+    cin >> shopPtr[index].taxAmount;
+    cout << "The tax amount of product is now: " << shopPtr[index].taxAmount << endl;
+}
+
+void changeManufacturerName(commodity* shopPtr, int index)
+{
+    string input;
+    cout << "Change from " << shopPtr[index].manufacturer << " to: ";
+    cin >> shopPtr[index].manufacturer;
+    cout << "The manufacturer of product is now: " << shopPtr[index].manufacturer << endl;
 }

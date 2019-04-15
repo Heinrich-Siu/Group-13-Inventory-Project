@@ -3,6 +3,7 @@
 #include "readrecord.h"
 #include "searcher.h"
 #include "printer.h"
+#include "controlrecord.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ void printMainUI()
     "2. Search an Commodity\n"
     "3. Add new commodity\n"
     "4. Check Inventory Space\n"
-    "5. Change/Update commodity inventory record\n"
+    "5. Change commodity inventory record\n"
     "6. \n"
     "7. \n"
     "8. Save Record to File\n"
@@ -49,7 +50,8 @@ int main()
                 case 4:
                     break;
 
-                case 5:
+                case 5: //Change commodity inventory record
+                    changeRecord(shopPtr, numberOfCommodity);
                     break;
 
                 case 6:

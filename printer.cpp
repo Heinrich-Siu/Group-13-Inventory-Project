@@ -119,9 +119,9 @@ void salesRecordPrinter(salesRecord *salesRec, int numOfSalesRec)
     cout << endl;
     for(int i=0; i<numOfSalesRec; i++)
     {
-        cout.width(6); cout << salesRec[i].tm_year;
-        cout.width(4); cout << salesRec[i].tm_mon;
-        cout.width(4); cout << salesRec[i].tm_mday;
+        cout.width(6); cout << salesRec[i].date.tm_year;
+        cout.width(4); cout << salesRec[i].date.tm_mon;
+        cout.width(4); cout << salesRec[i].date.tm_mday;
         cout.width(4); cout << salesRec[i].quantity;
         cout << endl;
     }
@@ -135,11 +135,11 @@ void restockRecordPrinter(restockRecord *restockRec, int numOfRestockRec)
     cout.width(4); cout << "Day";
     cout.width(4); cout << "Quantity";
     cout << endl;
-    for(int i=0; i<numOfSalesRec; i++)
+    for(int i=0; i<numOfRestockRec; i++)
     {
-        cout.width(6); cout << restockRec[i].tm_year;
-        cout.width(4); cout << restockRec[i].tm_mon;
-        cout.width(4); cout << restockRec[i].tm_mday;
+        cout.width(6); cout << restockRec[i].deliveryTime.tm_year;
+        cout.width(4); cout << restockRec[i].deliveryTime.tm_mon;
+        cout.width(4); cout << restockRec[i].deliveryTime.tm_mday;
         cout.width(4); cout << restockRec[i].quantity;
         cout << endl;
     }
@@ -153,5 +153,5 @@ void recordPrinterByIndex(commodity * shopPtr, int index)
   cout<<endl;
 
   for (int i=1; i<=9; i++)
-      recordPrinter(i, shopPtr+index); //print the data one by one
+      specPrinter(i, shopPtr+index); //print the data in structure one by one
 }
