@@ -78,7 +78,7 @@ void changeRecord(commodity* shopPtr, int &numberOfCommodity)
     {
         recordPrinterByIndex(commodity * shopPtr, int targetRecordIndex);
         cout << "**************************************************\n"
-                "*~~What record do you want to change/update?     *\n"
+                "*~~~What record do you want to change/update?     *\n"
                 "*1. Product Code                                 *\n"
                 "*2. Product Name                                 *\n"
                 "*3. Price                                        *\n"
@@ -88,13 +88,73 @@ void changeRecord(commodity* shopPtr, int &numberOfCommodity)
                 "*7. Restock record                               *\n"
                 "*8. Tax amount                                   *\n"
                 "*9. Name of manufacturer                         *\n"
+                "*10.Quit                                         *\n"
                 "**************************************************"
 
 
         int choice;
-        cin <<
-        while
+        cin << choice;
+        while(choice != 10) //continue in change/update mode unless the input is 10
+        {
+            switch(choice){
+              case 1: //Product Code
+                  changeProductCode(shopPtr, targetRecordIndex);
+                  break;
+
+              case 2: //Product Name
+                  changeProductName(shopPtr, targetRecordIndex);
+                  break;
+
+              case 3: //Price
+                  changePrice(shopPtr, targetRecordIndex);
+                  break;
+
+              case 5: //Size of stock
+                  changeSizeOfStock(shopPtr, targetRecordIndex);
+                  break;
+
+
+              case 8: //Tax amount
+                  break;
+
+              case 9: //Name of manufacturer
+                  break;
+
+            }
+        }
     }
+}
 
 
+void changeProductCode(commodity* shopPtr, int index)
+{
+    int input;
+    cout << "Change from " << shopPtr[index].productCode << " to: ";
+    cin >> shopPtr[index].productCode;
+    cout << "The product code is now: " << shopPtr[index].productCode << endl;
+}
+
+void changeProductName(commodity* shopPtr, int index)
+{
+    string input;
+    cout << "Change from " << shopPtr[index].name << " to: ";
+    cin >> shopPtr[index].name;
+    cout << "The product name is now: " << shopPtr[index].name << endl;
+}
+
+void changePrice(commodity* shopPtr, int index)
+{
+    double input;
+    cout << "Change from " << shopPtr[index].price << " to: ";
+    cin >> shopPtr[index].price;
+    cout << "The product price is now: " << shopPtr[index].price << endl;
+}
+
+
+void changeSizeOfStock(commodity* shopPtr, int index)
+{
+    int input;
+    cout << "Change from " << shopPtr[index].stockSize << " to: ";
+    cin >> shopPtr[index].stockSize;
+    cout << "The size of product is now: " << shopPtr[index].stockSize << endl;
 }
