@@ -44,7 +44,7 @@ int main()
                     break;
 
                 case 3: //Add new commodity
-                    //addInventory(shopPtr, numberOfCommodity); //Not finished
+                    addaddCommodity(shopPtr, numberOfCommodity); //Not finished
                     break;
 
                 case 4:

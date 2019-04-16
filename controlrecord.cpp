@@ -29,7 +29,7 @@ void grow_record(restockRecord *&recordPtr, int originSize, int grownSize);
 Input: shopPtr-pointer point to the inventory Record
        numberOfCommodity-Number of commodity type in the inventory
 */
-void addInventory(commodity* shopPtr, int &numberOfCommodity) //Noy finished
+void addCommodity(commodity* shopPtr, int &numberOfCommodity) //Noy finished
 {
     grow_commodityRecord(shopPtr, numberOfCommodity, ++numberOfCommodity); //Increase the size of dynamic array of commodity to hold new commodity
     cout << "Please enter the commodity name:";
@@ -41,8 +41,8 @@ void addInventory(commodity* shopPtr, int &numberOfCommodity) //Noy finished
     cout << "Please enter the price";
     cin >> shopPtr[numberOfCommodity-1].price;
 
-    cout << "Please enter the number of stock";
-    cin >> shopPtr[numberOfCommodity-1].stockNum;
+    //cout << "Please enter the number of stock";
+    shopPtr[numberOfCommodity-1].stockNum = 0;
 
     cout << "Please enter the size of stock";
     cin >> shopPtr[numberOfCommodity-1].stockSize;
