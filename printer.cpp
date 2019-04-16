@@ -38,7 +38,7 @@ void optionPrinter(int i){ //print the columns
             cout.width(15); cout<<left<<"Stock Size";
             break;
         case 7:
-            cout.width(21); cout<<left<<"Number of Sales Record";
+            cout.width(23); cout<<left<<"Number of Sales Record";
             break;
         case 8:
             cout.width(24); cout<<left<<"Number of Restock Record";
@@ -70,7 +70,7 @@ void specPrinter(int i, commodity * product){ //print product info according to 
             cout.width(15); cout<<left<<product->stockSize;
             break;
         case 7:
-            cout.width(21); cout<<left<<product->numOfSalesRec;
+            cout.width(23); cout<<left<<product->numOfSalesRec;
             break;
         case 8:
             cout.width(24); cout<<left<<product->numOfRestockRec;

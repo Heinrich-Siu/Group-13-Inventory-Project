@@ -161,7 +161,7 @@ void readCSVinventoryRecord(commodity &commod, string line)
             case 0: //int index
                 //cout << "now is 0" << endl;
                 commod.index = stoi(data);
-                //cout << commod.index << endl;
+                cout << commod.index << endl;
                 break;
             case 1: //int productCode
                 commod.productCode = stoi(data);
@@ -236,7 +236,7 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
         grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //increase the size of the record array by 1 to hold one more record
         readCSVinventoryRecord(shopPtr[numberOfCommodity], line); //read CSV of commodity to dynamic array
         numberOfCommodity++; //incrase one after one record is stored
-        break;
+        //break;
     }
     /*
       for debugging
