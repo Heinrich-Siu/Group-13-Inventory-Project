@@ -20,6 +20,7 @@ void printMainUI()
     "8. Save Record to File\n"
     "9. Exit";
     cout << ui << endl;
+    cout << "Please input a command: ";
 }
 
 int main()
@@ -28,7 +29,6 @@ int main()
     int numberOfCommodity = 0;
     loadAllRecord(shopPtr, numberOfCommodity);
     printMainUI();
-    cout << "Please input a command: ";
     int userInput;
     cin >> userInput;
 
@@ -55,6 +55,7 @@ int main()
                     break;
 
                 case 6:
+                    restockOrSales(shopPtr, numberOfCommodity);
                     break;
 
                 case 7:

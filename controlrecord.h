@@ -18,4 +18,19 @@ void changeTaxAmount(commodity* shopPtr, int index);
 
 void changeManufacturerName(commodity* shopPtr, int index);
 
+void searchBefore_recordAdding(commodity* shopPtr, int numberOfCommodity, int &targetRecordIndex);
+
+void addRestock(commodity* shopPtr, int index);
+
+void addSales(commodity* shopPtr, int index);
+
+void restockOrSales(commodity* shopPtr, int &numberOfCommodity);
+
+void grow_record(salesRecord *&recordPtr, int originSize, int grownSize);
+
+void grow_record(restockRecord *&recordPtr, int originSize, int grownSize);
+
+
+
+
 #endif
