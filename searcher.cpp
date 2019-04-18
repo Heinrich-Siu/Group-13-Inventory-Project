@@ -84,8 +84,8 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
     string pointArray[]={"Nothing Here", "index","productCode","name","price","stockNum","stockSize","numOfSalesRec","numOfRestockRec","manufacturer","taxAmount"};
 
     //"1. Index 2.Product Code 3.Name 4.Price 5.Stock Number \n6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount\n"
-    //1,2,4,5,6,7,8, 10 use same code by number search
-    //3,9,10 use same code by string search
+    //1,2,4,5,6,7,8,10 use same code by number search
+    //3,9 use same code by string search
 
     //Start generic search by number
     if (type==1 or type==2 or type==4 or type==5 or type==6 or type==7 or type==8 or type==10) {
@@ -114,16 +114,16 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
             }
         }
     } //end of number search
+    //start of string search
     else if (type==3 or type==9){
         cout<<"Enter the "<<optionArray[type]<<"you wan to search. Can be a sub string of the "<<optionArray[type]<<endl;
         string targetText;
         cin>>targetText;
         for (int k=0; k<numberOfCommodity; k++) {
-            //first return string one by one
-            //then check if userinput is a substring of that value
+            //first return string one by one, then check if userinput is a substring of that value
             if (commdityStringValueReturn(shopPtr+k, type).find(targetText)==string::npos) position[k]= -1;
         }
-    }
+    }//end of String search
 }
 
 void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodity\n"
