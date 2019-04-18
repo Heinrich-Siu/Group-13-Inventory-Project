@@ -2,7 +2,7 @@
 #define CONTROLRECORD_h
 #include "inventorysys.h"
 
-void addInventory(commodity* shopPtr, int &numberOfCommodity);
+void addCommodity(commodity* shopPtr, int &numberOfCommodity);
 
 void changeRecord(commodity* shopPtr, int &numberOfCommodity);
 
