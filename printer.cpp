@@ -14,6 +14,8 @@ void specPrinter(int i, commodity * product);
 void recordPrinter(commodity * product, int * fields);
 
 void inventoryShower(commodity * shopPtr, int numberOfCommodity);
+
+void printInventorySpace(int totalOcuppiedSpace, int inventorySpace);
 //
 
 void optionPrinter(int i){ //print the columns
@@ -118,7 +120,7 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
         }
         fields[11]=-1;
     }
-    
+
     for (int i=0; (fields[i])!=-1 ; i++) {
         optionPrinter(fields[i]); //print the columns
     }
@@ -189,4 +191,10 @@ void recordChangePrompt(){
     "*6. Name of manufacturer                         *\n"
     "*7. Quit                                         *\n"
     "**************************************************" << endl;
+}
+
+void inventorySpacePrinter(int totalOcuppiedSpace, int inventorySpace)
+{
+    cout << endl;
+    cout << "Inventory Space: " << totalOcuppiedSpace << "/" << inventorySpace << endl << endl; //eg. Inventory Space: 685/5000
 }

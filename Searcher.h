@@ -13,5 +13,7 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
 
 void search(commodity* shopPtr, int numberOfCommodity);
 
+void checkInventorySpace(commodity* shopPtr, int numberOfCommodity, int &totalOcuppiedSpace);
+
 
 #endif /* Searcher_h */

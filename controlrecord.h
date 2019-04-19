@@ -20,16 +20,19 @@ void changeManufacturerName(commodity* shopPtr, int index);
 
 void searchBefore_recordAdding(commodity* shopPtr, int numberOfCommodity, int &targetRecordIndex);
 
-void addRestock(commodity* shopPtr, int index);
+void addRestock(commodity* shopPtr, int index, int inventorySpace, int &totalOcuppiedSpace);
 
-void addSales(commodity* shopPtr, int index);
+void addSales(commodity* shopPtr, int index, int inventorySpace, int &totalOcuppiedSpace);
 
-void restockOrSales(commodity* shopPtr, int &numberOfCommodity);
+void restockOrSales(commodity* shopPtr, int &numberOfCommodity, int inventorySpace, int &totalOcuppiedSpace);
 
 void grow_record(salesRecord *&recordPtr, int originSize, int grownSize);
 
 void grow_record(restockRecord *&recordPtr, int originSize, int grownSize);
 
+void recordChangePrompt();
+
+bool updateInventorySpace_inAddRecord(int addSize,int inventorySpace, int &totalOcuppiedSpace);
 
 
 

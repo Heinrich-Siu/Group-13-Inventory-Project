@@ -158,3 +158,13 @@ void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodit
         }
     delete [] position;
 }
+
+
+void checkInventorySpace(commodity* shopPtr, int numberOfCommodity, int &totalOcuppiedSpace) //calculate/recalculate the inventory space
+{
+    totalOcuppiedSpace = 0;
+    for(int i=0; i<numberOfCommodity; i++) //loop through all commodity
+    {
+        totalOcuppiedSpace += shopPtr[i].stockSize * shopPtr[i].stockNum; //add up all used commodity space
+    }
+}

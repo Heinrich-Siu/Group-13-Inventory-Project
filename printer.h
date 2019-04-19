@@ -16,4 +16,6 @@ void restockRecordPrinter(restockRecord *restockRec, int numOfRestockRec);
 
 void recordPrinterByIndex(commodity * shopPtr, int index);
 
+void inventorySpacePrinter(int totalOcuppiedSpace, int inventorySpace);
+
 #endif

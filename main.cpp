@@ -25,9 +25,12 @@ void printMainUI()
 
 int main()
 {
+    const int inventorySpace = 5000; //Maximum storage size is 5000
+    int totalOcuppiedSpace = 0;
     commodity *shopPtr = 0; //initialize a commodity to use
     int numberOfCommodity = 0;
     loadAllRecord(shopPtr, numberOfCommodity);
+    checkInventorySpace(shopPtr, numberOfCommodity, totalOcuppiedSpace);
     printMainUI();
     int userInput;
     cin >> userInput;
@@ -44,10 +47,11 @@ int main()
                     break;
 
                 case 3: //Add new commodity
-                    addCommodity(shopPtr, numberOfCommodity); //Not finished
+                    addCommodity(shopPtr, numberOfCommodity);
                     break;
 
-                case 4:
+                case 4: //Check inventory Space
+                    inventorySpacePrinter(totalOcuppiedSpace, inventorySpace);
                     break;
 
                 case 5: //Change commodity inventory record
@@ -55,7 +59,7 @@ int main()
                     break;
 
                 case 6:
-                    restockOrSales(shopPtr, numberOfCommodity);
+                    restockOrSales(shopPtr, numberOfCommodity, inventorySpace, totalOcuppiedSpace);
                     break;
 
                 case 7:
@@ -76,4 +80,3 @@ int main()
     }
     cout << "Program end Sucessfully" << endl; //inform the user the program end successfully
 }
-
