@@ -1,8 +1,12 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <limits>
+#include <ctime>
 //#include "inventorysys.h"
 #include "printer.h"
+#include "controlrecord.h"
+#include "searcher.h"
 
 using namespace std;
 
@@ -15,7 +19,23 @@ void recordPrinter(commodity * product, int * fields);
 
 void inventoryShower(commodity * shopPtr, int numberOfCommodity);
 
-void printInventorySpace(int totalOcuppiedSpace, int inventorySpace);
+void salesRecordPrinter(salesRecord *salesRec, int numOfSalesRec);
+
+void restockRecordPrinter(restockRecord *restockRec, int numOfRestockRec);
+
+void recordPrinterByIndex(commodity * shopPtr, int index);
+
+void inventorySpacePrinter(int totalOcuppiedSpace, int inventorySpace);
+
+void searchBefore_checkRecord(commodity* shopPtr, int numberOfCommodity, int &targetRecordIndex);
+
+void checkRecordUIPrinter();
+
+void dayStrtoInt(string date, int &year, int &month, int &day);
+
+void wholeHistoryPrinter(commodity * &shopPtr, int index);
+
+void checkSalesHistory(commodity * &shopPtr, int &numberOfCommodity);
 //
 
 void optionPrinter(int i){ //print the columns
@@ -197,4 +217,122 @@ void inventorySpacePrinter(int totalOcuppiedSpace, int inventorySpace)
 {
     cout << endl;
     cout << "Inventory Space: " << totalOcuppiedSpace << "/" << inventorySpace << endl << endl; //eg. Inventory Space: 685/5000
+}
+
+void searchBefore_checkRecord(commodity* shopPtr, int numberOfCommodity, int &targetRecordIndex)
+{
+    string knowTheProductCode;
+    int searchProductCode;
+    cout << "Do you know the product code of the commodity that you want to check?(Y/N) ";
+    cin >> knowTheProductCode;
+    if(knowTheProductCode == "N") //user need to search for the productCode if they dont know
+    {
+        cout << "~~Please first search the commodity and check the record by productCode~~" << endl;
+        search(shopPtr, numberOfCommodity);
+    }
+
+
+    cout << "\n"
+            "Please enter the product code of the commodity record that you want to check:";
+    cin >> searchProductCode;
+    cout << endl;
+
+    for(int i=0; i < numberOfCommodity; i++) //loop through all productCode to find match
+    {
+        if(shopPtr[i].productCode == searchProductCode)
+        {
+            targetRecordIndex = i; // found
+        }
+    }
+}
+
+void checkRecordUIPrinter()
+{
+    cout << "Check by: 1. 3 Months\n"
+            "          2. 6 Months\n"
+            "          3. 1 Year\n"
+            "          4. Whole history\n"
+            "          5. Quit"
+            "Choice: ";
+}
+
+void dayStrtoInt(string date, int &year, int &month, int &day)
+{
+    int columns = 0;
+    string temp;
+    istringstream dateStr (date); //tramsform the string to the restock structure
+    while(getline(dateStr, temp, '-'))
+    {
+        switch (columns) {
+            case 0:
+                year = stoi(temp);
+                break;
+            case 1:
+                month = stoi(temp);
+                break;
+            case 2:
+                day = stoi(temp);
+                break;
+        }
+        columns++;
+    }
+}
+
+void wholeHistoryPrinter(commodity *shopPtr, int index)
+{
+    int totalSales = 0;
+    cout << "Total " << shopPtr[index].numOfSalesRec << " record found." << endl << endl;
+    cout.width(18); cout << "Date (YYYY-MM-DD)";
+    cout.width(6); cout << "Quantity";
+    for(int i=0; i<shopPtr[index].numOfSalesRec; i++)
+    {
+        cout.width(18); cout << shopPtr[index].salesRec[i].date.tm_year << "-" << shopPtr[index].salesRec[i].date.tm_mon << "-" << shopPtr[index].salesRec[i].date.tm_mday;
+        cout.width(6); cout << shopPtr[index].salesRec[i].quantity << endl;
+        totalSales += shopPtr[index].salesRec[i].quantity;
+    }
+    cout << endl << "Total sales in the whole history is " << totalSales << endl;
+}
+
+void checkSalesHistory(commodity *shopPtr, int numberOfCommodity)
+{
+    int choice, year = 0, month = 0, day = 0;
+    string date;
+    int targetRecordIndex = -1;//initiate with not found
+    searchBefore_recordAdding(shopPtr, numberOfCommodity, targetRecordIndex);
+    if(targetRecordIndex == -1) //check if product code found?
+    {
+        cout << "The product code you entered does not exist" << endl;
+    }
+    else
+    {
+        checkRecordUIPrinter();
+        cin >> choice;
+        cout << endl;
+        while(choice != 5)
+        {
+            switch (choice) {
+              case 1:
+                  cout << "From when (YYYY-MM-DD, e.g. 2019-12-31) before 3 months: ";
+                  cin >> date;
+                  dayStrtoInt(date, year, month, day);
+                  break;
+              case 2:
+                  cout << "From when (YYYY-MM-DD, e.g. 2019-12-31) before 6 months: ";
+                  cin >> date;
+                  dayStrtoInt(date, year, month, day);
+                  break;
+              case 3:
+                  cout << "From when (YYYY-MM-DD, e.g. 2019-12-31) before 1 year: ";
+                  cin >> date;
+                  dayStrtoInt(date, year, month, day);
+                  break;
+              case 4:
+                  wholeHistoryPrinter(shopPtr, targetRecordIndex);
+                  break;
+            }
+            checkRecordUIPrinter();
+            cin >> choice;
+
+        }
+    }
 }

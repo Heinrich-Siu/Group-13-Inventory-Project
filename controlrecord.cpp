@@ -291,13 +291,13 @@ void searchBefore_recordAdding(commodity* shopPtr, int numberOfCommodity, int &t
     cin >> knowTheProductCode;
     if(knowTheProductCode == "N") //user need to search for the productCode if they dont know
     {
-        cout << "~~Please first search the commodity and change the record by productCode~~" << endl;
+        cout << "~~Please first search the commodity and change the record by product code~~" << endl;
         search(shopPtr, numberOfCommodity);
     }
 
 
     cout << "\n"
-            "Please enter the productCode of the commodity that you want to add record to:";
+            "Please enter the product code of the commodity that you want to add record to:";
     cin >> searchProductCode;
     cout << endl;
 

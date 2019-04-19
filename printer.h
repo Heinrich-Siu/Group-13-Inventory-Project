@@ -18,4 +18,14 @@ void recordPrinterByIndex(commodity * shopPtr, int index);
 
 void inventorySpacePrinter(int totalOcuppiedSpace, int inventorySpace);
 
+void searchBefore_checkRecord(commodity* shopPtr, int numberOfCommodity, int &targetRecordIndex);
+
+void checkRecordUIPrinter();
+
+void dayStrtoInt(std::string date, int &year, int &month, int &day);
+
+void wholeHistoryPrinter(commodity * &shopPtr, int index);
+
+void checkSalesHistory(commodity * &shopPtr, int &numberOfCommodity);
+
 #endif

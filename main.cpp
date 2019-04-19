@@ -16,7 +16,7 @@ void printMainUI()
     "4. Check Inventory Space\n"
     "5. Change commodity inventory record\n"
     "6. Stock sales/restock\n"
-    "7. \n"
+    "7. Check Sales History\n"
     "8. Save Record to File\n"
     "9. Exit";
     cout << ui << endl;
@@ -63,6 +63,7 @@ int main()
                     break;
 
                 case 7:
+                    checkSalesHistory(shopPtr, numberOfCommodity)
                     break;
 
                 case 8:
