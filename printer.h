@@ -28,14 +28,24 @@ void dayStrtoInt(std::string date, int &year, int &month, int &day);
 
 void returnPastNMonth(tm fromDate, tm *&desireMonth, int numOfMonth);
 
-void storeBeforePrint(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec);
+void storeBeforePrint_sales(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec);
 
-void nthMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
+void nthMonthPrinter_sales(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
 
 void salesPrinterPerRecord(salesRecord *salesRec);
 
-void wholeHistoryPrinter(commodity *shopPtr, int index);
+void wholeSalesHistoryPrinter(commodity *shopPtr, int index);
 
 void checkSalesHistory(commodity *shopPtr, int numberOfCommodity);
+
+void restockPrinterPerRecord(restockRecord *restockRec);
+
+void storeBeforePrint_restock(restockRecord *&temp_record, int &temp_record_num, restockRecord *restockRec);
+
+void nthMonthPrinter_restock(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
+
+void wholeRestockHistoryPrinter(commodity *shopPtr, int index);
+
+void checkRestockHistory(commodity *shopPtr, int numberOfCommodity);
 
 #endif

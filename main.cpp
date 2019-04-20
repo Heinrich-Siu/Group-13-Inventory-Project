@@ -17,8 +17,9 @@ void printMainUI()
     "5. Change commodity inventory record\n"
     "6. Stock sales/restock\n"
     "7. Check Sales History\n"
-    "8. Save Record to File\n"
-    "9. Exit";
+    "8. Check Restock History\n"
+    "9. Save Record to File\n"
+    "10. Exit";
     cout << ui << endl;
     cout << "Please input a command: ";
 }
@@ -67,6 +68,7 @@ int main()
                     break;
 
                 case 8:
+                    checkRestockHistory(shopPtr, numberOfCommodity);
                     break;
 
                 case 9:

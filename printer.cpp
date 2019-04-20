@@ -37,15 +37,25 @@ void dayStrtoInt(string date, int &year, int &month, int &day);
 
 void returnPastNMonth(tm fromDate, tm *&desireMonth, int numOfMonth);
 
-void storeBeforePrint(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec);
+void storeBeforePrint_sales(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec);
 
-void nthMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
+void nthMonthPrinter_sales(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
 
 void salesPrinterPerRecord(salesRecord *salesRec);
 
-void wholeHistoryPrinter(commodity *shopPtr, int index);
+void wholeSalesHistoryPrinter(commodity *shopPtr, int index);
 
 void checkSalesHistory(commodity *shopPtr, int numberOfCommodity);
+
+void restockPrinterPerRecord(restockRecord *restockRec);
+
+void storeBeforePrint_restock(restockRecord *&temp_record, int &temp_record_num, restockRecord *restockRec);
+
+void nthMonthPrinter_restock(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
+
+void wholeRestockHistoryPrinter(commodity *shopPtr, int index);
+
+void checkRestockHistory(commodity *shopPtr, int numberOfCommodity);
 //
 
 void optionPrinter(int i){ //print the columns
@@ -323,7 +333,7 @@ void returnPastNMonth(tm fromDate, tm *&desireMonth, int numOfMonth) //eg.fromda
     }
 }
 
-void storeBeforePrint(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec)
+void storeBeforePrint_sales(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec)
 {
     if(temp_record_num==0)
     {
@@ -354,7 +364,7 @@ void storeBeforePrint(salesRecord *&temp_record, int &temp_record_num, salesReco
     }
 }
 
-void nthMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth)
+void nthMonthPrinter_sales(commodity *shopPtr, int index, tm fromDate, int numOfMonth)
 {
     string duration;
     if(numOfMonth == 3)
@@ -380,7 +390,7 @@ void nthMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth)
         {
             if(desireMonth[j].tm_year == shopPtr[index].salesRec[i].date.tm_year && desireMonth[j].tm_mon == shopPtr[index].salesRec[i].date.tm_mon)
             {
-                storeBeforePrint(temp_record, temp_record_num, shopPtr[index].salesRec+i);
+                storeBeforePrint_sales(temp_record, temp_record_num, shopPtr[index].salesRec+i);
             }
         }
     }
@@ -407,7 +417,7 @@ void nthMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth)
     delete [] desireMonth;
 }
 
-void wholeHistoryPrinter(commodity *shopPtr, int index)
+void wholeSalesHistoryPrinter(commodity *shopPtr, int index)
 {
     int totalSales = 0;
     cout << "Total " << shopPtr[index].numOfSalesRec << " record found." << endl << endl;
@@ -446,22 +456,180 @@ void checkSalesHistory(commodity *shopPtr, int numberOfCommodity)
                   cout << "From when (YYYY-MM, e.g. 2019-12) to 3 months before: ";
                   cin >> date;
                   dayStrtoInt(date, fromDate);
-                  nthMonthPrinter(shopPtr, targetRecordIndex, fromDate, 3);
+                  nthMonthPrinter_sales(shopPtr, targetRecordIndex, fromDate, 3);
                   break;
               case 2:
                   cout << "From when (YYYY-MM, e.g. 2019-12) to 6 months before: ";
                   cin >> date;
                   dayStrtoInt(date, fromDate);
-                  nthMonthPrinter(shopPtr, targetRecordIndex, fromDate, 6);
+                  nthMonthPrinter_sales(shopPtr, targetRecordIndex, fromDate, 6);
                   break;
               case 3:
                   cout << "From when (YYYY-MM, e.g. 2019-12) to 1 year before: ";
                   cin >> date;
                   dayStrtoInt(date, fromDate);
-                  nthMonthPrinter(shopPtr, targetRecordIndex, fromDate, 12);
+                  nthMonthPrinter_sales(shopPtr, targetRecordIndex, fromDate, 12);
                   break;
               case 4:
-                  wholeHistoryPrinter(shopPtr, targetRecordIndex);
+                  wholeSalesHistoryPrinter(shopPtr, targetRecordIndex);
+                  break;
+            }
+            checkRecordUIPrinter();
+            cin >> choice;
+
+        }
+    }
+}
+
+
+void restockPrinterPerRecord(restockRecord *restockRec)
+{
+    string temp_date = std::to_string(restockRec->deliveryTime.tm_year) + "-" + std::to_string(restockRec->deliveryTime.tm_mon) + "-" + std::to_string(restockRec->deliveryTime.tm_mday); //eg. 2019-4-20
+    cout.width(18); cout << left << temp_date;
+    cout.width(6); cout << left << restockRec->quantity << endl; //print quantity
+}
+
+
+void storeBeforePrint_restock(restockRecord *&temp_record, int &temp_record_num, restockRecord *restockRec)
+{
+    if(temp_record_num==0)
+    {
+        temp_record_num++;
+        temp_record = new restockRecord[temp_record_num];
+        temp_record[0].deliveryTime.tm_year = restockRec->deliveryTime.tm_year;
+        temp_record[0].deliveryTime.tm_mon = restockRec->deliveryTime.tm_mon;
+        temp_record[0].deliveryTime.tm_mday = restockRec->deliveryTime.tm_mday;
+        temp_record[0].quantity = restockRec->quantity;
+    }
+    else
+    {
+        //enlarge the array
+        temp_record_num++;
+        restockRecord *enlarged = new restockRecord[temp_record_num];
+        for(int i=0; i<temp_record_num-1; i++)
+        {
+            enlarged[i] = temp_record[i];
+        }
+        delete [] temp_record;
+        temp_record = enlarged;
+        enlarged = 0;
+        //
+        temp_record[temp_record_num-1].deliveryTime.tm_year = restockRec->deliveryTime.tm_year;
+        temp_record[temp_record_num-1].deliveryTime.tm_mon = restockRec->deliveryTime.tm_mon;
+        temp_record[temp_record_num-1].deliveryTime.tm_mday = restockRec->deliveryTime.tm_mday;
+        temp_record[temp_record_num-1].quantity = restockRec->quantity;
+    }
+}
+
+void nthMonthPrinter_restock(commodity *shopPtr, int index, tm fromDate, int numOfMonth)
+{
+    string duration;
+    if(numOfMonth == 3)
+    {
+        duration = "3 months";
+    }
+    else if(numOfMonth == 6)
+    {
+        duration = "6 months";
+    }
+    else if(numOfMonth == 12)
+    {
+        duration = "1 year";
+    }
+    tm *desireMonth = 0;
+    restockRecord *temp_record = 0;
+    int temp_record_num = 0, totalSales = 0;
+    returnPastNMonth(fromDate, desireMonth, numOfMonth);
+
+    for(int j=0; j<numOfMonth; j++)
+    {
+        for(int i=shopPtr[index].numOfRestockRec-1; i>=0; i--) //loop from last record to first because of most recent order
+        {
+            if(desireMonth[j].tm_year == shopPtr[index].restockRec[i].deliveryTime.tm_year && desireMonth[j].tm_mon == shopPtr[index].restockRec[i].deliveryTime.tm_mon)
+            {
+                storeBeforePrint_restock(temp_record, temp_record_num, shopPtr[index].restockRec+i);
+            }
+        }
+    }
+
+    if(temp_record_num == 0)
+    {
+        cout << "Sorry, There is no restock record found in the last " << duration << endl;
+    }
+    else
+    {
+        cout << "Total " << temp_record_num << " record in the last " << duration << " found." << endl << endl;
+        cout.width(18); cout << left << "Date (YYYY-MM-DD)";
+        cout.width(6); cout << left << "Quantity" << endl;
+        for(int i=0; i<temp_record_num; i++)
+        {
+            restockPrinterPerRecord(temp_record+i);
+            totalSales += temp_record[i].quantity;
+        }
+    }
+    cout << endl << "Total restock in the last " << duration << " is " << totalSales << "."<< endl << endl;
+
+
+    delete [] temp_record;
+    delete [] desireMonth;
+}
+
+void wholeRestockHistoryPrinter(commodity *shopPtr, int index)
+{
+    int totalSales = 0;
+    cout << "Total " << shopPtr[index].numOfRestockRec << " record found." << endl << endl;
+    cout.width(18); cout << "Date (YYYY-MM-DD)";
+    cout.width(6); cout << "Quantity" << endl;
+    for(int i=0; i<shopPtr[index].numOfRestockRec; i++)
+    {
+        restockPrinterPerRecord(shopPtr[index].restockRec+i);
+        totalSales += shopPtr[index].restockRec[i].quantity;
+    }
+    cout << endl << "Total restock in the whole history is " << totalSales << "."<< endl << endl;
+}
+
+
+void checkRestockHistory(commodity *shopPtr, int numberOfCommodity)
+{
+    int choice;
+    tm fromDate;
+    fromDate.tm_year = 0;
+    fromDate.tm_mon = 0;
+    string date;
+    int targetRecordIndex = -1;//initiate with not found
+    searchBefore_recordAdding(shopPtr, numberOfCommodity, targetRecordIndex);
+    if(targetRecordIndex == -1) //check if product code found?
+    {
+        cout << "The product code you entered does not exist" << endl;
+    }
+    else
+    {
+        checkRecordUIPrinter();
+        cin >> choice;
+        cout << endl;
+        while(choice != 5)
+        {
+            switch (choice) {
+              case 1:
+                  cout << "From when (YYYY-MM, e.g. 2019-12) to 3 months before: ";
+                  cin >> date;
+                  dayStrtoInt(date, fromDate);
+                  nthMonthPrinter_restock(shopPtr, targetRecordIndex, fromDate, 3);
+                  break;
+              case 2:
+                  cout << "From when (YYYY-MM, e.g. 2019-12) to 6 months before: ";
+                  cin >> date;
+                  dayStrtoInt(date, fromDate);
+                  nthMonthPrinter_restock(shopPtr, targetRecordIndex, fromDate, 6);
+                  break;
+              case 3:
+                  cout << "From when (YYYY-MM, e.g. 2019-12) to 1 year before: ";
+                  cin >> date;
+                  dayStrtoInt(date, fromDate);
+                  nthMonthPrinter_restock(shopPtr, targetRecordIndex, fromDate, 12);
+                  break;
+              case 4:
+                  wholeRestockHistoryPrinter(shopPtr, targetRecordIndex);
                   break;
             }
             checkRecordUIPrinter();
