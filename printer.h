@@ -30,7 +30,7 @@ void returnPastNMonth(tm fromDate, tm *&desireMonth, int numOfMonth);
 
 void storeBeforePrint(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec);
 
-void threeMonthPrinter(commodity *shopPtr, int index, tm fromDate);
+void nthMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
 
 void salesPrinterPerRecord(salesRecord *salesRec);
 
