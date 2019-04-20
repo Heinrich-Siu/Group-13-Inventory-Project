@@ -14,9 +14,15 @@ void readCSVinventoryRecord(commodity &commod, string line);
 
 void grow_commodityRecord(commodity *&shopPtr, int originSize, int grownSize);
 
-void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity);
+void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity, string &shopRecFileName);
 
+void indexer(commodity* shopPtr, int numberOfCommodity);
 
+void indexer(commodity* shopPtr, int numberOfCommodity){
+    for (int i=0; i<numberOfCommodity; i++) {
+        shopPtr[i].index=i;
+    }
+}
 
 
 /*input:  thisRecord: pointer to salesRecord in commodity Struct
@@ -152,17 +158,12 @@ void readCSVinventoryRecord(commodity &commod, string line)
     //cout << line << endl;
     istringstream ss(line);  //line as input stream
     string data;
-    int columnNum = 0;
+    int columnNum = 1;
     while(getline(ss,data,','))  //reading commodity information per item in line
     {
         //cout<<data<<endl;
         switch(columnNum) //columnNum determine the information type
         {
-            case 0: //int index
-                //cout << "now is 0" << endl;
-                commod.index = stoi(data);
-                //cout << commod.index << endl; I made it a comment, do you meant to print out all the index?
-                break;
             case 1: //int productCode
                 commod.productCode = stoi(data);
                 break;
@@ -218,17 +219,16 @@ void grow_commodityRecord(commodity *&shopPtr, int originSize, int grownSize)
  input:  shopPtr: shop pointer pointed to nothing with type commodity
  numberOfCommodity: number of Commodity by reference
  */
-void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
+void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity, string &shopRecFileName)
 {
     shopPtr = new commodity[numberOfCommodity]; //initiate the Dynamic array with size 0
 
-    string shopRecFileName = "";  //file name of the record
     cout << "Please input the file name of the record: ";
     cin >> shopRecFileName; //user input file name of the record
     cout << "Loading record...." << endl;
     ifstream shop1;
     shop1.open(shopRecFileName); //data will be comma-seperated(,)
-    //shop1.open("sample_shop.txt");  //for debugging
+    //shop1.open("sample.txt");  //for debugging
     string line;
 
     cout << "Loading CSV...." << endl;
@@ -238,5 +238,9 @@ void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity)
         numberOfCommodity++; //incrase one after one record is stored
         //break;
     }
+    //give index
+    indexer(shopPtr, numberOfCommodity);
+    
+    shop1.close();
     cout << "All record loaded" << endl;
 }
