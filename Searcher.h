@@ -1,5 +1,5 @@
-#ifndef Searcher_h
-#define Searcher_h
+#ifndef searcher_h
+#define searcher_h
 #include <string.h>
 #include "inventorysys.h"
 
