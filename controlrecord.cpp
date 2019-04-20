@@ -10,7 +10,7 @@
 using namespace std;
 
 //Function prototype
-void addCommodity(commodity* shopPtr, int &numberOfCommodity);
+void addCommodity(commodity *&shopPtr, int &numberOfCommodity);
 void changeRecord(commodity* shopPtr, int &numberOfCommodity);
 void changeProductCode(commodity* shopPtr, int index);
 void changeProductName(commodity* shopPtr, int index);
@@ -31,22 +31,25 @@ bool updateInventorySpace_inAddRecord(int addSize,int inventorySpace, int &total
 Input: shopPtr-pointer point to the inventory Record
        numberOfCommodity-Number of commodity type in the inventory
 */
-void addCommodity(commodity* shopPtr, int &numberOfCommodity) //Not finished
+void addCommodity(commodity *&shopPtr, int &numberOfCommodity)
 {
     grow_commodityRecord(shopPtr, numberOfCommodity, numberOfCommodity+1); //Increase the size of dynamic array of commodity to hold new commodity
-    cout << "Please enter the commodity name:";
+    numberOfCommodity++;
+    shopPtr[numberOfCommodity-1].index = numberOfCommodity-1;
+
+    cout << "Please enter the commodity name: ";
     cin >> shopPtr[numberOfCommodity-1].name;
 
-    cout << "Please enter the product code";
+    cout << "Please enter the product code: ";
     cin >> shopPtr[numberOfCommodity-1].productCode;
 
-    cout << "Please enter the price";
+    cout << "Please enter the price: ";
     cin >> shopPtr[numberOfCommodity-1].price;
 
     //cout << "Please enter the number of stock";
     shopPtr[numberOfCommodity-1].stockNum = 0;
 
-    cout << "Please enter the size of stock";
+    cout << "Please enter the size of stock: ";
     cin >> shopPtr[numberOfCommodity-1].stockSize;
 
     //initiate the saled record
@@ -58,10 +61,10 @@ void addCommodity(commodity* shopPtr, int &numberOfCommodity) //Not finished
     shopPtr[numberOfCommodity-1].numOfRestockRec = 0;
     shopPtr[numberOfCommodity-1].restockRec = 0;
 
-    cout << "Please enter the tax amount";
+    cout << "Please enter the tax amount: ";
     cin >> shopPtr[numberOfCommodity-1].taxAmount;
 
-    cout << "Please enter the name of the manufacturer";
+    cout << "Please enter the name of the manufacturer: ";
     cin >> shopPtr[numberOfCommodity-1].manufacturer;
 
 
