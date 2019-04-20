@@ -63,7 +63,7 @@ int main()
                     break;
 
                 case 7:
-                    checkSalesHistory(shopPtr, numberOfCommodity)
+                    checkSalesHistory(shopPtr, numberOfCommodity);
                     break;
 
                 case 8:

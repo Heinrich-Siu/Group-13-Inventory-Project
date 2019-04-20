@@ -33,9 +33,19 @@ void checkRecordUIPrinter();
 
 void dayStrtoInt(string date, int &year, int &month, int &day);
 
-void wholeHistoryPrinter(commodity * &shopPtr, int index);
+//void threeMonthPrinter(commodity *shopPtr, int index, tm fromDate);
 
-void checkSalesHistory(commodity * &shopPtr, int &numberOfCommodity);
+void returnPastNMonth(tm fromDate, tm *&desireMonth, int numOfMonth);
+
+void storeBeforePrint(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec);
+
+void threeMonthPrinter(commodity *shopPtr, int index, tm fromDate);
+
+void salesPrinterPerRecord(salesRecord *salesRec);
+
+void wholeHistoryPrinter(commodity *shopPtr, int index);
+
+void checkSalesHistory(commodity *shopPtr, int numberOfCommodity);
 //
 
 void optionPrinter(int i){ //print the columns
@@ -233,7 +243,7 @@ void searchBefore_checkRecord(commodity* shopPtr, int numberOfCommodity, int &ta
 
 
     cout << "\n"
-            "Please enter the product code of the commodity record that you want to check:";
+            "Please enter the product code of the commodity record that you want to check: ";
     cin >> searchProductCode;
     cout << endl;
 
@@ -252,11 +262,11 @@ void checkRecordUIPrinter()
             "          2. 6 Months\n"
             "          3. 1 Year\n"
             "          4. Whole history\n"
-            "          5. Quit"
+            "          5. Quit\n"
             "Choice: ";
 }
 
-void dayStrtoInt(string date, int &year, int &month, int &day)
+void dayStrtoInt(string date, tm &fromDate)
 {
     int columns = 0;
     string temp;
@@ -265,17 +275,123 @@ void dayStrtoInt(string date, int &year, int &month, int &day)
     {
         switch (columns) {
             case 0:
-                year = stoi(temp);
+                fromDate.tm_year = stoi(temp);
                 break;
             case 1:
-                month = stoi(temp);
-                break;
-            case 2:
-                day = stoi(temp);
+                fromDate.tm_mon = stoi(temp);
                 break;
         }
         columns++;
     }
+}
+
+
+void salesPrinterPerRecord(salesRecord *salesRec)
+{
+    string temp_date = std::to_string(salesRec->date.tm_year) + "-" + std::to_string(salesRec->date.tm_mon) + "-" + std::to_string(salesRec->date.tm_mday); //eg. 2019-4-20
+    cout.width(18); cout << left << temp_date;
+    cout.width(6); cout << left << salesRec->quantity << endl; //print quantity
+}
+
+
+void returnPastNMonth(tm fromDate, tm *&desireMonth, int numOfMonth) //eg.fromdate is 2019-04 then 3 months = 2019-04, 2019-03, 2019-02
+{
+    desireMonth = new tm[numOfMonth];
+    for(int i=0; i<numOfMonth; i++)
+    {
+        if(i==0) //
+        {
+            desireMonth[i].tm_year = fromDate.tm_year;
+            desireMonth[i].tm_mon = fromDate.tm_mon;
+        }
+        else
+        {
+            if(fromDate.tm_mon-1 == 0)
+            {
+                fromDate.tm_year--;
+                fromDate.tm_mon = 12;
+                desireMonth[i].tm_year = fromDate.tm_year;
+                desireMonth[i].tm_mon = fromDate.tm_mon;
+            }
+            else
+            {
+                fromDate.tm_mon--;
+                desireMonth[i].tm_year = fromDate.tm_year;
+                desireMonth[i].tm_mon = fromDate.tm_mon;
+            }
+        }
+    }
+}
+
+void storeBeforePrint(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec)
+{
+    if(temp_record_num==0)
+    {
+        temp_record_num++;
+        temp_record = new salesRecord[temp_record_num];
+        temp_record[0].date.tm_year = salesRec->date.tm_year;
+        temp_record[0].date.tm_mon = salesRec->date.tm_mon;
+        temp_record[0].date.tm_mday = salesRec->date.tm_mday;
+        temp_record[0].quantity = salesRec->quantity;
+    }
+    else
+    {
+        //enlarge the array
+        temp_record_num++;
+        salesRecord *enlarged = new salesRecord[temp_record_num];
+        for(int i=0; i<temp_record_num-1; i++)
+        {
+            enlarged[i] = temp_record[i];
+        }
+        delete [] temp_record;
+        temp_record = enlarged;
+        enlarged = 0;
+        //
+        temp_record[temp_record_num-1].date.tm_year = salesRec->date.tm_year;
+        temp_record[temp_record_num-1].date.tm_mon = salesRec->date.tm_mon;
+        temp_record[temp_record_num-1].date.tm_mday = salesRec->date.tm_mday;
+        temp_record[temp_record_num-1].quantity = salesRec->quantity;
+    }
+}
+
+void threeMonthPrinter(commodity *shopPtr, int index, tm fromDate)
+{
+    tm *desireMonth = 0;
+    salesRecord *temp_record = 0;
+    int numOfMonth = 3, temp_record_num = 0, totalSales = 0;
+    returnPastNMonth(fromDate, desireMonth, numOfMonth);
+
+    for(int j=0; j<numOfMonth; j++)
+    {
+        for(int i=shopPtr[index].numOfSalesRec-1; i>=0; i--) //loop from last record to first because of most recent order
+        {
+            if(desireMonth[j].tm_year == shopPtr[index].salesRec[i].date.tm_year && desireMonth[j].tm_mon == shopPtr[index].salesRec[i].date.tm_mon)
+            {
+                storeBeforePrint(temp_record, temp_record_num, shopPtr[index].salesRec+i);
+            }
+        }
+    }
+
+    if(temp_record_num == 0)
+    {
+        cout << "Sorry, There is no sales record found in the last 3 months" << endl;
+    }
+    else
+    {
+        cout << "Total " << temp_record_num << " record in the last three month found." << endl << endl;
+        cout.width(18); cout << left << "Date (YYYY-MM-DD)";
+        cout.width(6); cout << left << "Quantity" << endl;
+        for(int i=0; i<temp_record_num; i++)
+        {
+            salesPrinterPerRecord(temp_record+i);
+            totalSales += temp_record[i].quantity;
+        }
+    }
+    cout << endl << "Total sales in the whole history is " << totalSales << "."<< endl << endl;
+
+
+    delete [] temp_record;
+    delete [] desireMonth;
 }
 
 void wholeHistoryPrinter(commodity *shopPtr, int index)
@@ -283,19 +399,21 @@ void wholeHistoryPrinter(commodity *shopPtr, int index)
     int totalSales = 0;
     cout << "Total " << shopPtr[index].numOfSalesRec << " record found." << endl << endl;
     cout.width(18); cout << "Date (YYYY-MM-DD)";
-    cout.width(6); cout << "Quantity";
+    cout.width(6); cout << "Quantity" << endl;
     for(int i=0; i<shopPtr[index].numOfSalesRec; i++)
     {
-        cout.width(18); cout << shopPtr[index].salesRec[i].date.tm_year << "-" << shopPtr[index].salesRec[i].date.tm_mon << "-" << shopPtr[index].salesRec[i].date.tm_mday;
-        cout.width(6); cout << shopPtr[index].salesRec[i].quantity << endl;
+        salesPrinterPerRecord(shopPtr[index].salesRec+i);
         totalSales += shopPtr[index].salesRec[i].quantity;
     }
-    cout << endl << "Total sales in the whole history is " << totalSales << endl;
+    cout << endl << "Total sales in the whole history is " << totalSales << "."<< endl << endl;
 }
 
 void checkSalesHistory(commodity *shopPtr, int numberOfCommodity)
 {
-    int choice, year = 0, month = 0, day = 0;
+    int choice;
+    tm fromDate;
+    fromDate.tm_year = 0;
+    fromDate.tm_mon = 0;
     string date;
     int targetRecordIndex = -1;//initiate with not found
     searchBefore_recordAdding(shopPtr, numberOfCommodity, targetRecordIndex);
@@ -312,19 +430,20 @@ void checkSalesHistory(commodity *shopPtr, int numberOfCommodity)
         {
             switch (choice) {
               case 1:
-                  cout << "From when (YYYY-MM-DD, e.g. 2019-12-31) before 3 months: ";
+                  cout << "From when (YYYY-MM, e.g. 2019-12) before 3 months: ";
                   cin >> date;
-                  dayStrtoInt(date, year, month, day);
+                  dayStrtoInt(date, fromDate);
+                  threeMonthPrinter(shopPtr, targetRecordIndex, fromDate);
                   break;
               case 2:
-                  cout << "From when (YYYY-MM-DD, e.g. 2019-12-31) before 6 months: ";
+                  cout << "From when (YYYY-MM, e.g. 2019-12) before 6 months: ";
                   cin >> date;
-                  dayStrtoInt(date, year, month, day);
+                  dayStrtoInt(date, fromDate);
                   break;
               case 3:
-                  cout << "From when (YYYY-MM-DD, e.g. 2019-12-31) before 1 year: ";
+                  cout << "From when (YYYY-MM, e.g. 2019-12) before 1 year: ";
                   cin >> date;
-                  dayStrtoInt(date, year, month, day);
+                  dayStrtoInt(date, fromDate);
                   break;
               case 4:
                   wholeHistoryPrinter(shopPtr, targetRecordIndex);

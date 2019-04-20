@@ -24,8 +24,18 @@ void checkRecordUIPrinter();
 
 void dayStrtoInt(std::string date, int &year, int &month, int &day);
 
-void wholeHistoryPrinter(commodity * &shopPtr, int index);
+//void threeMonthPrinter(commodity *shopPtr, int index, tm fromDate);
 
-void checkSalesHistory(commodity * &shopPtr, int &numberOfCommodity);
+void returnPastNMonth(tm fromDate, tm *&desireMonth, int numOfMonth);
+
+void storeBeforePrint(salesRecord *&temp_record, int &temp_record_num, salesRecord *salesRec);
+
+void threeMonthPrinter(commodity *shopPtr, int index, tm fromDate);
+
+void salesPrinterPerRecord(salesRecord *salesRec);
+
+void wholeHistoryPrinter(commodity *shopPtr, int index);
+
+void checkSalesHistory(commodity *shopPtr, int numberOfCommodity);
 
 #endif
