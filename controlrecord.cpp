@@ -242,6 +242,7 @@ void addRestock(commodity* shopPtr, int index, int inventorySpace, int &totalOcu
         shopPtr[index].restockRec[index_emptyRecord].quantity = temp_quantity;
         
         shopPtr[index].stockNum += shopPtr[index].restockRec[index_emptyRecord].quantity; //add(+) to total number of stock
+        cout<<"Record added!\n"<<endl;
     }
 }
 
@@ -291,6 +292,7 @@ void addSales(commodity* shopPtr, int index, int inventorySpace, int &totalOcupp
         
         shopPtr[index].stockNum -= shopPtr[index].salesRec[index_emptyRecord].quantity; //minus(-) to total number of stock
         totalOcuppiedSpace -= shopPtr[index].stockSize * shopPtr[index].salesRec[index_emptyRecord].quantity; //minus the size of sales quantity to the total Ocuppied Space
+        cout<<"Record added!\n"<<endl;
     }
     
 }
@@ -309,7 +311,7 @@ void searchBefore_recordAdding(commodity* shopPtr, int numberOfCommodity, int &t
     
     
     cout << "\n"
-    "Please enter the product code of the commodity that you want to add record to:";
+    "Please enter the product code of the commodity that you want to add record to: ";
     cin >> searchProductCode;
     cout << endl;
     
@@ -322,7 +324,7 @@ void searchBefore_recordAdding(commodity* shopPtr, int numberOfCommodity, int &t
     }
 }
 
-void restockOrSales(commodity* shopPtr, int &numberOfCommodity, int inventorySpace, int &totalOcuppiedSpace)
+void  restockOrSales(commodity* shopPtr, int &numberOfCommodity, int inventorySpace, int &totalOcuppiedSpace)
 {
     int choice=0;;
     cout << "\n*****************************************\n"
@@ -349,6 +351,7 @@ void restockOrSales(commodity* shopPtr, int &numberOfCommodity, int inventorySpa
                     cout << "You are adding record of sales of " << shopPtr[targetRecordIndex].name;
                     cout << " (" << shopPtr[targetRecordIndex].productCode << ")" << endl;
                     addSales(shopPtr, targetRecordIndex, inventorySpace, totalOcuppiedSpace);
+                    
                     break;
                 case 2:
                     cout << "You are adding record of restock of " << shopPtr[targetRecordIndex].name;
