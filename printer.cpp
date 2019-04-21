@@ -56,7 +56,9 @@ void nthMonthPrinter_restock(commodity *shopPtr, int index, tm fromDate, int num
 void wholeRestockHistoryPrinter(commodity *shopPtr, int index);
 
 void checkRestockHistory(commodity *shopPtr, int numberOfCommodity);
-//
+
+
+//start of function 1
 
 void optionPrinter(int i){ //print the columns
     switch (i) {
@@ -141,7 +143,8 @@ void recordPrinter(commodity * product, int * fields){
 }
 
 void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all inventory record\n"
-    cout<<"\nInput the number one by one in any sequence and input -1 when done or enter 11 to print All\n"<<"*** E.g. Enter here: 1 2 5 4 -1 ***"<<endl;
+    
+    cout<<"Input the number one by one in any sequence and input -1 when done or enter 11 to print All\n"<<"*** E.g. Enter here: 1 2 5 4 -1 ***"<<endl;
     cout<<"Here are the options: \n";
     cout<<"1. Index 2.Product Code 3.Name 4.Price 5.Stock Number \n6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount 11.ALL\n";
     cout<<"Enter here: ";
@@ -171,8 +174,12 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
     for (int i=0; i<numberOfCommodity; i++)
         recordPrinter(shopPtr+i,fields); //print the data one by one
     delete [] fields;
-    cout<<endl;
+    
 }
+
+//end of funtion 1
+
+
 //input: pointer to salesRecord array, and number of sales record
 void salesRecordPrinter(salesRecord *salesRec, int numOfSalesRec)
 {
@@ -233,6 +240,7 @@ void recordChangePrompt(){
     "*6. Name of manufacturer                         *\n"
     "*7. Quit                                         *\n"
     "**************************************************" << endl;
+    cout<<"Enter your choice here: ";
 }
 
 void inventorySpacePrinter(int totalOcuppiedSpace, int inventorySpace)
@@ -253,10 +261,8 @@ void searchBefore_checkRecord(commodity* shopPtr, int numberOfCommodity, int &ta
         cout << "~~Please first search the commodity and check the record by productCode~~" << endl;
         search(shopPtr, numberOfCommodity);
     }
-    
-    
-    cout << "\n"
-    "Please enter the product code of the commodity record that you want to check: ";
+
+    cout<<"Please enter the product code of the commodity record that you want to check: ";
     cin >> searchProductCode;
     cout << endl;
     
@@ -302,7 +308,7 @@ void dayStrtoInt(string date, tm &fromDate)
 void salesPrinterPerRecord(salesRecord *salesRec)
 {
     string temp_date = std::to_string(salesRec->date.tm_year) + "-" + std::to_string(salesRec->date.tm_mon) + "-" + std::to_string(salesRec->date.tm_mday); //eg. 2019-4-20
-    cout.width(18); cout << left << temp_date;
+    cout.width(20); cout << left << temp_date;
     cout.width(6); cout << left << salesRec->quantity << endl; //print quantity
 }
 
@@ -424,7 +430,7 @@ void wholeSalesHistoryPrinter(commodity *shopPtr, int index)
 {
     int totalSales = 0;
     cout << "Total " << shopPtr[index].numOfSalesRec << " record found." << endl << endl;
-    cout.width(18); cout << "Date (YYYY-MM-DD)";
+    cout.width(20); cout << left <<  "Date (YYYY-MM-DD)";
     cout.width(6); cout << "Quantity" << endl;
     for(int i=0; i<shopPtr[index].numOfSalesRec; i++)
     {
