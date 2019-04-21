@@ -43,14 +43,18 @@ int main()
         if(userInput >= 0 && userInput <=9){
             switch(userInput){
                 case 1: //Show all inventory record
+                    cout<<"\n*********Showing all inventory record*********\n"<<endl;
                     inventoryShower(shopPtr, numberOfCommodity);
+                    cout<<"\n*********All results shown*********\nReturning to main page...\n"<<endl;
                     break;
                     
                 case 2: //Search an Commodity
                     search(shopPtr, numberOfCommodity);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
                     
                 case 3: //Add new commodity
+                    cout<<"\nPreparing to add a new commodity...\n"<<endl;
                     addCommodity(shopPtr, numberOfCommodity);
                     break;
                     
@@ -64,18 +68,24 @@ int main()
                     
                 case 6:
                     restockOrSales(shopPtr, numberOfCommodity, inventorySpace, totalOcuppiedSpace);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
                     
                 case 7:
+                    cout<<"\nPreparing to show sales record...\n"<<endl;
                     checkSalesHistory(shopPtr, numberOfCommodity);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
                     
                 case 8:
+                    cout<<"\nPreparing to show restock record...\n"<<endl;
                     checkRestockHistory(shopPtr, numberOfCommodity);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
                     
                 case 9:
                     saveRecordToFile(shopPtr, numberOfCommodity, fileName);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
                 default:
                     break;
@@ -87,5 +97,5 @@ int main()
         printMainUI();
         cin >> userInput;
     }
-    cout << "Program end Sucessfully" << endl; //inform the user the program end successfully
+    cout << "Program end Sucessfully. Thanks for using our programme :) " << endl; //inform the user the program end successfully
 }
