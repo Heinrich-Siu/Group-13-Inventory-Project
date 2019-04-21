@@ -91,7 +91,7 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
     //Start generic search by number
     if (type==1 or type==2 or type==4 or type==5 or type==6 or type==7 or type==8 or type==10) {
         cout<<"Search by 1. Specific "<<optionArray[type]<<"  2. Range of "<<optionArray[type]<<endl;
-        cout<<"Enter your choice here: "<<endl;
+        cout<<"Enter your choice here: ";
         int option = -1;
         cin>>option;
         if (option==1){
@@ -135,7 +135,7 @@ void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodit
     for (int i=0; i<numberOfCommodity; i++) position[i]=i; //position store value equal to its index
         int constrainType=0;
         while (true) {
-
+            cout<<"\n*********Commodity searching*********"<<endl;
             cout<<"\nFind by choosing one of the constrain below. Enter -1 if you are done searching"<<endl;
             cout<<"1. Index 2.Product Code 3.Name 4.Price 5.Stock Number \n6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount\n";
             cout<<"Type in the constrain number: ";
@@ -158,7 +158,7 @@ void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodit
                     itemsNonExcluded+=1;
                 }
             }
-            cout<<"Choose how to show your search result"<<endl;
+            cout<<"\nChoose how to show your search result"<<endl;
             inventoryShower(tempPtr, itemsNonExcluded);
             delete [] tempPtr;
         }
