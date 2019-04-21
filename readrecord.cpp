@@ -222,9 +222,9 @@ void grow_commodityRecord(commodity *&shopPtr, int originSize, int grownSize)
 void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity, string &shopRecFileName)
 {
     shopPtr = new commodity[numberOfCommodity]; //initiate the Dynamic array with size 0
-
     cout << "Please input the file name of the record: ";
-    cin >> shopRecFileName; //user input file name of the record
+    getline(cin, shopRecFileName);
+    //cin >> shopRecFileName; //user input file name of the record
     cout << "Loading record...." << endl;
     ifstream shop1;
     shop1.open(shopRecFileName); //data will be comma-seperated(,)
