@@ -11,6 +11,7 @@ void ranger(int &max, int &min, int absoulteMax){
     //ask if larger, smaller, or between
     //then output the max and min as a result of the enquiry
     cout<<"You are searching by 1.Larger or equal than  2. Smaller or equal than   3.Between two numbers\n";
+    cout<<"Enter your choice here: "<<endl;
     int mode =0; cin>>mode;
     if (mode==1){
         cout<<"The number is larger or equal than: ";
@@ -90,6 +91,7 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
     //Start generic search by number
     if (type==1 or type==2 or type==4 or type==5 or type==6 or type==7 or type==8 or type==10) {
         cout<<"Search by 1. Specific "<<optionArray[type]<<"  2. Range of "<<optionArray[type]<<endl;
+        cout<<"Enter your choice here: ";
         int option = -1;
         cin>>option;
         if (option==1){
@@ -117,6 +119,7 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
     //start of string search
     else if (type==3 or type==9){
         cout<<"Enter the "<<optionArray[type]<<"you wan to search. Can be a sub string of the "<<optionArray[type]<<endl;
+        cout<<"Enter your word here: "<<endl;
         string targetText;
         cin>>targetText;
         for (int k=0; k<numberOfCommodity; k++) {
@@ -132,12 +135,15 @@ void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodit
     for (int i=0; i<numberOfCommodity; i++) position[i]=i; //position store value equal to its index
         int constrainType=0;
         while (true) {
-
-            cout<<"Find by choosing constrain. Enter -1 when finish"<<endl;
+            cout<<"\n*********Commodity searching*********"<<endl;
+            cout<<"\nFind by choosing one of the constrain below. Enter -1 if you are done searching"<<endl;
             cout<<"1. Index 2.Product Code 3.Name 4.Price 5.Stock Number \n6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount\n";
+            cout<<"Type in the constrain number: ";
             cin>>constrainType;
-            if (constrainType==-1) break;
-
+            if (constrainType==-1) {
+                cout<<"\nExiting search...\n\n";
+                break;
+            }
             //returns position as a dynamic array
             searchingInDifferentWays(constrainType,position,numberOfCommodity, shopPtr);
 
@@ -152,9 +158,9 @@ void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodit
                     itemsNonExcluded+=1;
                 }
             }
+            cout<<"\nChoose how to show your search result"<<endl;
             inventoryShower(tempPtr, itemsNonExcluded);
             delete [] tempPtr;
-            cout<<endl;
         }
     delete [] position;
 }

@@ -56,7 +56,9 @@ void nthMonthPrinter_restock(commodity *shopPtr, int index, tm fromDate, int num
 void wholeRestockHistoryPrinter(commodity *shopPtr, int index);
 
 void checkRestockHistory(commodity *shopPtr, int numberOfCommodity);
-//
+
+
+//start of function 1
 
 void optionPrinter(int i){ //print the columns
     switch (i) {
@@ -141,9 +143,11 @@ void recordPrinter(commodity * product, int * fields){
 }
 
 void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all inventory record\n"
-    cout<<"Input the number one by one in any sequence and input -1 when done or enter 11 to print All\n"<<"***e.g. 1 2 5 4 -1***"<<endl;
+    
+    cout<<"Input the number one by one in any sequence and input -1 when done or enter 11 to print All\n"<<"*** E.g. Enter here: 1 2 5 4 -1 ***"<<endl;
     cout<<"Here are the options: \n";
     cout<<"1. Index 2.Product Code 3.Name 4.Price 5.Stock Number \n6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount 11.ALL\n";
+    cout<<"Enter here: ";
     int* fields = new int[11]; //dynamic array that store the aspects need to print
     int a=0, all=0;
     for (int k=0; a!=-1; k++) { //load in different aspects from user
@@ -160,7 +164,9 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
         }
         fields[11]=-1;
     }
-
+    
+    cout<<"\n*********Enquiry result*********"<<endl;
+    
     for (int i=0; (fields[i])!=-1 ; i++) {
         optionPrinter(fields[i]); //print the columns
     }
@@ -168,7 +174,10 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
     for (int i=0; i<numberOfCommodity; i++)
         recordPrinter(shopPtr+i,fields); //print the data one by one
     delete [] fields;
+    
 }
+
+//end of funtion 1
 
 
 //input: pointer to salesRecord array, and number of sales record
@@ -209,14 +218,14 @@ void restockRecordPrinter(restockRecord *restockRec, int numOfRestockRec)
 
 void recordPrinterByIndex(commodity * shopPtr, int index)
 {
-  for (int i=1; i<=10; i++)
-      optionPrinter(i); //print the columns
-
-  cout<<endl;
-
-  for (int i=1; i<=10; i++)
-      specPrinter(i, shopPtr+index); //print the data in structure one by one
-  cout<<endl;
+    for (int i=1; i<=10; i++)
+        optionPrinter(i); //print the columns
+    
+    cout<<endl;
+    
+    for (int i=1; i<=10; i++)
+        specPrinter(i, shopPtr+index); //print the data in structure one by one
+    cout<<endl;
 }
 
 //Prompt when asking user to change Record
@@ -231,12 +240,14 @@ void recordChangePrompt(){
     "*6. Name of manufacturer                         *\n"
     "*7. Quit                                         *\n"
     "**************************************************" << endl;
+    cout<<"Enter your choice here: ";
 }
 
 void inventorySpacePrinter(int totalOcuppiedSpace, int inventorySpace)
 {
-    cout << endl;
+    cout << "Calculating..."<<endl;
     cout << "Inventory Space: " << totalOcuppiedSpace << "/" << inventorySpace << endl << endl; //eg. Inventory Space: 685/5000
+    //add occupy check?
 }
 
 void searchBefore_checkRecord(commodity* shopPtr, int numberOfCommodity, int &targetRecordIndex)
@@ -251,12 +262,10 @@ void searchBefore_checkRecord(commodity* shopPtr, int numberOfCommodity, int &ta
         search(shopPtr, numberOfCommodity);
     }
 
-
-    cout << "\n"
-            "Please enter the product code of the commodity record that you want to check: ";
+    cout<<"Please enter the product code of the commodity record that you want to check: ";
     cin >> searchProductCode;
     cout << endl;
-
+    
     for(int i=0; i < numberOfCommodity; i++) //loop through all productCode to find match
     {
         if(shopPtr[i].productCode == searchProductCode)
@@ -269,11 +278,11 @@ void searchBefore_checkRecord(commodity* shopPtr, int numberOfCommodity, int &ta
 void checkRecordUIPrinter()
 {
     cout << "Check by: 1. 3 Months\n"
-            "          2. 6 Months\n"
-            "          3. 1 Year\n"
-            "          4. Whole history\n"
-            "          5. Quit\n"
-            "Choice: ";
+    "          2. 6 Months\n"
+    "          3. 1 Year\n"
+    "          4. Whole history\n"
+    "          5. Quit\n"
+    "Choice: ";
 }
 
 void dayStrtoInt(string date, tm &fromDate)
@@ -299,7 +308,7 @@ void dayStrtoInt(string date, tm &fromDate)
 void salesPrinterPerRecord(salesRecord *salesRec)
 {
     string temp_date = std::to_string(salesRec->date.tm_year) + "-" + std::to_string(salesRec->date.tm_mon) + "-" + std::to_string(salesRec->date.tm_mday); //eg. 2019-4-20
-    cout.width(18); cout << left << temp_date;
+    cout.width(20); cout << left << temp_date;
     cout.width(6); cout << left << salesRec->quantity << endl; //print quantity
 }
 
@@ -383,7 +392,7 @@ void nthMonthPrinter_sales(commodity *shopPtr, int index, tm fromDate, int numOf
     salesRecord *temp_record = 0;
     int temp_record_num = 0, totalSales = 0;
     returnPastNMonth(fromDate, desireMonth, numOfMonth);
-
+    
     for(int j=0; j<numOfMonth; j++)
     {
         for(int i=shopPtr[index].numOfSalesRec-1; i>=0; i--) //loop from last record to first because of most recent order
@@ -394,7 +403,7 @@ void nthMonthPrinter_sales(commodity *shopPtr, int index, tm fromDate, int numOf
             }
         }
     }
-
+    
     if(temp_record_num == 0)
     {
         cout << "Sorry, There is no sales record found in the last " << duration << endl;
@@ -411,8 +420,8 @@ void nthMonthPrinter_sales(commodity *shopPtr, int index, tm fromDate, int numOf
         }
     }
     cout << endl << "Total sales in the last " << duration << " is " << totalSales << "."<< endl << endl;
-
-
+    
+    
     delete [] temp_record;
     delete [] desireMonth;
 }
@@ -421,7 +430,7 @@ void wholeSalesHistoryPrinter(commodity *shopPtr, int index)
 {
     int totalSales = 0;
     cout << "Total " << shopPtr[index].numOfSalesRec << " record found." << endl << endl;
-    cout.width(18); cout << "Date (YYYY-MM-DD)";
+    cout.width(20); cout << left <<  "Date (YYYY-MM-DD)";
     cout.width(6); cout << "Quantity" << endl;
     for(int i=0; i<shopPtr[index].numOfSalesRec; i++)
     {
@@ -439,7 +448,7 @@ void checkSalesHistory(commodity *shopPtr, int numberOfCommodity)
     fromDate.tm_mon = 0;
     string date;
     int targetRecordIndex = -1;//initiate with not found
-    searchBefore_recordAdding(shopPtr, numberOfCommodity, targetRecordIndex);
+    searchBefore_checkRecord(shopPtr, numberOfCommodity, targetRecordIndex);
     if(targetRecordIndex == -1) //check if product code found?
     {
         cout << "The product code you entered does not exist" << endl;
@@ -452,31 +461,31 @@ void checkSalesHistory(commodity *shopPtr, int numberOfCommodity)
         while(choice != 5)
         {
             switch (choice) {
-              case 1:
-                  cout << "From when (YYYY-MM, e.g. 2019-12) to 3 months before: ";
-                  cin >> date;
-                  dayStrtoInt(date, fromDate);
-                  nthMonthPrinter_sales(shopPtr, targetRecordIndex, fromDate, 3);
-                  break;
-              case 2:
-                  cout << "From when (YYYY-MM, e.g. 2019-12) to 6 months before: ";
-                  cin >> date;
-                  dayStrtoInt(date, fromDate);
-                  nthMonthPrinter_sales(shopPtr, targetRecordIndex, fromDate, 6);
-                  break;
-              case 3:
-                  cout << "From when (YYYY-MM, e.g. 2019-12) to 1 year before: ";
-                  cin >> date;
-                  dayStrtoInt(date, fromDate);
-                  nthMonthPrinter_sales(shopPtr, targetRecordIndex, fromDate, 12);
-                  break;
-              case 4:
-                  wholeSalesHistoryPrinter(shopPtr, targetRecordIndex);
-                  break;
+                case 1:
+                    cout << "From when (YYYY-MM, e.g. 2019-12) to 3 months before: ";
+                    cin >> date;
+                    dayStrtoInt(date, fromDate);
+                    nthMonthPrinter_sales(shopPtr, targetRecordIndex, fromDate, 3);
+                    break;
+                case 2:
+                    cout << "From when (YYYY-MM, e.g. 2019-12) to 6 months before: ";
+                    cin >> date;
+                    dayStrtoInt(date, fromDate);
+                    nthMonthPrinter_sales(shopPtr, targetRecordIndex, fromDate, 6);
+                    break;
+                case 3:
+                    cout << "From when (YYYY-MM, e.g. 2019-12) to 1 year before: ";
+                    cin >> date;
+                    dayStrtoInt(date, fromDate);
+                    nthMonthPrinter_sales(shopPtr, targetRecordIndex, fromDate, 12);
+                    break;
+                case 4:
+                    wholeSalesHistoryPrinter(shopPtr, targetRecordIndex);
+                    break;
             }
             checkRecordUIPrinter();
             cin >> choice;
-
+            
         }
     }
 }
@@ -540,7 +549,7 @@ void nthMonthPrinter_restock(commodity *shopPtr, int index, tm fromDate, int num
     restockRecord *temp_record = 0;
     int temp_record_num = 0, totalSales = 0;
     returnPastNMonth(fromDate, desireMonth, numOfMonth);
-
+    
     for(int j=0; j<numOfMonth; j++)
     {
         for(int i=shopPtr[index].numOfRestockRec-1; i>=0; i--) //loop from last record to first because of most recent order
@@ -551,7 +560,7 @@ void nthMonthPrinter_restock(commodity *shopPtr, int index, tm fromDate, int num
             }
         }
     }
-
+    
     if(temp_record_num == 0)
     {
         cout << "Sorry, There is no restock record found in the last " << duration << endl;
@@ -568,8 +577,8 @@ void nthMonthPrinter_restock(commodity *shopPtr, int index, tm fromDate, int num
         }
     }
     cout << endl << "Total restock in the last " << duration << " is " << totalSales << "."<< endl << endl;
-
-
+    
+    
     delete [] temp_record;
     delete [] desireMonth;
 }
@@ -597,7 +606,7 @@ void checkRestockHistory(commodity *shopPtr, int numberOfCommodity)
     fromDate.tm_mon = 0;
     string date;
     int targetRecordIndex = -1;//initiate with not found
-    searchBefore_recordAdding(shopPtr, numberOfCommodity, targetRecordIndex);
+    searchBefore_checkRecord(shopPtr, numberOfCommodity, targetRecordIndex);
     if(targetRecordIndex == -1) //check if product code found?
     {
         cout << "The product code you entered does not exist" << endl;
@@ -610,31 +619,31 @@ void checkRestockHistory(commodity *shopPtr, int numberOfCommodity)
         while(choice != 5)
         {
             switch (choice) {
-              case 1:
-                  cout << "From when (YYYY-MM, e.g. 2019-12) to 3 months before: ";
-                  cin >> date;
-                  dayStrtoInt(date, fromDate);
-                  nthMonthPrinter_restock(shopPtr, targetRecordIndex, fromDate, 3);
-                  break;
-              case 2:
-                  cout << "From when (YYYY-MM, e.g. 2019-12) to 6 months before: ";
-                  cin >> date;
-                  dayStrtoInt(date, fromDate);
-                  nthMonthPrinter_restock(shopPtr, targetRecordIndex, fromDate, 6);
-                  break;
-              case 3:
-                  cout << "From when (YYYY-MM, e.g. 2019-12) to 1 year before: ";
-                  cin >> date;
-                  dayStrtoInt(date, fromDate);
-                  nthMonthPrinter_restock(shopPtr, targetRecordIndex, fromDate, 12);
-                  break;
-              case 4:
-                  wholeRestockHistoryPrinter(shopPtr, targetRecordIndex);
-                  break;
+                case 1:
+                    cout << "From when (YYYY-MM, e.g. 2019-12) to 3 months before: ";
+                    cin >> date;
+                    dayStrtoInt(date, fromDate);
+                    nthMonthPrinter_restock(shopPtr, targetRecordIndex, fromDate, 3);
+                    break;
+                case 2:
+                    cout << "From when (YYYY-MM, e.g. 2019-12) to 6 months before: ";
+                    cin >> date;
+                    dayStrtoInt(date, fromDate);
+                    nthMonthPrinter_restock(shopPtr, targetRecordIndex, fromDate, 6);
+                    break;
+                case 3:
+                    cout << "From when (YYYY-MM, e.g. 2019-12) to 1 year before: ";
+                    cin >> date;
+                    dayStrtoInt(date, fromDate);
+                    nthMonthPrinter_restock(shopPtr, targetRecordIndex, fromDate, 12);
+                    break;
+                case 4:
+                    wholeRestockHistoryPrinter(shopPtr, targetRecordIndex);
+                    break;
             }
             checkRecordUIPrinter();
             cin >> choice;
-
+            
         }
     }
 }

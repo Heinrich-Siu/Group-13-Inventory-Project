@@ -4,8 +4,10 @@
 #include "searcher.h"
 #include "printer.h"
 #include "controlrecord.h"
+#include "Save_Record_to_file.h"
 
 using namespace std;
+
 
 void printMainUI()
 {
@@ -14,7 +16,7 @@ void printMainUI()
     "2. Search an Commodity\n"
     "3. Add new commodity\n"
     "4. Check Inventory Space\n"
-    "5. Change commodity inventory record\n"
+    "5. Update commodity\n"
     "6. Stock sales/restock\n"
     "7. Check Sales History\n"
     "8. Check Restock History\n"
@@ -30,56 +32,70 @@ int main()
     int totalOcuppiedSpace = 0;
     commodity *shopPtr = 0; //initialize a commodity to use
     int numberOfCommodity = 0;
-    loadAllRecord(shopPtr, numberOfCommodity);
+    string fileName;
+    loadAllRecord(shopPtr, numberOfCommodity, fileName);
     checkInventorySpace(shopPtr, numberOfCommodity, totalOcuppiedSpace);
     printMainUI();
     int userInput;
     cin >> userInput;
-
+    
     while(userInput != 10){ //while userInput no equal to the quit choice
         if(userInput >= 0 && userInput <=9){
             switch(userInput){
                 case 1: //Show all inventory record
+                    cout<<"\n*********Showing all inventory record*********\n"<<endl;
                     inventoryShower(shopPtr, numberOfCommodity);
+                    cout<<"\n*********All results shown*********\nReturning to main page...\n"<<endl;
                     break;
-
+                    
                 case 2: //Search an Commodity
                     search(shopPtr, numberOfCommodity);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
-
+                    
                 case 3: //Add new commodity
+                    cout<<"\nPreparing to add a new commodity...\n"<<endl;
                     addCommodity(shopPtr, numberOfCommodity);
                     break;
-
+                    
                 case 4: //Check inventory Space
                     inventorySpacePrinter(totalOcuppiedSpace, inventorySpace);
                     break;
-
+                    
                 case 5: //Change commodity inventory record
                     changeRecord(shopPtr, numberOfCommodity);
                     break;
-
+                    
                 case 6:
                     restockOrSales(shopPtr, numberOfCommodity, inventorySpace, totalOcuppiedSpace);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
-
+                    
                 case 7:
+                    cout<<"\nPreparing to show sales record...\n"<<endl;
                     checkSalesHistory(shopPtr, numberOfCommodity);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
-
+                    
                 case 8:
+                    cout<<"\nPreparing to show restock record...\n"<<endl;
                     checkRestockHistory(shopPtr, numberOfCommodity);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
-
+                    
                 case 9:
+                    saveRecordToFile(shopPtr, numberOfCommodity, fileName);
+                    cout<<"Returning to main page...\n"<<endl;
+                    break;
+                default:
                     break;
             }
         }
         else cout << "Your input is invalid" << endl;
-
-        if (userInput==9) break;
+        
+        if (userInput==10) break;
         printMainUI();
         cin >> userInput;
     }
-    cout << "Program end Sucessfully" << endl; //inform the user the program end successfully
+    cout << "Program end Sucessfully. Thanks for using our programme :) " << endl; //inform the user the program end successfully
 }
