@@ -67,9 +67,11 @@ void addCommodity(commodity *&shopPtr, int &numberOfCommodity)
     
     cout << "Please enter the tax amount: ";
     cin >> shopPtr[numberOfCommodity-1].taxAmount;
-    
+
+    getline(cin, name);
     cout << "Please enter the name of the manufacturer: ";
-    cin >> shopPtr[numberOfCommodity-1].manufacturer;
+    getline(cin, name);
+    shopPtr[numberOfCommodity-1].manufacturer=name;
     
     
     

@@ -5,6 +5,7 @@
 #include "printer.h"
 #include "controlrecord.h"
 #include "Save_Record_to_file.h"
+#include "inventoryStatus.h"
 
 using namespace std;
 
@@ -21,14 +22,15 @@ void printMainUI()
     "7. Check Sales History\n"
     "8. Check Restock History\n"
     "9. Save Record to File\n"
-    "10. Exit";
+    "10.Check inventory status\n"
+    "11. Exit";
     cout << ui << endl;
     cout << "Please input a command: ";
 }
 
 int main()
 {
-    const int inventorySpace = 5000; //Maximum storage size is 5000
+    const int inventorySpace = 50000; //Maximum storage size is 5000
     int totalOcuppiedSpace = 0;
     commodity *shopPtr = 0; //initialize a commodity to use
     int numberOfCommodity = 0;
@@ -59,6 +61,7 @@ int main()
                     break;
                     
                 case 4: //Check inventory Space
+                    cout<<endl;
                     inventorySpacePrinter(totalOcuppiedSpace, inventorySpace);
                     break;
                     
@@ -73,13 +76,13 @@ int main()
                     
                 case 7:
                     cout<<"\nPreparing to show sales record...\n"<<endl;
-                    checkSalesHistory(shopPtr, numberOfCommodity);
+                    historyCheck(shopPtr, numberOfCommodity, true);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
                     
                 case 8:
                     cout<<"\nPreparing to show restock record...\n"<<endl;
-                    checkRestockHistory(shopPtr, numberOfCommodity);
+                    historyCheck(shopPtr, numberOfCommodity, false);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
                     
@@ -87,13 +90,16 @@ int main()
                     saveRecordToFile(shopPtr, numberOfCommodity, fileName);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
+                case 10:
+                    checkInventoryStatus(shopPtr, numberOfCommodity);
+                    break;
                 default:
                     break;
             }
         }
         else cout << "Your input is invalid" << endl;
         
-        if (userInput==10) break;
+        if (userInput==11) break;
         printMainUI();
         cin >> userInput;
     }
