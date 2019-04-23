@@ -6,33 +6,31 @@
 #include "controlrecord.h"
 #include "sort.h"
 #include "Save_Record_to_file.h"
-//#include "inventoryStatus.h"
+#include "inventoryStatus.h"
 
 using namespace std;
-
 
 void printMainUI()
 {
     string ui = "*********XXX Company Commodity Inventory system*********\n"
-    "1. Show all inventory record\n"
-    "2. Search an Commodity\n"
-    "3. Add new commodity\n"
-    "4. Check Inventory Space\n"
-    "5. Update commodity\n"
-    "6. Stock sales/restock\n"
-    "7. Sort inventory record\n"
-    "8. Check Sales History\n"
-    "9. Check Restock History\n"
-    "10. Save Record to File\n"
-    "11.Check inventory status\n"
-    "12. Exit";
+    "1.  Show all inventory record\n"
+    "2.  Search an Commodity\n"
+    "3.  Add new commodity\n"
+    "4.  Check Inventory Space\n"
+    "5.  Update commodity\n"
+    "6.  Stock sales/restock\n"
+    "7.  Check Sales History\n"
+    "8.  Check Restock History\n"
+    "9.  Save Record to File\n"
+    "10. Check inventory status\n"
+    "11. Exit";
     cout << ui << endl;
     cout << "Please input a command: ";
 }
 
 int main()
 {
-    const int inventorySpace = 50000; //Maximum storage size is 5000
+    const int inventorySpace = 50000; //Maximum storage size is 50000
     int totalOcuppiedSpace = 0;
     commodity *shopPtr = 0; //initialize a commodity to use
     int numberOfCommodity = 0;
@@ -98,7 +96,9 @@ int main()
                     cout<<"Returning to main page...\n"<<endl;
                     break;
                 case 11:
-                    //checkInventoryStatus(shopPtr, numberOfCommodity);
+                    cout<<"\nShowing sales prediction:"<<endl;
+                    checkInventoryStatus(shopPtr, numberOfCommodity);
+                    cout<<"Returning to main page...\n"<<endl;
                     break;
                 default:
                     break;
