@@ -4,8 +4,11 @@
 
 
 void swap(commodity *xp, commodity *yp);
-void selectionSort(commodity *arr, int n);
+bool compareParameter(commodity *arr, int j, int min_idx, int option, int order)
+void selectionSort(commodity *arr, int n, int choice, int order);
+void sortMenu();
+void orderMenu();
 void sortingInventory(commodity *shopPtr, int numberOfCommodity);
-bool compareName(commodity *a, commodity *b);
+
 
 #endif
