@@ -4,7 +4,7 @@
 
 
 void swap(commodity *xp, commodity *yp);
-bool compareParameter(commodity *arr, int j, int min_idx, int option, int order)
+bool compareParameter(commodity *arr, int j, int min_idx, int option, int order);
 void selectionSort(commodity *arr, int n, int choice, int order);
 void sortMenu();
 void orderMenu();

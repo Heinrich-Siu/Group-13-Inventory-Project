@@ -1,6 +1,7 @@
 #include <iostream>
 //#include <string>
 #include "sort.h"
+#include "readrecord.h"
 
 void swap(commodity *xp, commodity *yp)
 {
@@ -15,74 +16,77 @@ bool compareParameter(commodity *arr, int j, int min_idx, int option, int order)
             if(order==1)
             return arr[j].productCode < arr[min_idx].productCode;
             else if(order==2)
-            return arr[j].productCode < arr[min_idx].productCode;
+            return arr[j].productCode > arr[min_idx].productCode;
             break;
 
         case 2: //name
             if(order==1)
             return arr[j].name < arr[min_idx].name;
             else if(order==2)
-            return arr[j].name < arr[min_idx].name;
+            return arr[j].name > arr[min_idx].name;
             break;
 
         case 3: //price
             if(order==1)
             return arr[j].price < arr[min_idx].price;
             else if(order==2)
-            return arr[j].price < arr[min_idx].price;
+            return arr[j].price > arr[min_idx].price;
             break;
 
         case 4: //number of stock
             if(order==1)
             return arr[j].stockNum < arr[min_idx].stockNum;
             else if(order==2)
-            return arr[j].stockNum < arr[min_idx].stockNum;
+            return arr[j].stockNum > arr[min_idx].stockNum;
             break;
 
         case 5: //size of stock
             if(order==1)
             return arr[j].stockSize < arr[min_idx].stockSize;
             else if(order==2)
-            return arr[j].stockSize < arr[min_idx].stockSize;
+            return arr[j].stockSize > arr[min_idx].stockSize;
             break;
 
         case 6: //numOfSalesRec
             if(order==1)
             return arr[j].numOfSalesRec < arr[min_idx].numOfSalesRec;
             else if(order==2)
-            return arr[j].numOfSalesRec < arr[min_idx].numOfSalesRec;
+            return arr[j].numOfSalesRec > arr[min_idx].numOfSalesRec;
             break;
 
         case 7: //numOfRestockRec
             if(order==1)
             return arr[j].numOfRestockRec < arr[min_idx].numOfRestockRec;
             else if(order==2)
-            return arr[j].numOfRestockRec < arr[min_idx].numOfRestockRec;
+            return arr[j].numOfRestockRec > arr[min_idx].numOfRestockRec;
             break;
 
         case 8: //taxAmount
             if(order==1)
             return arr[j].taxAmount < arr[min_idx].taxAmount;
             else if(order==2)
-            return arr[j].taxAmount < arr[min_idx].taxAmount;
+            return arr[j].taxAmount > arr[min_idx].taxAmount;
             break;
 
         case 9: //manufacturer
             if(order==1)
             return arr[j].manufacturer < arr[min_idx].manufacturer;
             else if(order==2)
-            return arr[j].manufacturer < arr[min_idx].manufacturer;
+            return arr[j].manufacturer > arr[min_idx].manufacturer;
             break;
+        default:
+            return 0;
     }
+    return 0;
 }
 void selectionSort(commodity *arr, int n, int choice, int order)
 {
     int i, j, min_idx, temp;
 
-    // One by one move boundary of unsorted subarray
+    //loop through
     for (i = 0; i < n-1; i++)
     {
-        // Find the minimum element in unsorted array
+        // find the smallest element in unsorted dynamic array
         min_idx = i;
         for (j = i+1; j < n; j++)
           if (compareParameter(arr, j, min_idx, choice, order))
@@ -98,24 +102,24 @@ void selectionSort(commodity *arr, int n, int choice, int order)
 
 void sortMenu()
 {
-    cout << endl;
-    cout << "Sort by: 1.  Product Code\n"
-            "         2.  Name\n"
-            "         3.  Price\n"
-            "         4.  Number of stock\n"
-            "         5.  Size of stock\n"
-            "         6.  Numeber of Sales Record\n"
-            "         7.  Numeber of Restock Record\n"
-            "         8.  Tax Amount\n"
-            "         9.  Manufacturer\n"
-            "         10. Quit\n"
-            "Choice: ";
+    std::cout << std::endl;
+    std::cout << "Sort by: 1.  Product Code\n"
+                 "         2.  Name\n"
+                 "         3.  Price\n"
+                 "         4.  Number of stock\n"
+                 "         5.  Size of stock\n"
+                 "         6.  Numeber of Sales Record\n"
+                 "         7.  Numeber of Restock Record\n"
+                 "         8.  Tax Amount\n"
+                 "         9.  Manufacturer\n"
+                 "         10. Quit\n"
+                 "Choice: ";
 }
 
 void orderMenu()
 {
-    cout << endl;
-    cout << "In: 1. Ascending Order\n"
+    std::cout << std::endl;
+    std::cout << "In: 1. Ascending Order\n"
             "    2. Descending Order\n"
             "    3. Abort and Quit\n"
             "Choice: ";
@@ -125,22 +129,22 @@ void sortingInventory(commodity *shopPtr, int numberOfCommodity)
 {
     int choice = 0, order = 0;
     sortMenu(); //print sorting menu
-    cin >> choice;
+    std::cin >> choice;
     if(choice>=1 && choice<=10) //check validity of input
     {
         if(choice==10) //quit the function
         {
-            cout << endl << "Quited Sorting funtion" << endl;
+            std::cout << std::endl << "Quited Sorting funtion" << std::endl;
         }
         else
         {
             orderMenu(); //print Ascending/Descending Order menu
-            cin >> order;
+            std::cin >> order;
             if(order>=1 && order<=3) //check validity of input
             {
                 if(order==3) //abort and quit the function
                 {
-                    cout << endl << "Aborted and quited Sorting funtion" << endl;
+                    std::cout << std::endl << "Aborted and quited Sorting funtion..." << std::endl;
                 }
                 else //excute sorting if all input is valid
                 {
@@ -149,19 +153,17 @@ void sortingInventory(commodity *shopPtr, int numberOfCommodity)
                     //rearrange the order
                     indexer(shopPtr, numberOfCommodity);
 
-                    cout << "Sorting completed" << endl;
+                    std::cout << "Sorting completed" << std::endl;
                 }
             }
             else
             {
-                cout << "Your input is not valid!";
+                std::cout << "Your input is not valid!" << std::endl;
             }
         }
     }
     else
     {
-        cout << "Your input is not valid!";
+        std::cout << "Your input is not valid!" << std::endl;
     }
-
-
 }
