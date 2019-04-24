@@ -38,6 +38,7 @@ int main()
     string fileName;
     loadAllRecord(shopPtr, numberOfCommodity, fileName);
     checkInventorySpace(shopPtr, numberOfCommodity, totalOcuppiedSpace);
+    outOfStockAlert(shopPtr, numberOfCommodity);
     printMainUI();
     int userInput;
     cin >> userInput;
