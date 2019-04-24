@@ -19,11 +19,11 @@ void printMainUI()
     "4.  Check Inventory Space\n"
     "5.  Update commodity\n"
     "6.  Stock sales/restock\n"
-    "7.  Check Sales History\n"
-    "8.  Check Restock History\n"
-    "9.  Save Record to File\n"
+    "7.  Sort working record\n"
+    "8.  Check Sales History\n"
+    "9.  Check Restock History\n"
     "10. Check inventory status\n"
-    "11. Sales prediction\n"
+    "11. Save working record to file\n"
     "12. Exit";
     cout << ui << endl;
     cout << "Please input a command: ";
@@ -41,7 +41,7 @@ int main()
     printMainUI();
     int userInput;
     cin >> userInput;
-
+    
     while(userInput != 12){ //while userInput no equal to the quit choice
         if(userInput >= 0 && userInput <=12){
             switch(userInput){
@@ -50,55 +50,55 @@ int main()
                     inventoryShower(shopPtr, numberOfCommodity);
                     cout<<"\n*********All results shown*********\nReturning to main page...\n"<<endl;
                     break;
-
+                    
                 case 2: //Search an Commodity
                     search(shopPtr, numberOfCommodity);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-
+                    
                 case 3: //Add new commodity
                     cout<<"\nPreparing to add a new commodity...\n"<<endl;
                     addCommodity(shopPtr, numberOfCommodity);
                     break;
-
+                    
                 case 4: //Check inventory Space
                     cout<<endl;
                     inventorySpacePrinter(totalOcuppiedSpace, inventorySpace);
                     break;
-
+                    
                 case 5: //Change commodity inventory record
                     changeRecord(shopPtr, numberOfCommodity);
                     break;
-
+                    
                 case 6:
                     restockOrSales(shopPtr, numberOfCommodity, inventorySpace, totalOcuppiedSpace);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-
+                    
                 case 7: //Sorting record by different parameter
                     sortingInventory(shopPtr, numberOfCommodity);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-
+                    
                 case 8:
                     cout<<"\nPreparing to show sales record...\n"<<endl;
                     historyCheck(shopPtr, numberOfCommodity, true);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-
+                    
                 case 9:
                     cout<<"\nPreparing to show restock record...\n"<<endl;
                     historyCheck(shopPtr, numberOfCommodity, false);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-
+                    
                 case 10:
-                    saveRecordToFile(shopPtr, numberOfCommodity, fileName);
+                    cout<<"\nShowing inventory status:"<<endl;
+                    checkInventoryStatus(shopPtr, numberOfCommodity);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
                 case 11:
-                    cout<<"\nShowing sales prediction:"<<endl;
-                    checkInventoryStatus(shopPtr, numberOfCommodity);
+                    saveRecordToFile(shopPtr, numberOfCommodity, fileName);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
                 default:
@@ -106,7 +106,7 @@ int main()
             }
         }
         else cout << "Your input is invalid" << endl;
-
+        
         if (userInput==12) break;
         printMainUI();
         cin >> userInput;
