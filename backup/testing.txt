@@ -1,0 +1,24 @@
+trying to upload file through git
+
+Useful command:
+
+First: to add the project to your computer
+git clone address
+
+~: Check if file(s) is/are not added or untracked
+git status
+
+~: To add/save
+git add filename
+
+~: To upload your change
+git push
+
+~: To commit
+git commit -m "describe changes"
+
+~: To get the lastest modification of the project (remember to save)
+git pull
+
+~: To change to a branch
+git checkout branchname

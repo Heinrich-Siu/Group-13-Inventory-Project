@@ -1,9 +1,0 @@
-trying to upload file through git
-
-Useful command:
-git clone address
-git status
-git add filename
-git push
-git pull
-git commit -m "describe changes"
