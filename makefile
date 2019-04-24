@@ -1,5 +1,8 @@
 CC:=g++
 
+main.out: main.o controlrecord.o inventoryStatus.o printer.o readrecord.o Save_Record_to_file.o searcher.o sort.o
+	g++ main.o controlrecord.o inventoryStatus.o printer.o readrecord.o Save_Record_to_file.o searcher.o sort.o -o main.out
+
 controlrecord.o: controlrecord.cpp controlrecord.h readrecord.h searcher.h printer.h
 	g++ -c controlrecord.cpp
 
@@ -24,5 +27,5 @@ sort.o: sort.cpp sort.h readrecord.h
 main.o: inventorysys.h readrecord.h searcher.h printer.h controlrecord.h sort.h Save_Record_to_file.h inventoryStatus.h main.cpp
 	g++ -c main.cpp
 
-main.out: main.o controlrecord.o inventoryStatus.o printer.o readrecord.o Save_Record_to_file.o searcher.o sort.o
-	g++ main.o controlrecord.o inventoryStatus.o printer.o readrecord.o Save_Record_to_file.o searcher.o sort.o -o main.out
+clean:
+	rm -f main.out main.o controlrecord.o inventoryStatus.o printer.o readrecord.o Save_Record_to_file.o searcher.o sort.o
