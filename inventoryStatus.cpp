@@ -16,6 +16,8 @@ double salesAmount(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
 void tdayStrtoInt(string date, tm &fromDate);
 void salesPrediction(commodity* shopPtr, int numberOfCommodity);
 void stockStatus(commodity *shopPtr, int numberOfCommodity);
+void reduce_commodityRecord(commodity *&shopPtr, int originSize, int target);
+void deleteOutDatedCommodity(commodity *& shopPtr, int &numberOfCommodity);
 void checkInventoryStatus(commodity*&shopPrt, int &numberOfCommodity);
 
 void stockPrinter(commodity *product){
