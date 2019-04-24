@@ -16,9 +16,9 @@ void grow_commodityRecord(commodity *&shopPtr, int originSize, int grownSize);
 
 void loadAllRecord(commodity * &shopPtr, int &numberOfCommodity, string &shopRecFileName);
 
-void indexer(commodity* shopPtr, int numberOfCommodity);
+void indexer(commodity*& shopPtr, int numberOfCommodity);
 
-void indexer(commodity* shopPtr, int numberOfCommodity){
+void indexer(commodity*& shopPtr, int numberOfCommodity){
     for (int i=0; i<numberOfCommodity; i++) {
         shopPtr[i].index=i;
     }
