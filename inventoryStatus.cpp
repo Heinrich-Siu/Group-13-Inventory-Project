@@ -8,31 +8,28 @@
 #include "controlrecord.h"
 #include "searcher.h"
 #include "inventoryStatus.h"
-#include "readrecord.h"
 using namespace std;
 
-void stockPrinter(commodity *product);
-double salesAmount(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
+void stockPrinter(commodity *product, double predictedSales);
+void salesAverage(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
 void tdayStrtoInt(string date, tm &fromDate);
-void salesPrediction(commodity* shopPtr, int numberOfCommodity);
-void stockStatus(commodity *shopPtr, int numberOfCommodity);
-void reduce_commodityRecord(commodity *&shopPtr, int originSize, int target);
-void deleteOutDatedCommodity(commodity *& shopPtr, int &numberOfCommodity);
-void checkInventoryStatus(commodity*&shopPrt, int &numberOfCommodity);
+void checkInventoryStatus(commodity* shopPrt, int numberOfCommodity);
 
-void stockPrinter(commodity *product){
+void stockPrinter(commodity *product, double predictedSales){
     cout.width(10); cout<<left<<product->index;
     cout.width(15); cout<<left<<product->productCode;
     cout.width(20); cout<<left<<product->name;
     cout.width(20); cout<<left<<product->stockNum;
+    cout.width(20); cout<<left<<predictedSales;
 }
 
-double salesAmount(commodity *shopPtr, int index, tm fromDate, int numOfMonth)
+void salesAverage(commodity *shopPtr, int index, tm fromDate, int numOfMonth)
 {
+    string duration;
+    duration = to_string(numOfMonth)+"month";
     tm *desireMonth = 0;
     salesRecord *temp_record = 0;
-    int temp_record_num = 0;
-    double totalSales = 0;
+    int temp_record_num = 0, totalSales = 0;
     returnPastNMonth(fromDate, desireMonth, numOfMonth);
     
     for(int j=0; j<numOfMonth; j++)
@@ -50,10 +47,12 @@ double salesAmount(commodity *shopPtr, int index, tm fromDate, int numOfMonth)
         totalSales += temp_record[i].quantity;
     }
     
+    double average = (double)totalSales/(double)numOfMonth;
+    stockPrinter(shopPtr+index, average);
+    cout<<endl;
+    
     delete [] temp_record;
     delete [] desireMonth;
-    
-    return totalSales;
 }
 
 void tdayStrtoInt(string date, tm &fromDate)
@@ -75,7 +74,7 @@ void tdayStrtoInt(string date, tm &fromDate)
     }
 }
 
-void salesPrediction(commodity* shopPtr, int numberOfCommodity){
+void checkInventoryStatus(commodity* shopPrt, int numberOfCommodity){
     int month;
     cout<<"Choose the average of sales in the last x months: ";
     cin>>month;
@@ -92,141 +91,10 @@ void salesPrediction(commodity* shopPtr, int numberOfCommodity){
     cout.width(15); cout<<left<<"Product Code";
     cout.width(20); cout<<left<<"Name";
     cout.width(20); cout<<left<<"Current stock";
-    cout.width(20); cout<<left<<"Predicted sales in "<<month<<" month";
-    cout<<endl;
-    double average;
-    for (int i=0; i<numberOfCommodity; i++) {
-        average = salesAmount(shopPtr, i, fromDate, numberOfCommodity)/month;
-        stockPrinter(&shopPtr[i]);
-        cout.width(20); cout<<left<<average;
-        cout<<endl;
-    }
-    cout<<endl;
-}
-
-void stockStatus(commodity *shopPtr, int numberOfCommodity){
-    //Out of stock first
-    
-    tm fromDate;
-    fromDate.tm_year = 0;
-    fromDate.tm_mon = 0;
-    
-    string date;
-    cout << "\nEnter current date in (YYYY-MM, e.g. 2019-12) format: ";
-    cin >> date;
-    tdayStrtoInt(date, fromDate);
-    
-    int month;
-    cout<<"Choose the number of month(s) for prediction: ";
-    cin>>month;
-    
-    cout<<"\nOut of stock warning: \n";
-    cout.width(10); cout<<left<<"Index";
-    cout.width(15); cout<<left<<"Product Code";
-    cout.width(20); cout<<left<<"Name";
+    cout.width(20); cout<<left<<"Predicted sales";
     cout<<endl;
     for (int i=0; i<numberOfCommodity; i++) {
-        if (shopPtr[i].stockNum==0) {
-            stockPrinter(&shopPtr[i]);
-            cout<<endl;
-        }
+        salesAverage(shopPrt, i, fromDate, month);
     }
-
-    cout<<"\nPredicted out of stock warning: \n";
-    cout.width(10); cout<<left<<"Index";
-    cout.width(15); cout<<left<<"Product Code";
-    cout.width(20); cout<<left<<"Name";
-    cout.width(20); cout<<left<<"Current stock";
-    string predict ="Predicted sales in "+to_string(month)+" month";
-    cout.width(30); cout<<left<<predict;
-    cout.width(20); cout<<left<<"Difference";
     cout<<endl;
-    
-    double average;
-    for (int j=0; j<numberOfCommodity; j++) {
-        average = salesAmount(shopPtr, j, fromDate, numberOfCommodity)/month;
-        if ((shopPtr[j]).stockNum<average){
-            stockPrinter(&shopPtr[j]);
-            cout.width(30); cout<<left<<average;
-            cout.width(20); cout<<left<<shopPtr[j].stockNum-average;
-            cout<<endl;
-        }
-    }
-}
-
-
-void reduce_commodityRecord(commodity *&shopPtr, int originSize, int target)
-{
-    commodity *grownRecordPtr = new commodity[originSize-1];
-    int j=0;
-    for(int i=0; i<originSize; i++){ //transfer data from the old array to the new one
-        if (i!=target) {
-            grownRecordPtr[j] = shopPtr[i];
-            j++;
-        }
-    }
-    delete [] shopPtr; //free original Dynamic array in shopPtr
-    
-    shopPtr = grownRecordPtr; //point shopPtr pointer to the new grown Dynamic array
-}
-
-
-void deleteOutDatedCommodity(commodity *& shopPtr, int &numberOfCommodity){
-    cout<<"\nSearching for outdated commodity\n";
-    cout<<"Delete commodity without sales in the last n months"<<endl;
-    cout<<"Enter value of n: ";
-    int month;
-    cin>>month;
-    tm fromDate;
-    fromDate.tm_year = 0;
-    fromDate.tm_mon = 0;
-
-    string date;
-    cout << "From when (YYYY-MM, e.g. 2019-12) to "<<month<<" months before: ";
-    cin >> date;
-    tdayStrtoInt(date, fromDate);
-
-    
-    for (int i=0; i<numberOfCommodity; i++) {
-        if (salesAmount(shopPtr, i, fromDate, month)==0){
-            //prompt if delete
-            cout<<"Are you sure to delete "<<shopPtr[i].name<<"?"<<endl;
-            cout<<"Enter Yes or No by (Y/N): ";
-            string yesNo;
-            cin>>yesNo;
-            if (yesNo=="Y") {
-                reduce_commodityRecord(shopPtr, numberOfCommodity, i);
-                numberOfCommodity-=1;
-                i--;
-            }
-        }
-    }
-}
-
-void checkInventoryStatus(commodity*&shopPtr, int &numberOfCommodity){
-    int choice=0;
-    while (choice!=4) {
-        cout<<"1. Show stock status\n"
-        "2. Show sales prediciton\n"
-        "3. Delete obsoleted commodity\n"
-        "4. Quit\n";
-        cout<<"Enter your choice here: ";
-        cin>>choice;
-        if (choice==1){
-            cout<<"\nShowing stock status:\n";
-            stockStatus(shopPtr, numberOfCommodity);
-            cout<<endl;
-        }
-        else if (choice==2){
-            salesPrediction(shopPtr, numberOfCommodity);
-        }
-        else if (choice==3){
-            deleteOutDatedCommodity(shopPtr, numberOfCommodity);
-            indexer(shopPtr, numberOfCommodity);
-            cout<<endl;
-        }
-        else{
-            break;
-        }
-    }
 }
