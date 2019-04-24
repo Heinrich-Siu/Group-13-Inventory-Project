@@ -23,7 +23,8 @@ void printMainUI()
     "8.  Check Restock History\n"
     "9.  Save Record to File\n"
     "10. Check inventory status\n"
-    "11. Exit";
+    "11. Sales prediction\n"
+    "12. Exit";
     cout << ui << endl;
     cout << "Please input a command: ";
 }
@@ -42,7 +43,7 @@ int main()
     cin >> userInput;
 
     while(userInput != 12){ //while userInput no equal to the quit choice
-        if(userInput >= 0 && userInput <=11){
+        if(userInput >= 0 && userInput <=12){
             switch(userInput){
                 case 1: //Show all inventory record
                     cout<<"\n*********Showing all inventory record*********\n"<<endl;
