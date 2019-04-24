@@ -15,10 +15,12 @@ void stockPrinter(commodity *product);
 double salesAmount(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
 void tdayStrtoInt(string date, tm &fromDate);
 void salesPrediction(commodity* shopPtr, int numberOfCommodity);
+void outOfStockAlert(commodity *shopPtr, int numberOfCommodity);
 void stockStatus(commodity *shopPtr, int numberOfCommodity);
 void reduce_commodityRecord(commodity *&shopPtr, int originSize, int target);
 void deleteOutDatedCommodity(commodity *& shopPtr, int &numberOfCommodity);
 void checkInventoryStatus(commodity*&shopPrt, int &numberOfCommodity);
+
 
 void stockPrinter(commodity *product){
     cout.width(10); cout<<left<<product->index;
@@ -104,6 +106,25 @@ void salesPrediction(commodity* shopPtr, int numberOfCommodity){
     cout<<endl;
 }
 
+void outOfStockAlert(commodity *shopPtr, int numberOfCommodity){
+    bool hasPrinted = false;
+    for (int i=0; i<numberOfCommodity; i++) {
+        if (shopPtr[i].stockNum==0) {
+            if (!hasPrinted) {
+                cout<<"\nOut of stock warning: \n";
+                cout.width(10); cout<<left<<"Index";
+                cout.width(15); cout<<left<<"Product Code";
+                cout.width(20); cout<<left<<"Name";
+                cout<<"Number of stock";
+                cout<<endl;
+                hasPrinted=true;
+            }
+            stockPrinter(&shopPtr[i]);
+            cout<<endl<<endl;
+        }
+    }
+}
+
 void stockStatus(commodity *shopPtr, int numberOfCommodity){
     //Out of stock first
     
@@ -120,17 +141,7 @@ void stockStatus(commodity *shopPtr, int numberOfCommodity){
     cout<<"Choose the number of month(s) for prediction: ";
     cin>>month;
     
-    cout<<"\nOut of stock warning: \n";
-    cout.width(10); cout<<left<<"Index";
-    cout.width(15); cout<<left<<"Product Code";
-    cout.width(20); cout<<left<<"Name";
-    cout<<endl;
-    for (int i=0; i<numberOfCommodity; i++) {
-        if (shopPtr[i].stockNum==0) {
-            stockPrinter(&shopPtr[i]);
-            cout<<endl;
-        }
-    }
+    outOfStockAlert(shopPtr, numberOfCommodity);
 
     cout<<"\nPredicted out of stock warning: \n";
     cout.width(10); cout<<left<<"Index";
