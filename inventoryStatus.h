@@ -1,7 +1,6 @@
 #ifndef inventoryStatus_h
 #define inventoryStatus_h
 
-#include "inventorysys.h"
 #include <stdio.h>
 void stockPrinter(commodity *product);
 double salesAmount(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
