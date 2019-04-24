@@ -1,6 +1,6 @@
 #ifndef inventoryStatus_h
 #define inventoryStatus_h
-
+#include "inventorysys.h"
 #include <stdio.h>
 void stockPrinter(commodity *product, double predictedSales);
 void salesAverage(commodity *shopPtr, int index, tm fromDate, int numOfMonth);
