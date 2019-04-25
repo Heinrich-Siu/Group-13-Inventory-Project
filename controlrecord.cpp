@@ -205,7 +205,7 @@ void addRestock(commodity* shopPtr, int index, int inventorySpace, int &totalOcu
     string date, temp;
     cout << "Delivery time (YYYY-MM-DD): ";
     cin >> date;
-    int columns = 0, tmep_year, tmep_mon, temp_mday, temp_quantity;
+    int columns = 0, tmep_year=2019, tmep_mon=01, temp_mday=01, temp_quantity=0;
     istringstream dateStr(date); //tramsform the string to the restock structure
     while(getline(dateStr, temp, '-'))
     {
