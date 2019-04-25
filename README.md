@@ -104,14 +104,79 @@ content
 
 **Operations:<br/>**
 
-1.  Show all inventory record<br/>
-2.  Search an Commodity<br/>
-3.  Add new commodity<br/>
-4.  Check Inventory Space<br/>
-5.  Update commodity<br/>
-6.  Stock sales/restock<br/>
-7.  Sort working record by different parameter(eg. name, price, etc.)<br/>
-8.  Check Sales History (Whole history, customize number of month) and return total in the period<br/>
-9.  Check Restock History (Whole history, customize number of month) and return total in the period<br/>
-10. Check inventory status (stock status, sales prediction, delete outdated commodity)<br/>
-11. Save working record to file  <br/>
+1.  Show all inventory record  
+2.  Search an Commodity  
+3.  Add new commodity  
+4.  Check Inventory Space    
+5.  Update commodity  
+6.  Stock sales/restock 
+7.  Sort working record by different parameter(eg. name, price, etc.)   
+8.  Check Sales History (Whole history, customize number of month) and return total in the period   
+9.  Check Restock History (Whole history, customize number of month) and return total in the period 
+10. Check inventory status (stock status, sales prediction, delete outdated commodity)  
+11. Save working record to file 
+
+
+
+
+
+# User guide:
+
+<details>
+  <summary>Basic operations</summary>
+        
+## Initializing the programme
+Everytime the programme is executed, you will be asked to enter the filename of the record:
+```
+Please input the file name of the record: 
+```
+If this is the first time this programme is used, enter a file name to create a empty file to work with.    
+You can choose to save to that file when necessary by choosing option _11. Save working record to file_.      
+Alternativly, if you already have a working file, just simply enter the file name to start the programme.  
+    
+If done correctly, you should see
+```
+Loading record....
+Loading CSV....
+All record loaded
+```
+    
+Note: The programme does not modify your file unless you choose to do so by choosing option _11. Save working record to file_ and choose to overwrite the file. 
+
+## Understanding the operation basics of the main menu
+After records are succesfully loaded, you should see the following main menu    
+
+```
+*********XXX Company Commodity Inventory system*********
+1.  Show all inventory record
+2.  Search an Commodity
+3.  Add new commodity
+4.  Check Inventory Space
+5.  Update commodity
+6.  Stock sales/restock
+7.  Sort working record
+8.  Check Sales History
+9.  Check Restock History
+10. Check inventory status
+11. Save working record to file
+12. Exit
+Please input a command: 
+```
+Choose the operation you want by entering a number that corresponse to the description of the menu above    
+Then press `enter` to execute that function
+For example you want to `Show all inventory record`, enter `1` and press the `enter` key  
+Details of how to use the functions in the programme is included below  
+    
+## Ending the programme
+After you are done with the programme, you can save the file first then exit or simply exit without saving  
+To terminate the programme, press `12` and `enter` to exit the programme
+YOu will be asked
+```
+Are you sure to end the Programme?
+Press "Y" to terminate the programme, press "N" to continue: N
+```
+Press `Y` to end the programme and press `N` to continue using.
+
+If ended correctly, you should see
+`Program end Sucessfully. Thanks for using our programme :)`
+</details>
