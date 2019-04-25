@@ -9,6 +9,48 @@ The company need a inventory system to manage the inventory in different retail 
 
 **Assumption**
 1. Maximum storage size is 5000 and measure in quantity.
+--------------------------------------------------------
+
+**Inventory record:<br/>**
+-----------------------------------------
+Any file in the root directory with the following structure:
+'(Product code),(Product name),(Price),(Number of stock),(Stock size),((Number of sales record);(YYYY-MM-DD-Quantity)*n),((Number of restock record);(YYYY-MM-DD-Quantity)*n),(Tax amount),(manufacturer)'
+
+**Usage:<br/>**
+----------------
+### `makefile`
+```sh
+$ make
+```
+Recompiling the program
+
+### `main.out`
+```sh
+$ ./main.out
+```
+To execute the program.
+
+**Run the code on test case:<br/>**
+-----------------------------------
+Testcase 1 
+### `input1`
+```
+content
+```
+
+
+Testcase 2
+### `input2`
+```
+content
+```
+
+Testcase 3
+### `input3`
+```
+content
+```
+
 
 **Function and feature**
 1) Load commodity inventory record of different shop from files; 
@@ -41,11 +83,14 @@ The company need a inventory system to manage the inventory in different retail 
 
 **Operations:<br/>**
 
-1. Add sales and restock record<br/>
-2. Add Commodity type<br/>
-3. Check stock condition<br/>
-4. Stock commodity<br/>
-5. Change stock status<br/>
-6. Sorting inventory record by different parameter(eg. name, price, etc.)<br/>
-7. Search sales and restock record(Whole history, customize number of month) and return total sales/restock in the period
-
+1.  Show all inventory record<br/>
+2.  Search an Commodity<br/>
+3.  Add new commodity<br/>
+4.  Check Inventory Space<br/>
+5.  Update commodity<br/>
+6.  Stock sales/restock<br/>
+7.  Sort working record by different parameter(eg. name, price, etc.)<br/>
+8.  Check Sales History (Whole history, customize number of month) and return total in the period<br/>
+9.  Check Restock History (Whole history, customize number of month) and return total in the period<br/>
+10. Check inventory status (stock status, sales prediction, delete outdated commodity)<br/>
+11. Save working record to file  <br/>
