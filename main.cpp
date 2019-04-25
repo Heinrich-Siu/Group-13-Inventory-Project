@@ -43,13 +43,13 @@ int main()
     int userInput;
     cin >> userInput;
     
-    while(userInput != 12){ //while userInput no equal to the quit choice
+    while(true){ //while userInput no equal to the quit choice
         if(userInput >= 0 && userInput <=12){
             switch(userInput){
                 case 1: //Show all inventory record
                     cout<<"\n*********Showing all inventory record*********\n"<<endl;
                     inventoryShower(shopPtr, numberOfCommodity);
-                    cout<<"\n*********All results shown*********\nReturning to main page...\n"<<endl;
+                    cout<<"\n*********All results shown*********\n\nReturning to main page...\n"<<endl;
                     break;
                     
                 case 2: //Search an Commodity
@@ -108,7 +108,16 @@ int main()
         }
         else cout << "Your input is invalid" << endl;
         
-        if (userInput==12) break;
+        if (userInput==12) {
+            cout<<"Are you sure to end the Programme?"<<endl;
+            cout<<"Press \"Y\" to terminate the programme, press \"N\" to continue: ";
+            string end;
+            cin>>end;
+            if (end=="Y") {
+                break;
+            }
+            cout<<endl;
+        }
         printMainUI();
         cin >> userInput;
     }
