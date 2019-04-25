@@ -13,8 +13,29 @@ The company need a inventory system to manage the inventory in different retail 
 
 **Inventory record:<br/>**
 -----------------------------------------
+
+|information              |Data type|
+|:---                     |  :---:  |
+|Product code             |Int      |
+|Product name             |String   |
+|Price                    |Double   |
+|Number of stock          |Double   |
+|Stock size               |Int      |
+|Number of sales record   |Int      |
+|Number of restock record |Int      |
+|Quantity                 |Int      |
+|Tax amount               |Double   |
+|manufacturer             |String   |
+
+
 Any file in the root directory with the following structure:  
-```(Product code),(Product name),(Price),(Number of stock),(Stock size),((Number of sales record);(YYYY-MM-DD-Quantity)*n),((Number of restock record);(YYYY-MM-DD-Quantity)*n),(Tax amount),(manufacturer)```
+```(Product code),(Product name),(Price),(Number of stock),(Stock size),((Number of sales record);(YYYY-MM-DD-Quantity)*n),((Number of restock record);(YYYY-MM-DD-Quantity)*n),(Tax amount),(Manufacturer)```  
+eg.  
+```333,Apple,10,70,5,2;2019-4-6-3;2019-4-7-2,3;2019-3-14-5;2019-3-16-7;2019-3-27-10,2.5,Fuji```  
+
+**if the commodity do not have sales/restock record:**  
+```964,Orange,20,0,5,0;,0;,3.5,China```  
+leave ```(YYYY-MM-DD-Quantity)``` this part empty
 
 **Usage:<br/>**
 ----------------
