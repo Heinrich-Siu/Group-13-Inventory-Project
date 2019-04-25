@@ -166,6 +166,54 @@ Choose the operation you want by entering a number that corresponse to the descr
 Then press `enter` to execute that function
 For example you want to `Show all inventory record`, enter `1` and press the `enter` key  
 Details of how to use the functions in the programme is included below  
+
+  <details>
+    <summary>Function</summary>
+    <details>
+    <summary>1.  Show all inventory record</summary>  
+      
+    </details>
+    <details>
+    <summary>2.  Search an Commodity</summary>  
+      
+    </details>
+    <details>
+    <summary>3.  Add new commodity</summary>  
+      
+    </details>
+    <details>
+    <summary>4.  Check Inventory Space</summary>    
+      
+    </details>
+    <details>
+    <summary>5.  Update commodity</summary>  
+      
+    </details>
+    <details>
+    <summary>6.  Stock sales/restock</summary> 
+      
+    </details>
+    <details>
+    <summary>7.  Sort working record by different parameter(eg. name, price, etc.)</summary>   
+      
+    </details>
+    <details>
+    <summary>8.  Check Sales History (Whole history, customize number of month) and return total in the period</summary>   
+      
+    </details>
+    <details>
+    <summary>9.  Check Restock History (Whole history, customize number of month) and return total in the period</summary> 
+      
+    </details>
+    <details>
+    <summary>10. Check inventory status (stock status, sales prediction, delete outdated commodity)</summary>  
+      
+    </details>
+    <details>
+    <summary>11. Save working record to file</summary> 
+      
+    </details>
+  </details>
     
 ## Ending the programme
 After you are done with the programme, you can save the file first then exit or simply exit without saving  
