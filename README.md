@@ -13,8 +13,8 @@ The company need a inventory system to manage the inventory in different retail 
 
 **Inventory record:<br/>**
 -----------------------------------------
-Any file in the root directory with the following structure:
-'(Product code),(Product name),(Price),(Number of stock),(Stock size),((Number of sales record);(YYYY-MM-DD-Quantity)*n),((Number of restock record);(YYYY-MM-DD-Quantity)*n),(Tax amount),(manufacturer)'
+Any file in the root directory with the following structure:  
+```(Product code),(Product name),(Price),(Number of stock),(Stock size),((Number of sales record);(YYYY-MM-DD-Quantity)*n),((Number of restock record);(YYYY-MM-DD-Quantity)*n),(Tax amount),(manufacturer)```
 
 **Usage:<br/>**
 ----------------
