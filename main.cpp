@@ -49,7 +49,7 @@ int main()
                 case 1: //Show all inventory record
                     cout<<"\n*********Showing all inventory record*********\n"<<endl;
                     inventoryShower(shopPtr, numberOfCommodity);
-                    cout<<"\n*********All results shown*********\nReturning to main page...\n"<<endl;
+                    cout<<"\n*********All results shown*********\n\nReturning to main page...\n"<<endl;
                     break;
                     
                 case 2: //Search an Commodity
