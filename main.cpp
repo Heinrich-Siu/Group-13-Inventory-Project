@@ -109,17 +109,18 @@ int main()
         else cout << "Your input is invalid" << endl;
         
         if (userInput==12) {
-            cout<<"Are you sure to end the Programme?"<<endl;
+            cout<<"\nAre you sure to end the Programme?"<<endl;
             cout<<"Press \"Y\" to terminate the programme, press \"N\" to continue: ";
             string end;
             cin>>end;
             if (end=="Y") {
                 break;
             }
-            cout<<endl;
+            cout<<"\nContinuing programme...\n"<<endl;
         }
         printMainUI();
         cin >> userInput;
     }
     cout << "Program end Sucessfully. Thanks for using our programme :) " << endl; //inform the user the program end successfully
 }
+
