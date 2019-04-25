@@ -94,7 +94,8 @@ void salesPrediction(commodity* shopPtr, int numberOfCommodity){
     cout.width(15); cout<<left<<"Product Code";
     cout.width(20); cout<<left<<"Name";
     cout.width(20); cout<<left<<"Current stock";
-    cout.width(20); cout<<left<<"Predicted sales in "<<month<<" month";
+    string predict ="Predicted sales in "+to_string(month)+" month";
+    cout<<predict;
     cout<<endl;
     double average;
     for (int i=0; i<numberOfCommodity; i++) {
@@ -143,25 +144,32 @@ void stockStatus(commodity *shopPtr, int numberOfCommodity){
     
     outOfStockAlert(shopPtr, numberOfCommodity);
 
+    bool hasPrinted = false;
     cout<<"\nPredicted out of stock warning: \n";
-    cout.width(10); cout<<left<<"Index";
-    cout.width(15); cout<<left<<"Product Code";
-    cout.width(20); cout<<left<<"Name";
-    cout.width(20); cout<<left<<"Current stock";
-    string predict ="Predicted sales in "+to_string(month)+" month";
-    cout.width(30); cout<<left<<predict;
-    cout.width(20); cout<<left<<"Difference";
-    cout<<endl;
     
     double average;
     for (int j=0; j<numberOfCommodity; j++) {
         average = salesAmount(shopPtr, j, fromDate, numberOfCommodity)/month;
         if ((shopPtr[j]).stockNum<average){
+            if (!hasPrinted) {
+                cout.width(10); cout<<left<<"Index";
+                cout.width(15); cout<<left<<"Product Code";
+                cout.width(20); cout<<left<<"Name";
+                cout.width(20); cout<<left<<"Current stock";
+                string predict ="Predicted sales in "+to_string(month)+" month";
+                cout.width(30); cout<<left<<predict;
+                cout.width(20); cout<<left<<"Difference";
+                cout<<endl;
+                hasPrinted=true;
+            }
             stockPrinter(&shopPtr[j]);
             cout.width(30); cout<<left<<average;
             cout.width(20); cout<<left<<shopPtr[j].stockNum-average;
             cout<<endl;
         }
+    }
+    if (!hasPrinted) {
+        cout<<"\nNo out of stock warning!\n";
     }
 }
 
@@ -196,6 +204,9 @@ void deleteOutDatedCommodity(commodity *& shopPtr, int &numberOfCommodity){
     cout << "From when (YYYY-MM, e.g. 2019-12) to "<<month<<" months before: ";
     cin >> date;
     tdayStrtoInt(date, fromDate);
+    
+    bool hasChanged = false;
+    bool nothing = true;
 
     
     for (int i=0; i<numberOfCommodity; i++) {
@@ -209,9 +220,15 @@ void deleteOutDatedCommodity(commodity *& shopPtr, int &numberOfCommodity){
                 reduce_commodityRecord(shopPtr, numberOfCommodity, i);
                 numberOfCommodity-=1;
                 i--;
+                hasChanged=true;
+                cout<<"Selected commodity deleted!\n";
             }
+            nothing=false;
         }
     }
+    if (nothing) cout<<"\nNo commodity to be deleted!";
+    else if (hasChanged) cout<<"\nOutdated commodity deleted";
+    else cout<<"\nNo commodity deleted";
 }
 
 void checkInventoryStatus(commodity*&shopPtr, int &numberOfCommodity){
@@ -234,7 +251,7 @@ void checkInventoryStatus(commodity*&shopPtr, int &numberOfCommodity){
         else if (choice==3){
             deleteOutDatedCommodity(shopPtr, numberOfCommodity);
             indexer(shopPtr, numberOfCommodity);
-            cout<<endl;
+            cout<<endl<<endl;
         }
         else{
             break;
