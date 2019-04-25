@@ -538,4 +538,153 @@ If ended correctly, you should see
   Returning to main page...
   ```
   </details>
+  </details>
+  <details>
+  <summary>3. Add new commodity</summary>
+  
+  It is a function for you to add new type of commodity to the inventory. Before adding, please prepare information of `name`, `product code`, `price`, `size of stock`, `tax amount`, and `manufacturer` of the product.  
+  To call this function, enter `1` in the main menu and press `enter`  
+  You will then see the following prompt
+  ### 1.Name
+  Asking you to enter the `commodity name` and press `Enter`.
+  ```
+  Preparing to add a new commodity...
+
+  Please enter the commodity name: Apple
+  ```
+  
+  ### 2.Product code
+  Enter`533`for product code.
+  ```
+  Please enter the product code: 533
+  ```
+  
+  ### 3.Price
+  Enter`3` for price.
+  ```
+  Please enter the price: 3
+  ```
+  
+  ### 4.Size of stock
+  Enter`2`for size of stock.
+  ```
+  Please enter the size of stock: 2
+  ```
+  
+  ### 5.Tax amount
+  Enter`1`for tax amount.
+  ```
+  Please enter the tax amount: 1
+  ```
+  
+  ### 6.manufacturer
+  Enter`Fuji`for manufacturer.
+  ```
+  Please enter the name of the manufacturer: Fuji
+  ```
+  The following prompt will be shown when the commodity has all the required data.
+  ```
+  Commodity added! Returning to main screen...
+  ```
+  </details>
+  
+  <details>
+  <summary>4.  Check Inventory Space</summary>
+  This function allow you to check the occupied space of the inventory. 
+  To call this function, enter `4` in the main menu and press `enter`  
+  You will then see the following prompt
+  
+  ```
+  Calculating...
+  Inventory Space: 2692/50000
+  ```
+  `2692` is the occupied space.  
+  `50000` is the total space of the inventory
+  </details>
+  
+  <details>
+  <summary>5.  Update commodity</summary>
+  
+  You can use this function to update `name`, `product code`, `price`, `size of stock`, `tax amount`, and `manufacturer` of the product by `product code`.  
+  To call this function, enter `5` in the main menu and press `enter`  
+  You will then see the following prompt
+  ```
+  Preparing to modify commodity...
+  Do you know the product code of the commodity that you want to update?(Y/N) 
+  ```
+  If you do not know the product code, you will have to search it first by enter `N` and proceed to search function(refer operation to 2. Search an Commodity).  
+    
+  If you know the product code, enter `Y`, and you will see the following prompt  
+  
+  ```
+  ***************************************************************************************
+  Please enter the productCode of the commodity that you want to update:
+  ```
+  Enter the`product code`, for example `333`.
+  You will see information of it for your reference. From the menu, enter your choice after`Enter your choice here:`.
+  
+  ```
+  ***************************************************************************************
+  Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
+  0         333            Apple A             10        40             5              2                      3                         Fuji           $2.5
+  **************************************************
+  *~~~What record do you want to change/update?    *
+  *1. Product Code                                 *
+  *2. Product Name                                 *
+  *3. Price                                        *
+  *4. Size of stock                                *
+  *5. Tax amount                                   *
+  *6. Name of manufacturer                         *
+  *7. Quit                                         *
+  **************************************************
+  Enter your choice here:
+  ```
+  For example, enter`1`to update the product code.  
+  it will display the current product code, and prompt you to enter the new one.
+  ```
+  Change from 333 to:
+  ```
+  if you enter`456`, you will see the following prompt.
+  ```
+  The product code is now: 456
+  Commodity updated
+  ```
+  You can continue updating the commodity's imformation by enter number between `1-6` or quit the function by`7`.  
+  If you enter`7`, you will see the following prompt meaning you have successfully quit the function.
+  ```
+  Exiting commodity update...
+  ```
+  </details>
+  
+  <details>
+  <summary>6.  Stock sales/restock (empty)</summary>
+  
+  </details>
+  
+  <details>
+  <summary>7.  Sort working record (empty)</summary>
+  
+  </details>
+  
+  <details>
+  <summary>8.  Check Sales History (empty)</summary>
+  
+  </details>
+  
+  <details>
+  <summary>9.  Check Restock History (empty)</summary>
+  
+  </details>
+  
+  <details>
+  <summary>10. Check inventory status (empty)</summary>
+  
+  </details>
+  
+  <details>
+  <summary>11. Save working record to file (empty)</summary>
+  
+  </details>
+
 </details>
+
