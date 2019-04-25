@@ -672,10 +672,81 @@ function 6 description
 --> 
  
   
-  <details>
-  <summary>6.  Stock sales/restock (empty)</summary>
+<details>
+<summary>6.  Stock sales/restock </summary>
+This function allows you to make sales or restock record to change the number of stock      
+You will be prompted by the following       
+    
+```  
+*****************************************
+You are updating sales and restock record
+*****************************************
+Do you know the product code of the commodity that you want to update?(Y/N)
+```
+Input `Y` and press `enter` if you **do** know the product code   
+Input `N` and press `enter` if you **do not** know the product code   
   
-  </details>
+1. If you press `N`, you will see the prompt below    
+```
+~~Please first search the commodity and change the record by product code~~
+
+*********Commodity searching*********
+
+Find by choosing one of the constrain below: 
+1. Index            2.Product Code           3.Name
+4.Price             5.Stock Number           6.Stock Size
+7.Number Of Sales Record                     8.Number Of Restock Record
+9.Manufacturer      10.Tax Amount            11:End search
+Type in the constrain number: 
+```
+This is the search function as descibed in `2.  Search an Commodity`  
+Search the commodity under interest and input `11` to end search 
+
+  
+If you pressed `Y` or finished searching, you will then be asked to enter the `product code` in question  
+`Please enter the product code of the commodity that you want to add record to: `    
+Enter the `product code` and press `enter`  
+    
+You will then have three choice as below
+```
+Choice 1.Adding Sales record
+       2.Adding Restock record
+       3.Quit
+Choice: 
+```
+Enter the number corresponding the function you want to use and press `enter`   
+        
+       
+1. Adding Sales record
+You will be asked to enter the date of the sales in `YYYY-MM-DD` format and the quantity of the sales made      
+Below will be an example of the operation, `Record added!` indicate the record is succesfuly added     
+```
+You are adding record of sales of Redcurrant (231)
+Sales time (YYYY-MM-DD): 2019-11-11
+Quantity: 1
+Record added!
+```
+If the sales is lager than the number of stock, an error message would show up      
+`Error! Your action will result in negatve stock number(From <original number> -> <expected final number> )`    
+    
+2. Adding Restock record
+You will be asked to enter the date of the restock in `YYYY-MM-DD` format and the quantity of the restock made 
+Below will be an example of the operation, `Record added!` indicate the record is succesfuly added     
+```
+You are adding record of restock of Redcurrant (231)
+Delivery time (YYYY-MM-DD): 2019-12-12
+Quantity: 100
+Record added!
+```
+If the restock quantity is lager than the available inventory space, an error message would show up    
+Action will result in exceeding available inventory space <value that is exceeded>/<total space>        
+        
+3. Quit
+This will transfer you back to the main menu
+  
+  
+  
+</details>
   
    
 <!---
@@ -683,10 +754,42 @@ function 7 description
 --> 
  
   
-  <details>
-  <summary>7.  Sort working record (empty)</summary>
+<details>
+<summary>7.  Sort working record </summary>
+Sort record is a function that changes the order of how the data is stored in the working programme   
+You should see the prompt below as you enter `7` in the main menu   
   
-  </details>
+```
+Sort by: 1.  Product Code
+         2.  Name
+         3.  Price
+         4.  Number of stock
+         5.  Size of stock
+         6.  Numeber of Sales Record
+         7.  Numeber of Restock Record
+         8.  Tax Amount
+         9.  Manufacturer
+         10. Quit
+```
+
+There will be two types of sort, one is by `value` and one is by `lexicographical order`    
+Option `1`,`3`,`4`,`5`,`6`,`7` and `8` will be sort by their `value`    
+Option `2` and `9` will be sorted by thier `lexicographical order`
+* [Lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order)   
+    
+You should see when for all types of sorting
+```
+In: 1. Ascending Order
+    2. Descending Order
+    3. Abort and Quit
+```
+The programme will show to indicate the wroking commodity list is sorted
+`Sorting completed`     
+`Returning to main page...`  
+    
+Note: You can see the result by choosing to `1.  Show all inventory record` in the main menu
+
+</details>
   
    
 <!---
@@ -694,9 +797,79 @@ function 8 description
 --> 
  
   <details>
-  <summary>8.  Check Sales History (empty)</summary>
+  <summary>8.  Check Sales History </summary>
   
+  This function is used to check the sales record of a commodity    
+  You will need to enter the `Product code` to indicate which commodity is under interest   
+  You should see such prompt when this function is called   
+```
+Preparing to show sales record...
+
+Do you know the product code of the commodity that you want to check?(Y/N) 
+```
+Input `Y` and press `enter` if you **do** know the product code   
+Input `N` and press `enter` if you **do not** know the product code   
+  
+1. If you press `N`, you will see the prompt below    
+```
+~~Please first search the commodity and check the record by productCode~~
+
+*********Commodity searching*********
+
+Find by choosing one of the constrain below: 
+1. Index            2.Product Code           3.Name
+4.Price             5.Stock Number           6.Stock Size
+7.Number Of Sales Record                     8.Number Of Restock Record
+9.Manufacturer      10.Tax Amount            11:End search
+Type in the constrain number: 
+```
+This is the search function as descibed in `2.  Search an Commodity`  
+Search the commodity under interest and input `11` to end search 
+
+  
+If you pressed `Y` or finished searching, you will then be asked to enter the `product code` in question  
+`Please enter the product code of the commodity record that you want to check: `    
+Enter the `product code` and press `enter`  
+  
+Then, you will be given these choices below:  
+```
+Check by:
+          1. n Months
+          2. Whole history
+          3. Quit
+Choice: 
+```
+1. n Months 
+  You will be asked to input the the value of n and the time at the end of the `n months`   
+  An example is as below
+```
+Enter the value of n: 12
+From when (YYYY-MM, e.g. 2019-12) to 12 months before: 2019-12
+Total 2 record in the last 12 months found.
+```
+Then you should see the result
+```
+Date (YYYY-MM-DD)   Quantity
+2019-4-7            2     
+2019-4-6            3 
+```
+  
+2. Whole history
+The programme will return all sales history of this commodity as below
+```
+Date (YYYY-MM-DD)   Quantity
+2019-4-7            2     
+2019-4-6            3 
+...
+...
+```
+  
+3. Quit
+This will bring you back to the main menu   
+  
+
   </details>
+   
    
 <!---
 function 9 description
@@ -704,7 +877,78 @@ function 9 description
  
   
   <details>
-  <summary>9.  Check Restock History (empty)</summary>
+  <summary>9.  Check Restock History </summary>
+  
+  Note: This function is similar to function 8
+  This function is used to check the restock record of a commodity    
+  You will need to enter the `Product code` to indicate which commodity is under interest   
+  You should see such prompt when this function is called   
+```
+Preparing to show restock record...
+
+Do you know the product code of the commodity that you want to check?(Y/N) 
+```
+Input `Y` and press `enter` if you **do** know the product code   
+Input `N` and press `enter` if you **do not** know the product code   
+  
+1. If you press `N`, you will see the prompt below    
+```
+~~Please first search the commodity and check the record by productCode~~
+
+*********Commodity searching*********
+
+Find by choosing one of the constrain below: 
+1. Index            2.Product Code           3.Name
+4.Price             5.Stock Number           6.Stock Size
+7.Number Of Sales Record                     8.Number Of Restock Record
+9.Manufacturer      10.Tax Amount            11:End search
+Type in the constrain number: 
+```
+This is the search function as descibed in `2.  Search an Commodity`  
+Search the commodity under interest and input `11` to end search 
+
+  
+If you pressed `Y` or finished searching, you will then be asked to enter the `product code` in question  
+`Please enter the product code of the commodity record that you want to check: `    
+Enter the `product code` and press `enter`  
+  
+Then, you will be given these choices below:  
+```
+Check by:
+          1. n Months
+          2. Whole history
+          3. Quit
+Choice: 
+```
+1. n Months 
+  You will be asked to input the the value of n and the time at the end of the `n months`   
+  An example is as below
+```
+Enter the value of n: 12
+From when (YYYY-MM, e.g. 2019-12) to 12 months before: 2019-12
+Total 2 record in the last 12 months found.
+```
+Then you should see the result that shows all the restock history in the period of n months before the date inputed and the inputed date  
+```
+Date (YYYY-MM-DD)   Quantity
+2019-4-7            2     
+2019-4-6            3 
+```
+  
+2. Whole history
+The programme will return all restock history of this commodity as below
+```
+Date (YYYY-MM-DD)   Quantity
+2019-4-7            2     
+2019-4-6            3 
+...
+...
+```
+  
+3. Quit
+This will bring you back to the main menu   
+  
+  
   
   </details>
    
@@ -820,10 +1064,6 @@ If you didn't delete any commodity, you will be shown `No commodity deleted`
 
 2. If there are no commodity that don't have sales in the last n months     
     You will be shown `No commodity to be deleted!` 
-
-  
-  
-  
 
 </details> 
   
