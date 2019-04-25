@@ -8,7 +8,7 @@ To control and manage ordering and storage of inventory, an inventory management
 The company need a inventory system to manage the inventory in different retail shop. This system should be able to store and alter the inventory record, also other additional function. The target user is the warehouse team. They will use the system to manage the inventory.
 
 **Assumption**
-1. Maximum storage size is 5000 and measure in quantity.
+1. Maximum storage size is 50000 and measure in quantity.
 --------------------------------------------------------
 
 **Inventory record:<br/>**
@@ -141,7 +141,17 @@ Loading CSV....
 All record loaded
 ```
     
-Note: The programme does not modify your file unless you choose to do so by choosing option _11. Save working record to file_ and choose to overwrite the file. 
+Note: The programme does not modify your file unless you choose to do so by choosing option _11. Save working record to file_ and choose to overwrite the file.     
+    
+You will recieve a out of stock warning if any commodity is out of stock    
+For example, you might see
+```
+Out of stock warning: 
+Index     Product Code   Name                Number of stock
+1         134            Kiwi                0     
+...
+...
+``` 
 
 ## Understanding the operation basics of the main menu
 After records are succesfully loaded, you should see the following main menu    
@@ -656,34 +666,206 @@ If ended correctly, you should see
   ```
   </details>
   
+   
+<!---
+function 6 description
+--> 
+ 
+  
   <details>
   <summary>6.  Stock sales/restock (empty)</summary>
   
   </details>
+  
+   
+<!---
+function 7 description
+--> 
+ 
   
   <details>
   <summary>7.  Sort working record (empty)</summary>
   
   </details>
   
+   
+<!---
+function 8 description
+--> 
+ 
   <details>
   <summary>8.  Check Sales History (empty)</summary>
   
   </details>
+   
+<!---
+function 9 description
+--> 
+ 
   
   <details>
   <summary>9.  Check Restock History (empty)</summary>
   
   </details>
-  
+   
+<!---
+function 10 description
+--> 
+ 
   <details>
-  <summary>10. Check inventory status (empty)</summary>
+  <summary>10. Check inventory status </summary>
   
+  There are 3 main functions that can be achieve by `check inventory status`    
+  These are mainly to recieve predictions   
+  To enter this function, inout `10` at the main menu and press `enter` 
+  You should see the 3 main functions listed out below  
+  ```
+  Showing inventory status:
+1. Show stock status
+2. Show sales prediciton
+3. Delete obsoleted commodity
+4. Quit
+Enter your choice here:
+``` 
+Enter the number that corresponse to the choice and press `enter`
+Detail functionality and use is as below    
+<details>
+<summary>1. Show stock status </summary> 
+    
+You will be ask to enter `current date` and `number of months` used in the prediction
+The prediction is based on `n-month average`
+Such that predicted sales will be the sales average of the last `n` month  
+Example input will be as below  
+```
+Enter current date in (YYYY-MM, e.g. 2019-12) format: 2019-12
+Choose the number of month(s) for prediction: 12 
+```
+This function will show
+    - [ ] Stock out alert (if any)
+    - [ ] Predicted out of stock warning: 
+* For stock out alert it will show the `Index`, `Product Code`, `Name` and `Number of Stock` which will be `0`  
+For example:    
+```
+Out of stock warning: 
+Index     Product Code   Name                Number of stock
+1         134            Kiwi                0           
+...
+...
+```
+* For Predicted out of stock warning: 
+This will show `Index`,`Product Code`,`Name`,`Current stock`,`Predicted sales in n month` and `Difference` 
+`Predicted sales` will be calculated by `n-month` average    
+`Difference` will be calulated by `Current stock` - `Predicted sales`   
+```
+Predicted out of stock warning: 
+Index     Product Code   Name                Current stock       Predicted sales in 12 month   Difference          
+1         134            Kiwi                0                   0.416667                      -0.416667  
+...
+...
+```
+User can see if they have enough stock to handle last n-month average sales 
+</details>  
+  
+  
+  
+<details>
+<summary>2. Show sales prediciton </summary> 
+  
+    
+This has a similar function to `Show stock status`, however it can show the predicted sales of all commodities    
+You will be asked to enter length of the prediction and the date to predict from 
+Example input will be as below  
+```
+Choose the average of sales in the last x months: 6
+From when (YYYY-MM, e.g. 2019-12) to 6 months before: 2019-12
+```
+    
+Output will be the `Index`, `Product Code`, `Name`, `Current Stock` and `Predicted sales in n month`
+You should see similar output as below   
+```
+From when (YYYY-MM, e.g. 2019-12) to 6 months before: 2019-12
+Index     Product Code   Name                Current stock       Predicted sales in 6 month
+0         133            Banana              300                 0.833333            
+1         134            Kiwi                0                   0.833333            
+2         135            Papaya              90                  0.833333            
+...
+...
+```
+
+</details>
+
+<details>
+<summary>3. Delete obsoleted commodity </summary> 
+
+This function helps you delete commodity with no sales record in the last n monts   
+You should see a prmompt as below, enter an interger for n  
+Enter the date following the `YYYY-MM` format
+Example is as follows
+```
+Searching for outdated commodity
+Delete commodity without sales in the last n months
+Enter value of n: 3
+From when (YYYY-MM, e.g. 2019-12) to 3 months before: 2019-12
+ ```
+1. If there are commodities that doesn't have sales record in the last n month, you will be asked   
+```
+Are you sure to delete <commodity name>?
+Enter Yes or No by (Y/N): 
+```
+* If you want to delete such commodity, press `Y` and press `enter`
+You will be shown `Selected commodity deleted!` if successfully deleted 
+* If you want to leave it in place, press `N` and press `enter`. The delete process will be skipped
+Finally if you have deleted any items, you will be shown `Outdated commodity deleted`   
+If you didn't delete any commodity, you will be shown `No commodity deleted`
+
+2. If there are no commodity that don't have sales in the last n months     
+    You will be shown `No commodity to be deleted!` 
+
+  
+  
+  
+
+</details> 
+  
+  
+  
+After outputing the result, you will be transfer back to the Check inventory status menu
   </details>
-  
+ 
+ 
+<!---
+function 11 description
+--> 
+ 
   <details>
-  <summary>11. Save working record to file (empty)</summary>
+  <summary>11. Save working record to file </summary>
+    
+  This function allows you to save a file to the file you had loaded from or create a new file to save to.  
+  You are recommended to use `.txt` as the file extension   
   
+  To enter this function, enter `11` in the main menu and press `enter` .   
+  Then you should see the following prompt:     
+  ```
+  `Do you want to overwrite record to current file instead of creating a new file?   Enter Y/N` 
+  ```
+  1. To save to the file you have loaded from when you were asked to 
+  `Please input the file name of the record: ` at the start of using this function  
+  Input `Y` and press `enter`   
+    
+  2. If you want to save to another file or create a file to save to   
+  Input `N` and press `enter`   
+  You will then be prompted by `Enter the file name you want to create: `    
+  input the file name that you want to write the file to and press `enter`  
+    
+  After the procedures above, you will then be prompted by
+  ```
+  All records saved!
+  ```
+  This indicates that your records are saved then you will be transfer back to the main menu.       
+    
+  Note: If the file name you used is unable to be opened/modified, it will show `Unable to open <file name>` to indicated the file can't be used. You will then be guided back to the main menu.   
+  
+
   </details>
 
 </details>
