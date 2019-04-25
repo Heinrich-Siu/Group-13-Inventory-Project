@@ -272,7 +272,7 @@ void addSales(commodity* shopPtr, int index, int inventorySpace, int &totalOcupp
         {
             grow_record(shopPtr[index].salesRec, shopPtr[index].numOfSalesRec, ++(shopPtr[index].numOfSalesRec)); //enliarge the record array size
         }
-        int index_emptyRecord = shopPtr[index].numOfSalesRec;
+        int index_emptyRecord = shopPtr[index].numOfSalesRec-1;
         int columns = 0;
         istringstream dateStr (date); //tramsform the string to the restock structure
         while(getline(dateStr, temp, '-'))
