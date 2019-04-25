@@ -180,3 +180,99 @@ Press `Y` to end the programme and press `N` to continue using.
 If ended correctly, you should see
 `Program end Sucessfully. Thanks for using our programme :)`
 </details>
+
+## Function operations:
+
+<details>
+  <summary>1.  Show all inventory record</summary>
+  
+### 1. Show all inventory record
+Show all inventiry record is a function that allows you to see all commodities in your inventory and their detail inforamtion. To call this function, enter `1` in the main menu and press `enter`  
+You will then see the following prompt
+```
+*********Showing all inventory record*********
+
+Input the number one by one in any sequence and input -1 when done or enter 11 to print All
+*** E.g. Enter your choice here: 1 2 5 4 -1 ***
+Here are the options: 
+1. Index            2.Product Code           3.Name
+4.Price             5.Stock Number           6.Stock Size
+7.Number Of Sales Record                     8.Number Of Restock Record
+9.Manufacturer      10.Tax Amount            11.ALL
+Enter your choice here: 
+```
+These are the information that every commodity contains, you can choose specific kinds of information to show on the screen. After `Enter choice here`, you can input which kind of information to show. You can indicated the kinds of information you want by entering the corresponding number.  
+You should enter the corresponding number one by one and separate it with `space` or press `enter` after each entry.  
+Finally enter one more `space` and then enter `-1` to indicate all kinds of information in question is inputed. 
+You can also enter `11` to show all information available.
+  
+***
+Examples:  
+
+<details>
+  <summary>1. Show Index, Name and Stock number </summary>
+  
+    
+Enter `1 3 5 -1` and press `enter`  
+Note that `1 3 5` is the field that corresponse to Index, Name and Stock number, `-1` is to indicate everything in question is inputed. 
+You should see
+```
+*********Enquiry result*********
+Index     Name                Stock Number   
+0         Banana              300            
+1         Kiwi                21             
+2         Papaya              90             
+3         Redcurrant          1   
+...
+...
+```
+
+</details>
+
+  
+
+<details>
+  <summary>2. Show Tax amount, Name and Price </summary>
+  
+    
+Enter `10 3 4 -1` and press `enter` 
+You should see  
+```
+*********Enquiry result*********
+Tax Amount     Name                Price     
+$2.5           Banana              7         
+$2.5           Kiwi                15        
+$2.5           Papaya              13        
+$2.5           Redcurrant          18.5 
+...
+...
+```
+
+</details>
+
+
+<details>
+  <summary>3. Show all information</summary>
+  
+      
+Enter `11` and press `enter`
+You should see
+```
+*********Enquiry result*********
+Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount     
+0         133            Banana              7         300            4              2                      3                         Fuji           $2.5           
+1         134            Kiwi                15        21             2              2                      3                         Fuji           $2.5           
+2         135            Papaya              13        90             3              2                      3                         Fuji           $2.5           
+3         231            Redcurrant          18.5      1              5              2                      3                         Fuji           $2.5           
+4         232            Avocado             21        69             5              2                      3                         Fuji           $2.5 
+```
+</details>
+
+
+
+
+***
+  
+After a display is done, you will be transfered to the main menu again 
+To enter another display, just press `1` again to initiate another display of commodity information
+</details>
