@@ -11,8 +11,9 @@ void ranger(int &max, int &min, int absoulteMax){
     //ask if larger, smaller, or between
     //then output the max and min as a result of the enquiry
     cout<<"You are searching by 1.Larger or equal than  2. Smaller or equal than   3.Between two numbers\n";
-    cout<<"Enter your choice here: "<<endl;
+    cout<<"Enter your choice here: ";
     int mode =0; cin>>mode;
+    cout<<endl;
     if (mode==1){
         cout<<"The number is larger or equal than: ";
         cin>>min;
@@ -25,7 +26,7 @@ void ranger(int &max, int &min, int absoulteMax){
         if (max>absoulteMax) max=absoulteMax;
         min=0;
     }
-    else{
+    else if (mode==3){
         cout<<"The number is larger or equal than: ";
         cin>>min;
         cout<<"The number is smaller or equal than: ";
@@ -33,7 +34,10 @@ void ranger(int &max, int &min, int absoulteMax){
         if (min<0) min=0;
         if (max>absoulteMax) max=absoulteMax;
     }
-    cout<<endl;
+    else{cout<<"Input is not valid"<<endl;
+        cout<<"Enter your choice again:\n";
+        ranger(max, min, absoulteMax);
+    }
 }
 
 
@@ -119,9 +123,10 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
     //start of string search
     else if (type==3 or type==9){
         cout<<"Enter the "<<optionArray[type]<<"you wan to search. Can be a sub string of the "<<optionArray[type]<<endl;
-        cout<<"Enter your word here: "<<endl;
+        cout<<"Enter your word here: ";
         string targetText;
-        cin>>targetText;
+        getline(cin, targetText);
+        getline(cin, targetText);
         for (int k=0; k<numberOfCommodity; k++) {
             //first return string one by one, then check if userinput is a substring of that value
             if (commdityStringValueReturn(shopPtr+k, type).find(targetText)==string::npos) position[k]= -1;
@@ -131,38 +136,54 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
 
 void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodity\n"
     //position is used to check if is excluded
+    cout<<"\n*********Commodity searching*********"<<endl;
     int* position = new int [numberOfCommodity];
     for (int i=0; i<numberOfCommodity; i++) position[i]=i; //position store value equal to its index
-        int constrainType=0;
-        while (true) {
-            cout<<"\n*********Commodity searching*********"<<endl;
-            cout<<"\nFind by choosing one of the constrain below. Enter -1 if you are done searching"<<endl;
-            cout<<"1. Index 2.Product Code 3.Name 4.Price 5.Stock Number \n6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount\n";
-            cout<<"Type in the constrain number: ";
-            cin>>constrainType;
-            if (constrainType==-1) {
-                cout<<"\nExiting search...\n\n";
-                break;
+    int constrainType=0;
+    string yesNo;
+    while (true) {
+        cout<<"\nFind by choosing one of the constrain below: "<<endl;
+        cout<<
+        "1. Index            2.Product Code           3.Name\n"
+        "4.Price             5.Stock Number           6.Stock Size\n"
+        "7.Number Of Sales Record                     8.Number Of Restock Record\n"
+        "9.Manufacturer      10.Tax Amount            11:End search\n";
+        cout<<"Type in the constrain number: ";
+        cin>>constrainType;
+        if (constrainType==11) {
+            cout<<"\nExiting search...\n\n";
+            break;
+        }
+        //returns position as a dynamic array
+        searchingInDifferentWays(constrainType,position,numberOfCommodity, shopPtr);
+        
+        //print all items that is not == -1 using inventory shower
+        
+        //make array to store all non excluded items
+        int itemsNonExcluded = 0;
+        commodity * tempPtr = new commodity [numberOfCommodity];
+        for (int i=0; i<numberOfCommodity; i++){
+            if (position[i]!=-1) {
+                tempPtr[itemsNonExcluded]=shopPtr[i];
+                itemsNonExcluded+=1;
             }
-            //returns position as a dynamic array
-            searchingInDifferentWays(constrainType,position,numberOfCommodity, shopPtr);
-
-            //print all items that is not == -1 using inventory shower
-
-            //make array to store all non excluded items
-            int itemsNonExcluded = 0;
-            commodity * tempPtr = new commodity [numberOfCommodity];
-            for (int i=0; i<numberOfCommodity; i++){
-                if (position[i]!=-1) {
-                    tempPtr[itemsNonExcluded]=shopPtr[i];
-                    itemsNonExcluded+=1;
-                }
-            }
+        }
+        if (itemsNonExcluded!=0) {
             cout<<"\nChoose how to show your search result"<<endl;
             inventoryShower(tempPtr, itemsNonExcluded);
-            delete [] tempPtr;
         }
+        else{
+            cout<<"\nNo result find!"<<endl;
+            cout<<"Search again? (Y/N): ";
+            cin>>yesNo;
+            break;
+        }
+        delete [] tempPtr;
+    }
     delete [] position;
+    if (yesNo=="Y") {
+        search(shopPtr, numberOfCommodity);
+    }
 }
 
 
