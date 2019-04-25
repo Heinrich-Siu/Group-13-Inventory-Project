@@ -171,47 +171,47 @@ Details of how to use the functions in the programme is included below
     <summary>Function</summary>
     <details>
     <summary>1.  Show all inventory record</summary>  
-      
+      Content
     </details>
     <details>
     <summary>2.  Search an Commodity</summary>  
-      
+      Content
     </details>
     <details>
     <summary>3.  Add new commodity</summary>  
-      
+      Content
     </details>
     <details>
     <summary>4.  Check Inventory Space</summary>    
-      
+      Content
     </details>
     <details>
     <summary>5.  Update commodity</summary>  
-      
+      Content
     </details>
     <details>
     <summary>6.  Stock sales/restock</summary> 
-      
+      Content
     </details>
     <details>
     <summary>7.  Sort working record by different parameter(eg. name, price, etc.)</summary>   
-      
+      Content
     </details>
     <details>
     <summary>8.  Check Sales History (Whole history, customize number of month) and return total in the period</summary>   
-      
+      Content
     </details>
     <details>
     <summary>9.  Check Restock History (Whole history, customize number of month) and return total in the period</summary> 
-      
+      Content
     </details>
     <details>
     <summary>10. Check inventory status (stock status, sales prediction, delete outdated commodity)</summary>  
-      
+      Content
     </details>
     <details>
     <summary>11. Save working record to file</summary> 
-      
+      Content
     </details>
   </details>
     
