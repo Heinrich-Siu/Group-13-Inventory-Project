@@ -199,7 +199,7 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
 
 //Prompt when asking user to change Record
 void recordChangePrompt(){
-    cout << "What attribute of the commodity do you want to change/update?\n"
+    cout << "\nWhat attribute of the commodity do you want to change/update?\n"
             "1. Product Code\n"
             "2. Product Name\n"
             "3. Price\n"
