@@ -692,20 +692,18 @@ Search the commodity under interest and input `11` to end search
   You will see information of it for your reference. From the menu, enter your choice after `Enter your choice here:` with the corresponding number to the options shown.   
   
   ```
-  ***************************************************************************************
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
-  0         333            Apple A             10        40             5              2                      3                         Fuji           $2.5
-  **************************************************
-  *~~~What record do you want to change/update?    *
-  *1. Product Code                                 *
-  *2. Product Name                                 *
-  *3. Price                                        *
-  *4. Size of stock                                *
-  *5. Tax amount                                   *
-  *6. Name of manufacturer                         *
-  *7. Quit                                         *
-  **************************************************
-  Enter your choice here:
+  0         333            Apple A             10        40             5              2                      3                         Fuji           $2.5    
+
+What attribute of the commodity do you want to change/update?
+1. Product Code
+2. Product Name
+3. Price
+4. Size of stock
+5. Tax amount
+6. Name of manufacturer
+7. Quit
+Enter your choice here: 
   ```
   For example, enter`1`to update the product code.  
   it will display the current product code, and prompt you to enter the new one.
@@ -739,10 +737,9 @@ This function allows you to make sales or restock record to change the number of
 You will be prompted by the following       
     
 ```  
-*****************************************
 You are updating sales and restock record
-*****************************************
-Do you know the product code of the commodity that you want to update?(Y/N)
+
+Do you know the product code of the commodity that you want to update?(Y/N) 
 ```
 Input `Y` and press `enter` if you **do** know the product code   
 Input `N` and press `enter` if you **do not** know the product code   
