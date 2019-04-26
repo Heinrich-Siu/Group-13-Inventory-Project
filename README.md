@@ -288,9 +288,17 @@ If ended correctly, you should see
 
 </details>
 
+<!---
+function 2 description
+--> 
+
+
 <details>
   <summary>2.  Search an Commodity</summary>
-  It is a function that allows you to search all commodities in your inventory with different specifed or range of information and their detail inforamtion.</br>
+
+It is a function that allows you to search all commodities in your inventory with different specifed or range of information and their detail inforamtion.    
+The search function will narrow down the result each time you search, such that only the result in the previous search will be considered.  
+The scope will be reseted if you exit the function.   
   To call this function, enter `2` in the main menu and press `enter`
   You will then see the following prompt  
   
@@ -305,7 +313,7 @@ If ended correctly, you should see
   
   These are the information that every commodity contains, you can choose specific kinds of constrain to search commodity(s). After `Type in the constrain number`, you can input which kind of constrain to be use. You can indicated the constrain of information you want by entering the corresponding number, and press `Enter`.  
   For digits type, commodity can be search by `specific number` or `range of number`.  
-  For string type, you can search by substring.    
+  For string type, you can search by `substring`.    
   
   ### Showing the result
   ```
@@ -317,14 +325,16 @@ If ended correctly, you should see
   6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount 11.ALL
   Enter here:  
   ```
-  These are the information that every commodity contains, you can choose specific kinds of information to show on the screen. After `Enter here`, you can input which kind of information to show. You can indicated the kinds of information you want by entering the corresponding number.  
+  These are the information that every commodity contains, you can choose specific kinds of information to show on the screen. After `Enter here`, you can input which kind of information to show. You can indicated the kinds of information you want by entering the corresponding number.   
+Note: refer to function `1. Show all commodity`   
   You should enter the corresponding number one by one and separate it with `space` or press `enter` after each entry.  
   Finally enter one more `space` and then enter `-1` to indicate all kinds of information in question is inputed. 
   You can also enter `11` to show all information available.  
     
   You can continue to search in the searching result by adding constrain or enter`-1` to exit the search function. 
+  
   ***
-  Example:
+  Examples:
   <details>
   <summary>1.Search Price which is 13</summary>
   
@@ -385,7 +395,7 @@ If ended correctly, you should see
   <details>
   <summary>2.Search Product code between 100 and 200, and Price higher than 10</summary>
   
-  Enter`2`to search by product code.
+  Enter`2` in the main menu to search `commodity` by `product code`.
   
   ```
   *********Commodity searching*********
@@ -398,13 +408,13 @@ If ended correctly, you should see
   Enter your choice here: 2
   ```
   
-  Enter`2'to search by range of product code.
+  Enter `2` to search by range of product code.
   ```
   Search by 1. Specific Product Code  2. Range of Product Code
   Enter your choice here: 2
   ```
   
-  Enter`3`to search with in a range.
+  Enter`3` to search with in a range.
   ```
   You are searching by 1.Larger or equal than  2. Smaller or equal than   3.Between two numbers
   Enter your choice here:
@@ -482,7 +492,8 @@ If ended correctly, you should see
   5         135            Papaya              13        90             3              2                      3                         Fuji           $2.5
   ```
   
-  Enter`-1`to exit the function.
+  Enter`-1`to exit the function.    
+  You should see the following if exited correctly.    
   ```
   *********Commodity searching*********
 
@@ -496,6 +507,12 @@ If ended correctly, you should see
   Returning to main page...
   ```
   </details>
+  
+ <!---
+function 3 description
+--> 
+  
+  
   <details>
   <summary>3.Search name with substring "an"</summary>
   
@@ -548,12 +565,16 @@ If ended correctly, you should see
   Returning to main page...
   ```
   </details>
+  
+  ***
+  
   </details>
+  
   <details>
   <summary>3. Add new commodity</summary>
   
   It is a function for you to add new type of commodity to the inventory. Before adding, please prepare information of `name`, `product code`, `price`, `size of stock`, `tax amount`, and `manufacturer` of the product.  
-  To call this function, enter `1` in the main menu and press `enter`  
+  To call this function, enter `3` in the main menu and press `enter`  
   You will then see the following prompt
   ### 1.Name
   Asking you to enter the `commodity name` and press `Enter`.
@@ -564,31 +585,38 @@ If ended correctly, you should see
   ```
   
   ### 2.Product code
-  Enter`533`for product code.
+  Enter an interger for the product `code`    
+  You are use different number of digit(s) for the product code   
+  For example `533` as below
   ```
   Please enter the product code: 533
   ```
   
   ### 3.Price
-  Enter`3` for price.
+  Enter an interger value for the `price`   
+  For example `3`
   ```
   Please enter the price: 3
   ```
   
   ### 4.Size of stock
-  Enter`2`for size of stock.
+  Enter an interger value for the `size of stock`.    
+  For example `2` for size of stock   
+  
   ```
   Please enter the size of stock: 2
   ```
   
   ### 5.Tax amount
-  Enter`1`for tax amount.
+  Enter the `commodity tax` of the commodity    
+  For example `1`for tax amount.    
+  Can be an interger or a number with decimals
   ```
   Please enter the tax amount: 1
   ```
   
-  ### 6.manufacturer
-  Enter`Fuji`for manufacturer.
+  ### 6.Manufacturer
+  Enter the name of the `manufacture` such as `Fuji`for manufacturer.
   ```
   Please enter the name of the manufacturer: Fuji
   ```
@@ -597,10 +625,16 @@ If ended correctly, you should see
   Commodity added! Returning to main screen...
   ```
   </details>
-  
+ 
+ 
+<!---
+function 4 description
+--> 
+ 
   <details>
   <summary>4.  Check Inventory Space</summary>
-  This function allow you to check the occupied space of the inventory. 
+  
+  This function allow you to check the `occupied space` of the inventory. 
   To call this function, enter `4` in the main menu and press `enter`  
   You will then see the following prompt
   
@@ -608,9 +642,15 @@ If ended correctly, you should see
   Calculating...
   Inventory Space: 2692/50000
   ```
+  
   `2692` is the occupied space.  
   `50000` is the total space of the inventory
-  </details>
+</details>
+  
+  
+  <!---
+function 5 description
+--> 
   
   <details>
   <summary>5.  Update commodity</summary>
@@ -622,16 +662,34 @@ If ended correctly, you should see
   Preparing to modify commodity...
   Do you know the product code of the commodity that you want to update?(Y/N) 
   ```
-  If you do not know the product code, you will have to search it first by enter `N` and proceed to search function(refer operation to 2. Search an Commodity).  
-    
-  If you know the product code, enter `Y`, and you will see the following prompt  
+Input `Y` and press `enter` if you **do** know the product code   
+Input `N` and press `enter` if you **do not** know the product code 
+
+1. If you press `N`, you will see the prompt below    
+```
+~~Please first search the commodity and change the record by product code~~
+
+*********Commodity searching*********
+
+Find by choosing one of the constrain below: 
+1. Index            2.Product Code           3.Name
+4.Price             5.Stock Number           6.Stock Size
+7.Number Of Sales Record                     8.Number Of Restock Record
+9.Manufacturer      10.Tax Amount            11:End search
+Type in the constrain number: 
+```
+This is the search function as descibed in `2.  Search an Commodity`  
+Search the commodity under interest and input `11` to end search
+
+
+2. After searching or if you pressed `Y` , you will be asked to enter the `product code` you want to update   
   
   ```
   ***************************************************************************************
   Please enter the productCode of the commodity that you want to update:
   ```
   Enter the`product code`, for example `333`.
-  You will see information of it for your reference. From the menu, enter your choice after`Enter your choice here:`.
+  You will see information of it for your reference. From the menu, enter your choice after `Enter your choice here:` with the corresponding number to the options shown.   
   
   ```
   ***************************************************************************************
@@ -659,11 +717,14 @@ If ended correctly, you should see
   The product code is now: 456
   Commodity updated
   ```
-  You can continue updating the commodity's imformation by enter number between `1-6` or quit the function by`7`.  
-  If you enter`7`, you will see the following prompt meaning you have successfully quit the function.
+  Such that the `product code` is now changed from `333` to `456`
+  
+  You can continue updating the commodity's imformation by enter number between `1-6` or quit the function by `7`.  
+  If you enter `7`, you will see the following prompt meaning you have successfully quit the function.
   ```
   Exiting commodity update...
   ```
+You will then be transfer back to the main menu.  
   </details>
   
    
