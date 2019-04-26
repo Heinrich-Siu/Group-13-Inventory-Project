@@ -267,6 +267,7 @@ void addRestock(commodity* shopPtr, int index, int inventorySpace, int &totalOcu
         shopPtr[index].stockNum += shopPtr[index].restockRec[index_emptyRecord].quantity; //add(+) to total number of stock
         cout<<"Record added!\n"<<endl;
     }
+    else if (temp_quantity<=0) cout<<"Action illegal: Adding zero or negative stock quantity restock record"<<endl<<endl;
 }
 
 void addSales(commodity* shopPtr, int index, int inventorySpace, int &totalOcuppiedSpace)
@@ -283,6 +284,7 @@ void addSales(commodity* shopPtr, int index, int inventorySpace, int &totalOcupp
         cout << "Error! Your action will result in negatve stock number";
         cout << "(From " << shopPtr[index].stockNum << " -> " << shopPtr[index].stockNum - temp_quantity << " )" << endl;
     }
+    else if (temp_quantity<=0) cout<<"Action illegal: Adding zero or negative stock quantity sales record"<<endl<<endl;
     else
     {
         if(shopPtr[index].numOfSalesRec == 0) //No record before
