@@ -42,57 +42,57 @@ int main()
     printMainUI();
     int userInput;
     cin >> userInput;
-    
-    while(userInput != 12){ //while userInput no equal to the quit choice
+
+    while(true){ //while userInput no equal to the quit choice
         if(userInput >= 0 && userInput <=12){
             switch(userInput){
                 case 1: //Show all inventory record
                     cout<<"\n*********Showing all inventory record*********\n"<<endl;
                     inventoryShower(shopPtr, numberOfCommodity);
-                    cout<<"\n*********All results shown*********\n\nReturning to main page...\n"<<endl;
+                    cout<<"\nAll results have shown\n\nReturning to main page...\n"<<endl;
                     break;
-                    
+
                 case 2: //Search an Commodity
                     search(shopPtr, numberOfCommodity);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-                    
+
                 case 3: //Add new commodity
                     cout<<"\nPreparing to add a new commodity...\n"<<endl;
                     addCommodity(shopPtr, numberOfCommodity);
                     break;
-                    
+
                 case 4: //Check inventory Space
                     cout<<endl;
                     inventorySpacePrinter(totalOcuppiedSpace, inventorySpace);
                     break;
-                    
+
                 case 5: //Change commodity inventory record
                     changeRecord(shopPtr, numberOfCommodity);
                     break;
-                    
+
                 case 6:
                     restockOrSales(shopPtr, numberOfCommodity, inventorySpace, totalOcuppiedSpace);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-                    
+
                 case 7: //Sorting record by different parameter
                     sortingInventory(shopPtr, numberOfCommodity);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-                    
+
                 case 8:
                     cout<<"\nPreparing to show sales record...\n"<<endl;
                     historyCheck(shopPtr, numberOfCommodity, true);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-                    
+
                 case 9:
                     cout<<"\nPreparing to show restock record...\n"<<endl;
                     historyCheck(shopPtr, numberOfCommodity, false);
                     cout<<"Returning to main page...\n"<<endl;
                     break;
-                    
+
                 case 10:
                     cout<<"\nShowing inventory status:"<<endl;
                     checkInventoryStatus(shopPtr, numberOfCommodity);
@@ -107,8 +107,17 @@ int main()
             }
         }
         else cout << "Your input is invalid" << endl;
-        
-        if (userInput==12) break;
+
+        if (userInput==12) {
+            cout<<"\nAre you sure to end the Programme?"<<endl;
+            cout<<"Press \"Y\" to terminate the programme, press \"N\" to continue: ";
+            string end;
+            cin>>end;
+            if (end=="Y") {
+                break;
+            }
+            cout<<"\nContinuing programme...\n"<<endl;
+        }
         printMainUI();
         cin >> userInput;
     }

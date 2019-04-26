@@ -94,10 +94,11 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
 
     //Start generic search by number
     if (type==1 or type==2 or type==4 or type==5 or type==6 or type==7 or type==8 or type==10) {
-        cout<<"Search by 1. Specific "<<optionArray[type]<<"  2. Range of "<<optionArray[type]<<endl;
+        cout<<"Search by 1. Specific "<< optionArray[type] <<"  2. Range of " << optionArray[type] << endl;
         cout<<"Enter your choice here: ";
         int option = -1;
         cin>>option;
+        cout << endl;
         if (option==1){
             //specific attribute
             cout<<"Your target "<<optionArray[type]<<" is : ";
@@ -122,7 +123,7 @@ void searchingInDifferentWays(int type, int* &position, int numberOfCommodity, c
     } //end of number search
     //start of string search
     else if (type==3 or type==9){
-        cout<<"Enter the "<<optionArray[type]<<"you wan to search. Can be a sub string of the "<<optionArray[type]<<endl;
+        cout<<"Enter the " << optionArray[type] << " you want to search. Can be a sub string of the " << optionArray[type] << endl;
         cout<<"Enter your word here: ";
         string targetText;
         getline(cin, targetText);
@@ -139,6 +140,7 @@ void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodit
     cout<<"\n*********Commodity searching*********"<<endl;
     int* position = new int [numberOfCommodity];
     for (int i=0; i<numberOfCommodity; i++) position[i]=i; //position store value equal to its index
+
     int constrainType=0;
     string yesNo;
     while (true) {
@@ -166,6 +168,7 @@ void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodit
             if (position[i]!=-1) {
                 tempPtr[itemsNonExcluded]=shopPtr[i];
                 itemsNonExcluded+=1;
+
             }
         }
         if (itemsNonExcluded!=0) {

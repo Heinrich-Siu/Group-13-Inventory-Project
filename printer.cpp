@@ -142,7 +142,7 @@ void recordPrinter(commodity * product, int * fields){
 }
 
 void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all inventory record\n"
-    
+
     cout<<"Input the number one by one in any sequence and input -1 when done or enter 11 to print All\n"<<"*** E.g. Enter your choice here: 1 2 5 4 -1 ***"<<endl;
     cout<<"Here are the options: \n";
     cout<<
@@ -151,6 +151,7 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
     "7.Number Of Sales Record                     8.Number Of Restock Record\n"
     "9.Manufacturer      10.Tax Amount            11.ALL\n"
     "Enter your choice here: ";
+
     int* fields = new int[11]; //dynamic array that store the aspects need to print
     int a=0, all=0;
     for (int k=0; a!=-1; k++) { //load in different aspects from user
@@ -167,9 +168,9 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
         }
         fields[11]=-1;
     }
-    
-    cout<<"\n*********Enquiry result*********"<<endl;
-    
+
+    cout<<"\n*********Enquiry result*********" << endl << endl;
+
     for (int i=0; (fields[i])!=-1 ; i++) {
         optionPrinter(fields[i]); //print the columns
     }
@@ -177,7 +178,7 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
     for (int i=0; i<numberOfCommodity; i++)
         recordPrinter(shopPtr+i,fields); //print the data one by one
     delete [] fields;
-    
+
 }
 
 //end of funtion 1
@@ -194,26 +195,24 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
 
 //Prompt when asking user to change Record
 void recordChangePrompt(){
-    cout << "**************************************************\n"
-    "*~~~What record do you want to change/update?    *\n"
-    "*1. Product Code                                 *\n"
-    "*2. Product Name                                 *\n"
-    "*3. Price                                        *\n"
-    "*4. Size of stock                                *\n"
-    "*5. Tax amount                                   *\n"
-    "*6. Name of manufacturer                         *\n"
-    "*7. Quit                                         *\n"
-    "**************************************************" << endl;
-    cout<<"Enter your choice here: ";
+    cout << "What record do you want to change/update?\n"
+            "1. Product Code\n"
+            "2. Product Name\n"
+            "3. Price\n"
+            "4. Size of stock\n"
+            "5. Tax amount\n"
+            "6. Name of manufacturer\n"
+            "7. Quit\n"
+            "Enter your choice here: ";
 }
 
 void recordPrinterByIndex(commodity * shopPtr, int index)
 {
     for (int i=1; i<=10; i++)
         optionPrinter(i); //print the columns
-    
+
     cout<<endl;
-    
+
     for (int i=1; i<=10; i++)
         specPrinter(i, shopPtr+index); //print the data in structure one by one
     cout<<endl;
@@ -328,7 +327,7 @@ void searchBefore_checkRecord(commodity* shopPtr, int numberOfCommodity, int &ta
     cout<<"Please enter the product code of the commodity record that you want to check: ";
     cin >> searchProductCode;
     cout << endl;
-    
+
     for(int i=0; i < numberOfCommodity; i++) //loop through all productCode to find match
     {
         if(shopPtr[i].productCode == searchProductCode)
@@ -511,10 +510,10 @@ void nMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth, b
     tm *desireMonth = 0;
     int temp_record_num = 0, totalSales = 0;
     returnPastNMonth(fromDate, desireMonth, numOfMonth);
-    
+
     string stockOrRestock = "sales";
     if (!isSlaes) stockOrRestock = "restock";
-    
+
     salesRecord *temp_recordS = 0;
     restockRecord *temp_recordR = 0;
     if (isSlaes) {
@@ -543,7 +542,7 @@ void nMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth, b
     }
     if(temp_record_num == 0)
     {
-        cout << "Sorry, There is no<< restock "<<stockOrRestock<<" record found in the last " << duration << endl;
+        cout << "Sorry, There is no "<<stockOrRestock<<" record found in the last " << duration << endl;
     }
     else
     {
@@ -564,7 +563,7 @@ void nMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth, b
                 totalSales += temp_recordR[i].quantity;
             }
         }
-        
+
         cout << endl << "Total restock in the last " << duration << " is " << totalSales << "."<< endl << endl;
     }
     delete [] temp_recordS;

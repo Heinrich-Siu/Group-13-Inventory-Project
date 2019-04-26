@@ -71,7 +71,7 @@ void addCommodity(commodity *&shopPtr, int &numberOfCommodity)
     getline(cin, name);
     cout << "Please enter the name of the manufacturer: ";
     getline(cin, name);
-    shopPtr[numberOfCommodity-1].manufacturer=name;
+    shopPtr[numberOfCommodity-1].manufacturer = name;
 
 
 
@@ -137,10 +137,10 @@ void changeRecord(commodity* shopPtr, int &numberOfCommodity)
         search(shopPtr, numberOfCommodity);
     }
 
-    cout << "***************************************************************************************\n"
-    "Please enter the productCode of the commodity that you want to update: ";
+    cout << "\n"
+    "Please enter the product code of the commodity that you want to update: ";
     cin >> searchProductCode;
-    cout << "***************************************************************************************" << endl;
+    cout << endl;
 
     for(int i=0; i < numberOfCommodity; i++) //loop through all productCode to find match
     {
@@ -272,7 +272,7 @@ void addSales(commodity* shopPtr, int index, int inventorySpace, int &totalOcupp
         {
             grow_record(shopPtr[index].salesRec, shopPtr[index].numOfSalesRec, ++(shopPtr[index].numOfSalesRec)); //enliarge the record array size
         }
-        int index_emptyRecord = shopPtr[index].numOfSalesRec;
+        int index_emptyRecord = shopPtr[index].numOfSalesRec-1;
         int columns = 0;
         istringstream dateStr (date); //tramsform the string to the restock structure
         while(getline(dateStr, temp, '-'))
@@ -329,9 +329,9 @@ void searchBefore_recordAdding(commodity* shopPtr, int numberOfCommodity, int &t
 void  restockOrSales(commodity* shopPtr, int &numberOfCommodity, int inventorySpace, int &totalOcuppiedSpace)
 {
     int choice=0;;
-    cout << "\n*****************************************\n"
+    cout << "\n\n"
     "You are updating sales and restock record\n"
-    "*****************************************\n";
+    "\n";
     int targetRecordIndex = -1;//initiate with not found
     searchBefore_recordAdding(shopPtr, numberOfCommodity, targetRecordIndex);
     if(targetRecordIndex == -1) //check if product code found?
