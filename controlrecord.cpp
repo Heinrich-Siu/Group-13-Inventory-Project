@@ -117,6 +117,7 @@ bool actualRecordChanger(int choice, commodity* shopPtr, int index, const int in
             }
             else
             {
+              totalOcuppiedSpace = totalOcuppiedSpace -(shopPtr[index].stockSize*shopPtr[index].stockNum)+(temp*shopPtr[index].stockNum);
               shopPtr[index].stockSize = temp;
               cout << "The size of product is now: " << shopPtr[index].stockSize << endl;
               return 1;
