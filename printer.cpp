@@ -11,6 +11,8 @@
 using namespace std;
 
 //function prototype
+
+//start of print inventory function
 void optionPrinter(int i);
 
 void specPrinter(int i, commodity * product);
@@ -21,16 +23,23 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity);
 
 //End of function print inventory
 
+
+//start of record cahnging prompts
 void recordChangePrompt();
 
 void recordPrinterByIndex(commodity * shopPtr, int index);
 
 //end of record changing prompts
 
+
+//start of inventory space printer
+
 void inventorySpacePrinter(int totalOcuppiedSpace, int inventorySpace);
 
 //end of inventory space printer
 
+
+//start of history check
 void checkRecordUIPrinter();
 
 void dayStrtoInt(string date, int &year, int &month, int &day);
@@ -56,6 +65,7 @@ void nMonthPrinter(commodity *shopPtr, int index, tm fromDate, int numOfMonth, b
 void historyCheck(commodity *shopPtr, int numberOfCommodity, bool isSales);
 
 //end of history check
+
 
 //start of function 1
 
@@ -181,21 +191,15 @@ void inventoryShower(commodity * shopPtr, int numberOfCommodity){ //"1. Show all
 
 }
 
-//end of funtion 1
+//end of funtion 1 printer
 /*
- ****************************************************************
- ****************************************************************
- ****************************************************************
- ****************************************************************
- ****************************************************************
- ****************************************************************
  ****************************************************************
 */
 //start of update commodity
 
 //Prompt when asking user to change Record
 void recordChangePrompt(){
-    cout << "What record do you want to change/update?\n"
+    cout << "What attribute of the commodity do you want to change/update?\n"
             "1. Product Code\n"
             "2. Product Name\n"
             "3. Price\n"
@@ -221,12 +225,6 @@ void recordPrinterByIndex(commodity * shopPtr, int index)
 //end of funtion change record
 /*
  ****************************************************************
- ****************************************************************
- ****************************************************************
- ****************************************************************
- ****************************************************************
- ****************************************************************
- ****************************************************************
  */
 //start of record checking
 
@@ -237,47 +235,12 @@ void inventorySpacePrinter(int totalOcuppiedSpace, int inventorySpace)
     cout << "Inventory Space: " << totalOcuppiedSpace << "/" << inventorySpace << endl << endl; //eg. Inventory Space: 685/5000
     //add occupy check?
 }
-
+//end of space calulation
 
 
 /*
-//input: pointer to salesRecord array, and number of sales record
-void salesRecordPrinter(salesRecord *salesRec, int numOfSalesRec)
-{
-    cout.width(6); cout << "Year";
-    cout.width(4); cout << "Moth";
-    cout.width(4); cout << "Day";
-    cout.width(4); cout << "Quantity";
-    cout << endl;
-    for(int i=0; i<numOfSalesRec; i++)
-    {
-        cout.width(6); cout << salesRec[i].date.tm_year;
-        cout.width(4); cout << salesRec[i].date.tm_mon;
-        cout.width(4); cout << salesRec[i].date.tm_mday;
-        cout.width(4); cout << salesRec[i].quantity;
-        cout << endl;
-    }
-}
-
-//input: pointer to restockRecord array, and number of sales record
-void restockRecordPrinter(restockRecord *restockRec, int numOfRestockRec)
-{
-    cout.width(6); cout << "Year";
-    cout.width(4); cout << "Moth";
-    cout.width(4); cout << "Day";
-    cout.width(4); cout << "Quantity";
-    cout << endl;
-    for(int i=0; i<numOfRestockRec; i++)
-    {
-        cout.width(6); cout << restockRec[i].deliveryTime.tm_year;
-        cout.width(4); cout << restockRec[i].deliveryTime.tm_mon;
-        cout.width(4); cout << restockRec[i].deliveryTime.tm_mday;
-        cout.width(4); cout << restockRec[i].quantity;
-        cout << endl;
-    }
-}
-
-*/
+ ****************************************************************
+ */
 
 //start of check sales/restock
 
