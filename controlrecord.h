@@ -4,7 +4,7 @@
 
 void addCommodity(commodity *&shopPtr, int &numberOfCommodity);
 
-void changeRecord(commodity* shopPtr, int &numberOfCommodity);
+void changeRecord(commodity* shopPtr, int &numberOfCommodity, const int inventorySpace, int &totalOcuppiedSpace);
 
 void changeProductCode(commodity* shopPtr, int index);
 

@@ -68,7 +68,7 @@ int main()
                     break;
 
                 case 5: //Change commodity inventory record
-                    changeRecord(shopPtr, numberOfCommodity);
+                    changeRecord(shopPtr, numberOfCommodity, inventorySpace, totalOcuppiedSpace);
                     break;
 
                 case 6:

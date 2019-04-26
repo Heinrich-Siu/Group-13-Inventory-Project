@@ -82,49 +82,68 @@ void addCommodity(commodity *&shopPtr, int &numberOfCommodity)
 
 
 //change the record depending on the choice of user
-void actualRecordChanger(int choice, commodity* shopPtr, int index){
+bool actualRecordChanger(int choice, commodity* shopPtr, int index, const int inventorySpace, int &totalOcuppiedSpace){
+    int temp = 0, changedSize_Space = 0;
     switch(choice){
         case 1: //Product Code
             cout << "Change from " << shopPtr[index].productCode << " to: ";
             cin >> shopPtr[index].productCode;
             cout << "The product code is now: " << shopPtr[index].productCode << endl;
+            return 1;
             break;
 
         case 2: //Product Name
             cout << "Change from " << shopPtr[index].name << " to: ";
             cin >> shopPtr[index].name;
             cout << "The product name is now: " << shopPtr[index].name << endl;
+            return 1;
             break;
 
         case 3: //Price
             cout << "Change from " << shopPtr[index].price << " to: ";
             cin >> shopPtr[index].price;
             cout << "The product price is now: " << shopPtr[index].price << endl;
+            return 1;
             break;
 
         case 4: //Size of stock
             cout << "Change from " << shopPtr[index].stockSize << " to: ";
-            cin >> shopPtr[index].stockSize;
-            cout << "The size of product is now: " << shopPtr[index].stockSize << endl;
+            cin >> temp;
+            changedSize_Space = totalOcuppiedSpace-(shopPtr[index].stockSize*shopPtr[index].stockNum)+(temp*shopPtr[index].stockNum);
+            if(changedSize_Space > inventorySpace)
+            {
+                cout << "\nAction will result in exceeding available inventory space (" <<changedSize_Space<<"/"<<inventorySpace<< ")." << endl << endl;
+                return 0;
+            }
+            else
+            {
+              shopPtr[index].stockSize = temp;
+              cout << "The size of product is now: " << shopPtr[index].stockSize << endl;
+              return 1;
+            }
+
             break;
 
         case 5: //Tax amount
             cout << "Change from " << shopPtr[index].taxAmount << " to: ";
             cin >> shopPtr[index].taxAmount;
             cout << "The tax amount of product is now: " << shopPtr[index].taxAmount << endl;
+            return 1;
             break;
 
         case 6: //Name of manufacturer
             cout << "Change from " << shopPtr[index].manufacturer << " to: ";
             cin >> shopPtr[index].manufacturer;
             cout << "The manufacturer of product is now: " << shopPtr[index].manufacturer << endl;
+            return 1;
             break;
 
     }
+    return 0;
 }
 
 //called when user need to change record
-void changeRecord(commodity* shopPtr, int &numberOfCommodity)
+void changeRecord(commodity* shopPtr, int &numberOfCommodity, const int inventorySpace, int &totalOcuppiedSpace)
 {
     int searchProductCode;
     int targetRecordIndex = -1;//initiate with not found
@@ -163,8 +182,10 @@ void changeRecord(commodity* shopPtr, int &numberOfCommodity)
         cin >> choice;
         while(choice != 7) //continue in change/update mode unless the input is 10
         {
-            actualRecordChanger(choice, shopPtr, targetRecordIndex);
-            cout<<"Commodity updated"<<endl;
+            if(actualRecordChanger(choice, shopPtr, targetRecordIndex, inventorySpace,totalOcuppiedSpace))
+            {
+                cout<<"Commodity updated"<<endl;
+            }
             recordChangePrompt();
             cin >> choice;
 
