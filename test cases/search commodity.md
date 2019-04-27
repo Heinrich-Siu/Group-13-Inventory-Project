@@ -292,6 +292,7 @@ Returning to main page...
 </pre>
 
 ## Narrow down result with multiple constrain
+1. Successful search
 <pre>
 *********XXX Company Commodity Inventory system*********
 1.  Show all inventory record
@@ -415,4 +416,79 @@ Exiting search...
 
 Returning to main page...
 </pre>
+
+2. Unsuccesful search and search again
+<pre>
+*********XXX Company Commodity Inventory system*********
+1.  Show all inventory record
+2.  Search an Commodity
+3.  Add new commodity
+4.  Check Inventory Space
+5.  Update commodity
+6.  Stock sales/restock
+7.  Sort working record
+8.  Check Sales History
+9.  Check Restock History
+10. Check inventory status
+11. Save working record to file
+12. Exit
+Please input a command: <b>2</b>
+
+*********Commodity searching*********
+
+Find by choosing one of the constrain below: 
+1. Index            2.Product Code           3.Name
+4.Price             5.Stock Number           6.Stock Size
+7.Number Of Sales Record                     8.Number Of Restock Record
+9.Manufacturer      10.Tax Amount            11:End search
+Type in the constrain number: <b>2</b>
+Search by 1. Specific Product Code  2. Range of Product Code
+Enter your choice here: <b>1</b>
+
+Your target Product Code is : <b>1000</b>
+
+No result find!
+Search again? (Y/N): <b>Y</b>
+
+*********Commodity searching*********
+
+Find by choosing one of the constrain below: 
+1. Index            2.Product Code           3.Name
+4.Price             5.Stock Number           6.Stock Size
+7.Number Of Sales Record                     8.Number Of Restock Record
+9.Manufacturer      10.Tax Amount            11:End search
+Type in the constrain number: <b>2</b>
+Search by 1. Specific Product Code  2. Range of Product Code
+Enter your choice here: <b>1</b>
+
+Your target Product Code is : <b>101</b>
+
+Choose how to show your search result
+Input the number one by one in any sequence and input -1 when done or enter 11 to print All
+*** E.g. Enter your choice here: 1 2 5 4 -1 ***
+Here are the options: 
+1. Index            2.Product Code           3.Name
+4.Price             5.Stock Number           6.Stock Size
+7.Number Of Sales Record                     8.Number Of Restock Record
+9.Manufacturer      10.Tax Amount            11.ALL
+Enter your choice here: <b>11</b>
+
+*********Enquiry result*********
+
+Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer             Tax Amount     
+0         101            Commodity A         $2        100            1              1                      2                         Man A                    $0             
+
+Find by choosing one of the constrain below: 
+1. Index            2.Product Code           3.Name
+4.Price             5.Stock Number           6.Stock Size
+7.Number Of Sales Record                     8.Number Of Restock Record
+9.Manufacturer      10.Tax Amount            11:End search
+Type in the constrain number: <b>11</b>
+
+Exiting search...
+
+Returning to main page...
+</pre>
+
+
 
