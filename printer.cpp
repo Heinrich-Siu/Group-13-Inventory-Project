@@ -119,7 +119,7 @@ void specPrinter(int i, commodity * product){ //print product info according to 
             cout.width(20); cout<<left<<product->name;
             break;
         case 4:
-            cout.width(10); cout<<left<<product->price;
+            cout<<"$"; cout.width(9); cout<<left<<product->price;
             break;
         case 5:
             cout.width(15); cout<<left<<product->stockNum;
