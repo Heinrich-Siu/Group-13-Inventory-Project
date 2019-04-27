@@ -9,6 +9,13 @@ The company need a inventory system to manage the inventory in different retail 
 
 **Assumption**
 1. Maximum storage size is 50000 and measure in quantity.
+2. Assume user input follows the data type specified below
+3. Assume user input of string will not be too long that will affect displaying output
+4. Assume user enter input as instructed in the guide
+5. Assume user enter sensible value (e.g. non sensible value will be negative number for price)
+
+Note: Test cases are included the "test case" folder as there are too many content
+
 --------------------------------------------------------
 
 **Inventory record:<br/>**
@@ -1140,7 +1147,10 @@ function 10 description
 Enter your choice here:
 ``` 
 Enter the number that corresponse to the choice and press `enter`
-Detail functionality and use is as below    
+Detail functionality and use is as below  
+
+***
+
 <details>
 <summary>1. Show stock status </summary> 
     
@@ -1236,7 +1246,7 @@ If you didn't delete any commodity, you will be shown `No commodity deleted`
 
 </details> 
   
-  
+***
   
 After outputing the result, you will be transfer back to the Check inventory status menu
   </details>
