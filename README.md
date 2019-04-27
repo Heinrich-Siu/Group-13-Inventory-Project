@@ -54,7 +54,9 @@ To execute the program.
 **Run the code on test case:<br/>**
 -----------------------------------
 <details>
-  <summary>Sample Record for test case(sample.txt)</summary>
+  <summary>Sample Record for test case</summary>
+  <details>
+  <summary>sample.txt</summary>
   
   ```
   *********Enquiry result*********
@@ -70,13 +72,26 @@ To execute the program.
   7         232            Avocado             21        69             5              2                      3                         Fuji                     $2.5
   8         231            Redcurrant          18.5      1              5              2                      3                         Fuji                     $2.5
   ```
-  
+  ***************
   Inventory Space
   ```
   Calculating...
   Inventory Space: 2692/50000
   ```
+  </details>
+  
+  <details>
+  <summary>sample2.txt</summary>
+  
+  ```
+  *********Enquiry result*********
 
+  Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer             Tax Amount
+  0         333            Apple               10        70             5              2                      3                         Fuji                     $2.5
+  1         964            Orange              20        0              5              0                      0                         China                    $3.5
+  ```
+  </details>
+  
   </details>
   
 <details>
@@ -95,8 +110,9 @@ sample.txt 6 Y 333 2 2019-04-27 9462
 `9462`: Quantity of restock  
 
 
-Beacuse `2692+9462*5 = 50002`, therefore
+
 ### `output 1`
+Beacuse `2692+9462*5 = 50002`, exceeding the total inventory space, therefore
 ```
 Action will result in exceeding available inventory space 50002/50000
 ```
@@ -117,19 +133,27 @@ sample.txt 6 Y 333 1 2019-04-27 41
 `2019-04-27`: Date of sales record  
 `41`: Quantity of sales  
 
-
-Beacuse `40-41 = -1`, therefore
 ### `output 2`
+Beacuse `40-41 = -1`, resulting in negative stock number, therefore
 ```
 Error! Your action will result in negatve stock number(From 40 -> -1 )
 ```
   </details>
   
 <details>
-  <summary>Testcase 3</summary>
-### `input3`
+  <summary>Testcase 3 - zero stock warning at start</summary>
+
+### `input 3`
 ```
-content
+sample2.txt
+```
+`sample2.txt`: Import sample record file to the system
+### `output 3`
+As the number of stock of Orange is 0, the system will automaticlly remind the user everytime the user start the program.
+```
+Out of stock warning:
+Index     Product Code   Name                Number of stock
+1         964            Orange              0
 ```
   </details>
 
