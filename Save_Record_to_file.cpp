@@ -21,7 +21,8 @@ void fileToMake(string &name, bool change){
     if (answer=="Y") change = false;
     else {
         cout<<"\nEnter the file name you want to create: ";
-        cin>>name;
+        getline(cin, name);
+        getline(cin, name);
         change = true;
     }
     
