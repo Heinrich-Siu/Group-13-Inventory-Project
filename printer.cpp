@@ -555,7 +555,8 @@ void historyCheck(commodity *shopPtr, int numberOfCommodity, bool isSales){
                 int nMonth;
                 cout << "\nEnter the value of n: ";
                 cin>>nMonth;
-                cout << "From when (YYYY-MM, e.g. 2019-12) to "<<nMonth<<" months before: ";
+                cout<<"Enter the ending month(included in the search) of the search"<<endl;
+                cout<<"Please enter the result in (YYYY-MM, e.g. 2019-12) format: ";
                 cin >> date;
                 dayStrtoInt(date, fromDate);
                 nMonthPrinter(shopPtr, targetRecordIndex, fromDate, nMonth, isSales);
