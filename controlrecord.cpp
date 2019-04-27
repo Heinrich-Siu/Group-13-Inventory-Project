@@ -84,6 +84,7 @@ void addCommodity(commodity *&shopPtr, int &numberOfCommodity)
 //change the record depending on the choice of user
 bool actualRecordChanger(int choice, commodity* shopPtr, int index, const int inventorySpace, int &totalOcuppiedSpace){
     int temp = 0, changedSize_Space = 0;
+    string someString;
     switch(choice){
         case 1: //Product Code
             cout << "Change from " << shopPtr[index].productCode << " to: ";
@@ -91,21 +92,23 @@ bool actualRecordChanger(int choice, commodity* shopPtr, int index, const int in
             cout << "The product code is now: " << shopPtr[index].productCode << endl;
             return 1;
             break;
-
+            
         case 2: //Product Name
             cout << "Change from " << shopPtr[index].name << " to: ";
-            cin >> shopPtr[index].name;
+            getline(cin, someString);
+            getline(cin, someString);
+            shopPtr[index].name=someString;
             cout << "The product name is now: " << shopPtr[index].name << endl;
             return 1;
             break;
-
+            
         case 3: //Price
             cout << "Change from " << shopPtr[index].price << " to: ";
             cin >> shopPtr[index].price;
             cout << "The product price is now: " << shopPtr[index].price << endl;
             return 1;
             break;
-
+            
         case 4: //Size of stock
             cout << "Change from " << shopPtr[index].stockSize << " to: ";
             cin >> temp;
@@ -117,28 +120,29 @@ bool actualRecordChanger(int choice, commodity* shopPtr, int index, const int in
             }
             else
             {
-              totalOcuppiedSpace = totalOcuppiedSpace -(shopPtr[index].stockSize*shopPtr[index].stockNum)+(temp*shopPtr[index].stockNum);
-              shopPtr[index].stockSize = temp;
-              cout << "The size of product is now: " << shopPtr[index].stockSize << endl;
-              return 1;
+                totalOcuppiedSpace = totalOcuppiedSpace -(shopPtr[index].stockSize*shopPtr[index].stockNum)+(temp*shopPtr[index].stockNum);
+                shopPtr[index].stockSize = temp;
+                cout << "The size of product is now: " << shopPtr[index].stockSize << endl;
+                return 1;
             }
-
+            
             break;
-
+            
         case 5: //Tax amount
             cout << "Change from " << shopPtr[index].taxAmount << " to: ";
             cin >> shopPtr[index].taxAmount;
             cout << "The tax amount of product is now: " << shopPtr[index].taxAmount << endl;
             return 1;
             break;
-
+            
         case 6: //Name of manufacturer
             cout << "Change from " << shopPtr[index].manufacturer << " to: ";
-            cin >> shopPtr[index].manufacturer;
+            getline(cin, someString);
+            getline(cin, someString);
+            shopPtr[index].manufacturer=someString;
             cout << "The manufacturer of product is now: " << shopPtr[index].manufacturer << endl;
             return 1;
             break;
-
     }
     return 0;
 }
@@ -247,7 +251,7 @@ void addRestock(commodity* shopPtr, int index, int inventorySpace, int &totalOcu
     cout << "Quantity: ";
     cin >> temp_quantity;
 
-    if(updateInventorySpace_inAddRecord((temp_quantity*shopPtr[index].stockSize), inventorySpace, totalOcuppiedSpace)) //check if adding quantity will result in exceeding space
+    if(updateInventorySpace_inAddRecord((temp_quantity*shopPtr[index].stockSize), inventorySpace, totalOcuppiedSpace) && temp_quantity>0) //check if adding quantity will result in exceeding space
     {
         if(shopPtr[index].numOfRestockRec == 0) //No record before
         {
@@ -405,3 +409,4 @@ bool updateInventorySpace_inAddRecord(int addSize,int inventorySpace, int &total
         return 0;
     }
 }
+
