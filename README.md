@@ -82,30 +82,46 @@ To execute the program.
 <details>
   <summary>Testcase 1 - exceeding inventory space</summary>
   
-### `input1`
+### `input 1`
 ```
-6 Y 333 2 2019-04-27 9462
+sample.txt 6 Y 333 2 2019-04-27 9462
 ```
+`sample.txt`: Import sample record file to the system
 `6`: updating sales and restock record  
 `Y`: Say you the product code of the commodity  
-`333`: The product code of the commodity to add record  
+`333`: The product code of the commodity add record to  
 `2`: Choice to add restock record  
 `2019-04-27`: Date of restock record  
 `9462`: Quantity of restock  
 
 
 Beacuse `2692+9462*5 = 50002`, therefore
-### `output`
+### `output 1`
 ```
 Action will result in exceeding available inventory space 50002/50000
 ```
   </details>
 
 <details>
-  <summary>Testcase 2</summary>
-### `input2`
+  <summary>Testcase 2 - negative stock number</summary>
+  
+### `input 2`
 ```
-content
+sample.txt 6 Y 333 2 2019-04-27 9462
+```
+`sample.txt`: Import sample record file to the system
+`6`: updating sales and restock record  
+`Y`: Say you the product code of the commodity  
+`333`: The product code of the commodity add record to 
+`1`: Choice to add sales record  
+`2019-04-27`: Date of sales record  
+`41`: Quantity of sales  
+
+
+Beacuse `40-41 = -1`, therefore
+### `output 2`
+```
+Error! Your action will result in negatve stock number(From 40 -> -1 )
 ```
   </details>
   
