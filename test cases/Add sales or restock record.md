@@ -234,3 +234,11 @@ Exiting search...
 
 Please enter the product code of the commodity that you want to add record to: 
 </pre>
+
+3. If the product code entered does not exist
+<pre>
+Please enter the product code of the commodity that you want to add record to: <b>1</b>
+
+The product code you entered does not exist
+Returning to main page...
+</pre>
