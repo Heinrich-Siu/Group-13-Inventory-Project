@@ -146,7 +146,7 @@ void search(commodity* shopPtr, int numberOfCommodity){ //"2. Search an Commodit
     while (true) {
         cout<<"\nFind by choosing one of the constrain below: "<<endl;
         cout<<
-        "1. Index            2.Product Code           3.Name\n"
+        "1.Index            2.Product Code           3.Name\n"
         "4.Price             5.Stock Number           6.Stock Size\n"
         "7.Number Of Sales Record                     8.Number Of Restock Record\n"
         "9.Manufacturer      10.Tax Amount            11:End search\n";
