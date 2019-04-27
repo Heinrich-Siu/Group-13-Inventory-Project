@@ -299,7 +299,7 @@ If ended correctly, you should see
   9.Manufacturer      10.Tax Amount            11.ALL
   Enter your choice here: 
   ```
-  These are the information that every commodity contains, you can choose specific kinds of information to show on the screen. After `Enter choice here`, you can input which kind of information to show. You can indicated the kinds of information you want by entering the corresponding number.  
+  These are the information that every commodity contains, you can choose specific kinds of information to show on the screen. After `Enter your choice here`, you can input which kind of information to show. You can indicated the kinds of information you want by entering the corresponding number.  
   You should enter the corresponding number one by one and separate it with `space` or press `enter` after each entry.  
   Finally enter one more `space` and then enter `-1` to indicate all kinds of information in question is inputed. 
   You can also enter `11` to show all information available.    
@@ -318,6 +318,7 @@ Note: You can enter the same attributes multiple times but no not enter more tha
   You should see
   ```
   *********Enquiry result*********
+  
   Index     Name                Stock Number   
   0         Banana              300            
   1         Kiwi                21             
@@ -339,6 +340,7 @@ Note: You can enter the same attributes multiple times but no not enter more tha
   You should see  
   ```
   *********Enquiry result*********
+  
   Tax Amount     Name                Price     
   $2.5           Banana              $7         
   $2.5           Kiwi                $15        
@@ -359,6 +361,7 @@ Note: You can enter the same attributes multiple times but no not enter more tha
   You should see
   ```
   *********Enquiry result*********
+  
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount     
   0         133            Banana              $7        300            4              2                      3                         Fuji           $2.5           
   1         134            Kiwi                $15       21             2              2                      3                         Fuji           $2.5           
@@ -393,12 +396,14 @@ The scope will be reseted if you exit the function.
   You will then see the following prompt  
   
   ```  
-  *********Commodity searching*********  
-  
-  Find by choosing one of the constrain below. Enter -1 if you are done searching  
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number  
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount  
-  Type in the constrain number:  
+  *********Commodity searching*********
+
+  Find by choosing one of the constrain below:
+  1.Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11:End search
+  Type in the constrain number: 
   ```  
   
   These are the information that every commodity contains, you can choose specific kinds of constrain to search commodity(s). After `Type in the constrain number`, you can input which kind of constrain to be use. You can indicated the constrain of information you want by entering the corresponding number, and press `Enter`.  
@@ -409,13 +414,15 @@ The scope will be reseted if you exit the function.
   ```
   Choose how to show your search result
   Input the number one by one in any sequence and input -1 when done or enter 11 to print All
-  *** E.g. Enter here: 1 2 5 4 -1 ***
+  *** E.g. Enter your choice here: 1 2 5 4 -1 ***
   Here are the options:
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount 11.ALL
-  Enter here:  
+  1. Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11.ALL
+  Enter your choice here: 
   ```
-  These are the information that every commodity contains, you can choose specific kinds of information to show on the screen. After `Enter here`, you can input which kind of information to show. You can indicated the kinds of information you want by entering the corresponding number.   
+  These are the information that every commodity contains, you can choose specific kinds of information to show on the screen. After `Enter your choice here`, you can input which kind of information to show. You can indicated the kinds of information you want by entering the corresponding number.   
 Note: refer to function `1. Show all commodity`   
   You should enter the corresponding number one by one and separate it with `space` or press `enter` after each entry.  
   Finally enter one more `space` and then enter `-1` to indicate all kinds of information in question is inputed. 
@@ -433,9 +440,11 @@ Note: refer to function `1. Show all commodity`
   ```  
   *********Commodity searching*********
   
-  Find by choosing one of the constrain below. Enter -1 if you are done searching
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount
+  Find by choosing one of the constrain below:
+  1.Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11:End search
   Type in the constrain number: 4
   ```
   
@@ -455,27 +464,32 @@ Note: refer to function `1. Show all commodity`
   ```
   Choose how to show your search result
   Input the number one by one in any sequence and input -1 when done or enter 11 to print All
-  *** E.g. Enter here: 1 2 5 4 -1 ***
+  *** E.g. Enter your choice here: 1 2 5 4 -1 ***
   Here are the options:
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount 11.ALL
-  Enter here: 11
+  1. Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11.ALL
+  Enter your choice here: 11
 
   *********Enquiry result*********
+  
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
   2         335            DragonFruit         $13       19             6              2                      3                         Fuji           $2.5
   5         135            Papaya              $13       90             3              2                      3                         Fuji           $2.5
   ```
   
-  Enter`-1`for exiting the function. 
+  Enter`11`for exiting the function. 
   
   ```
   *********Commodity searching*********
 
-  Find by choosing one of the constrain below. Enter -1 if you are done searching
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount
-  Type in the constrain number: -1
+  Find by choosing one of the constrain below:
+  1.Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11:End search
+  Type in the constrain number: 11
 
   Exiting search...
 
@@ -490,12 +504,12 @@ Note: refer to function `1. Show all commodity`
   ```
   *********Commodity searching*********
 
-  Find by choosing one of the constrain below. Enter -1 if you are done searching
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount
+  Find by choosing one of the constrain below:
+  1. Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11:End search
   Type in the constrain number: 2
-  Search by 1. Specific Product Code  2. Range of Product Code
-  Enter your choice here: 2
   ```
   
   Enter `2` to search by range of product code.
@@ -507,8 +521,7 @@ Note: refer to function `1. Show all commodity`
   Enter`3` to search with in a range.
   ```
   You are searching by 1.Larger or equal than  2. Smaller or equal than   3.Between two numbers
-  Enter your choice here:
-  3
+  Enter your choice here: 3
   ```
   
   Enter`100`indicating the lower boundary is 100.
@@ -525,13 +538,16 @@ Note: refer to function `1. Show all commodity`
   ```
   Choose how to show your search result
   Input the number one by one in any sequence and input -1 when done or enter 11 to print All
-  *** E.g. Enter here: 1 2 5 4 -1 ***
+  *** E.g. Enter your choice here: 1 2 5 4 -1 ***
   Here are the options:
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount 11.ALL
-  Enter here: 11
+  1. Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11.ALL
+  Enter your choice here: 11
 
   *********Enquiry result*********
+  
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
   3         133            Banana              $7        300            4              2                      3                         Fuji           $2.5
   4         134            Kiwi                $15       21             2              2                      3                         Fuji           $2.5
@@ -540,11 +556,11 @@ Note: refer to function `1. Show all commodity`
   
   Enter`4`to search within the results by price.
   ```
-  *********Commodity searching*********
-
-  Find by choosing one of the constrain below. Enter -1 if you are done searching
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount
+  Find by choosing one of the constrain below:
+  1. Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11:End search
   Type in the constrain number: 4
   ```
   
@@ -557,8 +573,7 @@ Note: refer to function `1. Show all commodity`
   Enter`1`to search price higher than.
   ```
   You are searching by 1.Larger or equal than  2. Smaller or equal than   3.Between two numbers
-  Enter your choice here:
-  1
+  Enter your choice here: 1
   ```
   
   Enter`10`to indicate lower boundary is 10.
@@ -570,27 +585,30 @@ Note: refer to function `1. Show all commodity`
   ```
   Choose how to show your search result
   Input the number one by one in any sequence and input -1 when done or enter 11 to print All
-  *** E.g. Enter here: 1 2 5 4 -1 ***
+  *** E.g. Enter your choice here: 1 2 5 4 -1 ***
   Here are the options:
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount 11.ALL
-  Enter here: 11
+  1. Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11.ALL
+  Enter your choice here: 11
 
   *********Enquiry result*********
+  
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
   4         134            Kiwi                $15       21             2              2                      3                         Fuji           $2.5
   5         135            Papaya              $13       90             3              2                      3                         Fuji           $2.5
   ```
   
-  Enter`-1`to exit the function.    
+  Enter`11`to exit the function.    
   You should see the following if exited correctly.    
   ```
-  *********Commodity searching*********
-
-  Find by choosing one of the constrain below. Enter -1 if you are done searching
-  1. Index 2.Product Code 3.Name 4.Price 5.Stock Number
-  6.Stock Size 7.Number Of Sales Record 8.Number Of Restock Record 9.Manufacturer 10.Tax Amount
-  Type in the constrain number: -1
+  Find by choosing one of the constrain below:
+  1. Index            2.Product Code           3.Name
+  4.Price             5.Stock Number           6.Stock Size
+  7.Number Of Sales Record                     8.Number Of Restock Record
+  9.Manufacturer      10.Tax Amount            11:End search
+  Type in the constrain number: 11
 
   Exiting search...
 
@@ -992,7 +1010,8 @@ Choice:
   An example is as below
 ```
 Enter the value of n: 12
-From when (YYYY-MM, e.g. 2019-12) to 12 months before: 2019-12
+Enter the ending month(included in the search) of the search
+Please enter the result in (YYYY-MM, e.g. 2019-12) format: 2019-12
 Total 2 record in the last 12 months found.
 ```
 Then you should see the result
@@ -1073,7 +1092,8 @@ Choice:
   An example is as below
 ```
 Enter the value of n: 12
-From when (YYYY-MM, e.g. 2019-12) to 12 months before: 2019-12
+Enter the ending month(included in the search) of the search
+Please enter the result in (YYYY-MM, e.g. 2019-12) format: 2019-12
 Total 2 record in the last 12 months found.
 ```
 Then you should see the result that shows all the restock history in the period of n months before the date inputed and the inputed date  
@@ -1129,6 +1149,7 @@ The prediction is based on `n-month average`
 Such that predicted sales will be the sales average of the last `n` month  
 Example input will be as below  
 ```
+Note: the current month will be included in the prediction
 Enter current date in (YYYY-MM, e.g. 2019-12) format: 2019-12
 Choose the number of month(s) for prediction: 12 
 ```
@@ -1168,14 +1189,14 @@ This has a similar function to `Show stock status`, however it can show the pred
 You will be asked to enter length of the prediction and the date to predict from 
 Example input will be as below  
 ```
-Choose the average of sales in the last x months: 6
-From when (YYYY-MM, e.g. 2019-12) to 6 months before: 2019-12
+Note: the current month will be included in the prediction
+Enter current date in (YYYY-MM, e.g. 2019-12) format: 2019-12
+Choose the number of month(s) for prediction: 6
 ```
     
 Output will be the `Index`, `Product Code`, `Name`, `Current Stock` and `Predicted sales in n month`
 You should see similar output as below   
 ```
-From when (YYYY-MM, e.g. 2019-12) to 6 months before: 2019-12
 Index     Product Code   Name                Current stock       Predicted sales in 6 month
 0         133            Banana              300                 0.833333            
 1         134            Kiwi                0                   0.833333            
@@ -1234,7 +1255,7 @@ function 11 description
   To enter this function, enter `11` in the main menu and press `enter` .   
   Then you should see the following prompt:     
   ```
-  `Do you want to overwrite record to current file instead of creating a new file?   Enter Y/N` 
+  Do you want to overwrite record to current file instead of creating a new file?   Enter Y/N
   ```
   1. To save to the file you have loaded from when you were asked to 
   `Please input the file name of the record: ` at the start of using this function  
