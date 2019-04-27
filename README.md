@@ -107,7 +107,7 @@ Action will result in exceeding available inventory space 50002/50000
   
 ### `input 2`
 ```
-sample.txt 6 Y 333 2 2019-04-27 9462
+sample.txt 6 Y 333 1 2019-04-27 41
 ```
 `sample.txt`: Import sample record file to the system
 `6`: updating sales and restock record  
