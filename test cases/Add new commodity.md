@@ -57,16 +57,16 @@ Enter your choice here: <b>11</b>
 *********Enquiry result*********
 
 Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer             Tax Amount     
-0         101            Commodity A         2         100            1              1                      2                         Man A                    $0             
-1         102            Commodity B         34        137            2              3                      2                         Man B                    $1             
-2         103            Commodity C         42        200            14             4                      3                         Man C                    $1.5           
-3         201            Commodity D         64        94             1              3                      1                         Man D                    $0.33          
-4         202            Commodity E         54        10             2              0                      1                         Man E                    $5             
-5         203            Commodity F         22        0              14             0                      0                         Man F                    $1             
-6         301            Commodity G         21        224            1              12                     6                         Man G                    $2             
-7         302            Commodity H         340       96             2              5                      3                         Man H                    $17.51         
-8         303            Commodity I         42        167            14             4                      2                         Man I                    $0             
-9         401            Added commodity     23.5      0              10             0                      0                         No Man                   $2             
+0         101            Commodity A         $2        100            1              1                      2                         Man A                    $0             
+1         102            Commodity B         $34       137            2              3                      2                         Man B                    $1             
+2         103            Commodity C         $42       200            14             4                      3                         Man C                    $1.5           
+3         201            Commodity D         $64       94             1              3                      1                         Man D                    $0.33          
+4         202            Commodity E         $54       10             2              0                      1                         Man E                    $5             
+5         203            Commodity F         $22       0              14             0                      0                         Man F                    $1             
+6         301            Commodity G         $21       224            1              12                     6                         Man G                    $2             
+7         302            Commodity H         $340      96             2              5                      3                         Man H                    $17.51         
+8         303            Commodity I         $42       167            14             4                      2                         Man I                    $0             
+9         401            Added commodity     $23.5     0              10             0                      0                         No Man                   $2             
 
 All results have shown
 
