@@ -78,16 +78,20 @@ void tdayStrtoInt(string date, tm &fromDate)
 }
 
 void salesPrediction(commodity* shopPtr, int numberOfCommodity){
-    int month;
-    cout<<"Choose the average of sales in the last x months: ";
-    cin>>month;
     tm fromDate;
     fromDate.tm_year = 0;
     fromDate.tm_mon = 0;
+
     
     string date;
-    cout << "From when (YYYY-MM, e.g. 2019-12) to "<<month<<" months before: ";
+    cout<<"\nNote: the current month will be included in the prediction"<<endl;
+    cout << "Enter current date in (YYYY-MM, e.g. 2019-12) format: ";
     cin >> date;
+    
+    int month;
+    cout<<"Choose the number of month(s) for prediction: ";
+    cin>>month;
+    
     tdayStrtoInt(date, fromDate);
     
     cout.width(10); cout<<left<<"Index";
@@ -99,7 +103,7 @@ void salesPrediction(commodity* shopPtr, int numberOfCommodity){
     cout<<endl;
     double average;
     for (int i=0; i<numberOfCommodity; i++) {
-        average = salesAmount(shopPtr, i, fromDate, numberOfCommodity)/month;
+        average = salesAmount(shopPtr, i, fromDate, month)/month;
         stockPrinter(&shopPtr[i]);
         cout.width(20); cout<<left<<average;
         cout<<endl;
@@ -134,7 +138,8 @@ void stockStatus(commodity *shopPtr, int numberOfCommodity){
     fromDate.tm_mon = 0;
     
     string date;
-    cout << "\nEnter current date in (YYYY-MM, e.g. 2019-12) format: ";
+    cout<<"\nNote: the current month will be included in the prediction"<<endl;
+    cout << "Enter current date in (YYYY-MM, e.g. 2019-12) format: ";
     cin >> date;
     tdayStrtoInt(date, fromDate);
     
@@ -149,7 +154,7 @@ void stockStatus(commodity *shopPtr, int numberOfCommodity){
     
     double average;
     for (int j=0; j<numberOfCommodity; j++) {
-        average = salesAmount(shopPtr, j, fromDate, numberOfCommodity)/month;
+        average = salesAmount(shopPtr, j, fromDate, month)/month;
         if ((shopPtr[j]).stockNum<average){
             if (!hasPrinted) {
                 cout.width(10); cout<<left<<"Index";
