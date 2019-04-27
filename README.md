@@ -62,15 +62,15 @@ To execute the program.
   *********Enquiry result*********
 
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer             Tax Amount
-  0         333            Apple A             10        40             5              2                      3                         Fuji                     $2.5
-  1         334            Orange              11        60             5              2                      3                         Fuji                     $2.5
-  2         335            DragonFruit         13        19             6              2                      3                         Fuji                     $2.5
-  3         133            Banana              7         300            4              2                      3                         Fuji                     $2.5
-  4         134            Kiwi                15        21             2              2                      3                         Fuji                     $2.5
-  5         135            Papaya              13        90             3              2                      3                         Fuji                     $2.5
-  6         233            Cherry              11        72             3              2                      3                         Fuji                     $2.5
-  7         232            Avocado             21        69             5              2                      3                         Fuji                     $2.5
-  8         231            Redcurrant          18.5      1              5              2                      3                         Fuji                     $2.5
+  0         333            Apple A             $10       40             5              2                      3                         Fuji                     $2.5
+  1         334            Orange              $11       60             5              2                      3                         Fuji                     $2.5
+  2         335            DragonFruit         $13       19             6              2                      3                         Fuji                     $2.5
+  3         133            Banana              $7        300            4              2                      3                         Fuji                     $2.5
+  4         134            Kiwi                $15       21             2              2                      3                         Fuji                     $2.5
+  5         135            Papaya              $13       90             3              2                      3                         Fuji                     $2.5
+  6         233            Cherry              $11       72             3              2                      3                         Fuji                     $2.5
+  7         232            Avocado             $21       69             5              2                      3                         Fuji                     $2.5
+  8         231            Redcurrant          $18.5     1              5              2                      3                         Fuji                     $2.5
   ```
   ***************
   Inventory Space
@@ -87,8 +87,8 @@ To execute the program.
   *********Enquiry result*********
 
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer             Tax Amount
-  0         333            Apple               10        70             5              2                      3                         Fuji                     $2.5
-  1         964            Orange              20        0              5              0                      0                         China                    $3.5
+  0         333            Apple               $10       70             5              2                      3                         Fuji                     $2.5
+  1         964            Orange              $20       0              5              0                      0                         China                    $3.5
   ```
   </details>
   
@@ -340,10 +340,10 @@ Note: You can enter the same attributes multiple times but no not enter more tha
   ```
   *********Enquiry result*********
   Tax Amount     Name                Price     
-  $2.5           Banana              7         
-  $2.5           Kiwi                15        
-  $2.5           Papaya              13        
-  $2.5           Redcurrant          18.5 
+  $2.5           Banana              $7         
+  $2.5           Kiwi                $15        
+  $2.5           Papaya              $13        
+  $2.5           Redcurrant          $18.5 
   ...
   ...
   ```
@@ -360,11 +360,11 @@ Note: You can enter the same attributes multiple times but no not enter more tha
   ```
   *********Enquiry result*********
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount     
-  0         133            Banana              7         300            4              2                      3                         Fuji           $2.5           
-  1         134            Kiwi                15        21             2              2                      3                         Fuji           $2.5           
-  2         135            Papaya              13        90             3              2                      3                         Fuji           $2.5           
-  3         231            Redcurrant          18.5      1              5              2                      3                         Fuji           $2.5           
-  4         232            Avocado             21        69             5              2                      3                         Fuji           $2.5 
+  0         133            Banana              $7        300            4              2                      3                         Fuji           $2.5           
+  1         134            Kiwi                $15       21             2              2                      3                         Fuji           $2.5           
+  2         135            Papaya              $13       90             3              2                      3                         Fuji           $2.5           
+  3         231            Redcurrant          $18.5     1              5              2                      3                         Fuji           $2.5           
+  4         232            Avocado             $21       69             5              2                      3                         Fuji           $2.5 
   ```
   </details>
 
@@ -463,8 +463,8 @@ Note: refer to function `1. Show all commodity`
 
   *********Enquiry result*********
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
-  2         335            DragonFruit         13        19             6              2                      3                         Fuji           $2.5
-  5         135            Papaya              13        90             3              2                      3                         Fuji           $2.5
+  2         335            DragonFruit         $13       19             6              2                      3                         Fuji           $2.5
+  5         135            Papaya              $13       90             3              2                      3                         Fuji           $2.5
   ```
   
   Enter`-1`for exiting the function. 
@@ -533,9 +533,9 @@ Note: refer to function `1. Show all commodity`
 
   *********Enquiry result*********
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
-  3         133            Banana              7         300            4              2                      3                         Fuji           $2.5
-  4         134            Kiwi                15        21             2              2                      3                         Fuji           $2.5
-  5         135            Papaya              13        90             3              2                      3                         Fuji           $2.5
+  3         133            Banana              $7        300            4              2                      3                         Fuji           $2.5
+  4         134            Kiwi                $15       21             2              2                      3                         Fuji           $2.5
+  5         135            Papaya              $13       90             3              2                      3                         Fuji           $2.5
   ```
   
   Enter`4`to search within the results by price.
@@ -578,8 +578,8 @@ Note: refer to function `1. Show all commodity`
 
   *********Enquiry result*********
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
-  4         134            Kiwi                15        21             2              2                      3                         Fuji           $2.5
-  5         135            Papaya              13        90             3              2                      3                         Fuji           $2.5
+  4         134            Kiwi                $15       21             2              2                      3                         Fuji           $2.5
+  5         135            Papaya              $13       90             3              2                      3                         Fuji           $2.5
   ```
   
   Enter`-1`to exit the function.    
@@ -636,9 +636,9 @@ function 3 description
 
   *********Enquiry result*********
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
-  1         334            Orange              11        60             5              2                      3                         Fuji           $2.5
-  3         133            Banana              7         300            4              2                      3                         Fuji           $2.5
-  8         231            Redcurrant          18.5      1              5              2                      3                         Fuji           $2.5
+  1         334            Orange              $11       60             5              2                      3                         Fuji           $2.5
+  3         133            Banana              $7        300            4              2                      3                         Fuji           $2.5
+  8         231            Redcurrant          $18.5     1              5              2                      3                         Fuji           $2.5
   ```
   
   Enter`-1`to exit the function.
@@ -783,7 +783,7 @@ Search the commodity under interest and input `11` to end search
   
   ```
   Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer   Tax Amount
-  0         333            Apple A             10        40             5              2                      3                         Fuji           $2.5    
+  0         333            Apple A             $10       40             5              2                      3                         Fuji           $2.5    
 
 What attribute of the commodity do you want to change/update?
 1. Product Code
