@@ -159,6 +159,7 @@ Index     Product Code   Name                Number of stock
 
 
 **Function and feature**
+------------------------
 1) Load commodity inventory record of different shop from files; 
 
 2) Search commodity according to different filters (e.g. in-stock/out-of-stock, range of price, size, etc.);
@@ -178,6 +179,7 @@ Index     Product Code   Name                Number of stock
 9) Check Inventory Space and make alerts<br/>
 
 **Commodity Information should include:**
+-----------------------------------------
 
 1. Wholesale/Retail Price<br/>
 2. Space used of one unit of the Commodity <br/>
@@ -188,6 +190,7 @@ Index     Product Code   Name                Number of stock
 7. Product code<br/>
 
 **Operations:<br/>**
+--------------------
 
 1.  Show all inventory record  
 2.  Search an Commodity  
