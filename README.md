@@ -53,24 +53,69 @@ To execute the program.
 
 **Run the code on test case:<br/>**
 -----------------------------------
-Testcase 1 
+<details>
+  <summary>Sample Record for test case(sample.txt)</summary>
+  
+  ```
+  *********Enquiry result*********
+
+  Index     Product Code   Name                Price     Stock Number   Stock Size     Number of Sales Record Number of Restock Record  Manufacturer             Tax Amount
+  0         333            Apple A             10        40             5              2                      3                         Fuji                     $2.5
+  1         334            Orange              11        60             5              2                      3                         Fuji                     $2.5
+  2         335            DragonFruit         13        19             6              2                      3                         Fuji                     $2.5
+  3         133            Banana              7         300            4              2                      3                         Fuji                     $2.5
+  4         134            Kiwi                15        21             2              2                      3                         Fuji                     $2.5
+  5         135            Papaya              13        90             3              2                      3                         Fuji                     $2.5
+  6         233            Cherry              11        72             3              2                      3                         Fuji                     $2.5
+  7         232            Avocado             21        69             5              2                      3                         Fuji                     $2.5
+  8         231            Redcurrant          18.5      1              5              2                      3                         Fuji                     $2.5
+  ```
+  
+  Inventory Space
+  ```
+  Calculating...
+  Inventory Space: 2692/50000
+  ```
+
+  </details>
+  
+<details>
+  <summary>Testcase 1 - exceeding inventory space</summary>
+  
 ### `input1`
 ```
-content
+6 Y 333 2 2019-04-27 9462
 ```
+`6`: updating sales and restock record  
+`Y`: Say you the product code of the commodity  
+`333`: The product code of the commodity to add record  
+`2`: Choice to add restock record  
+`2019-04-27`: Date of restock record  
+`9462`: Quantity of restock  
 
 
-Testcase 2
+Beacuse `2692+9462*5 = 50002`, therefore
+### `output`
+```
+Action will result in exceeding available inventory space 50002/50000
+```
+  </details>
+
+<details>
+  <summary>Testcase 2</summary>
 ### `input2`
 ```
 content
 ```
-
-Testcase 3
+  </details>
+  
+<details>
+  <summary>Testcase 3</summary>
 ### `input3`
 ```
 content
 ```
+  </details>
 
 
 **Function and feature**
