@@ -144,6 +144,8 @@ bool actualRecordChanger(int choice, commodity* shopPtr, int index, const int in
             return 1;
             break;
     }
+    return 0;
+}
 
 //called when user need to change record
 void changeRecord(commodity* shopPtr, int &numberOfCommodity, const int inventorySpace, int &totalOcuppiedSpace)
@@ -249,7 +251,7 @@ void addRestock(commodity* shopPtr, int index, int inventorySpace, int &totalOcu
     cout << "Quantity: ";
     cin >> temp_quantity;
 
-    if(updateInventorySpace_inAddRecord((temp_quantity*shopPtr[index].stockSize), inventorySpace, totalOcuppiedSpace)) //check if adding quantity will result in exceeding space
+    if(updateInventorySpace_inAddRecord((temp_quantity*shopPtr[index].stockSize), inventorySpace, totalOcuppiedSpace) && temp_quantity>0) //check if adding quantity will result in exceeding space
     {
         if(shopPtr[index].numOfRestockRec == 0) //No record before
         {
@@ -407,3 +409,4 @@ bool updateInventorySpace_inAddRecord(int addSize,int inventorySpace, int &total
         return 0;
     }
 }
+
